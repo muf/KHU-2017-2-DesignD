@@ -24,8 +24,8 @@ namespace SoccerTradingSystem
         {
             InitializeComponent();
             //디비_재구성();
-            //유저_로그인_시나리오();
-            선수_회원가입_시나리오();
+            유저_로그인_시나리오();
+            //선수_회원가입_시나리오();
             //매니져_회원가입_승인_시나리오();
 
         }
@@ -44,8 +44,13 @@ namespace SoccerTradingSystem
         }
         public void 유저_로그인_시나리오()
         {
+            SystemAccountHandler sah = new SystemAccountHandler();
             String email = "huryip@naver.com";
             String password = "tmxhs8282";
+            App.current_user = sah.login(email, password);
+            var temp = App.current_user;
+
+            MessageBox.Show("ok");
 
         }
         public void 선수_회원가입_시나리오()

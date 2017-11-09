@@ -23,12 +23,51 @@ namespace SoccerTradingSystem
         // @@ methods
         public User login(String email, String password)
         {
-            User user = new User(email, password);
-            int uid = getUserId(user);
-            int cid = getClientId(uid);
-            
-            return user;
+            query = $"SELECT * from {userTable} where `email` = '{email}' AND `password` = '{password}'";
+            queryResult = conn.query(query);    
+            String authenticated = queryResult[0]["authenticated"].ToString();
+
+            if (queryResult.Count == 1)
+            {
+                if (queryResult[0]["type"].ToString() == "Client")
+                {
+                    int uid = Convert.ToInt32(queryResult[0]["uid"]);
+                    query = $"SELECT * from {clientTable} where `uid` = '{uid}'";
+                    queryResult = conn.query(query);
+                    String type = queryResult[0]["type"].ToString();
+                    int cid = Convert.ToInt32(queryResult[0]["cid"]);
+                    if(type == "Player")
+                    {
+                        query = $"SELECT * from {playerTable} where `cid` = '{cid}'";
+                        queryResult = conn.query(query);
+
+                        bool auth = authenticated == "True" ? true : false;
+                        Player user = new Player(email, password, auth);
+                        user.firstName = queryResult[0]["firstName"].ToString();
+                        user.middleName = queryResult[0]["middleName"].ToString();
+                        user.lastName = queryResult[0]["lastName"].ToString();
+                        user.birth = Convert.ToInt32(queryResult[0]["birth"]);
+                        user.position = queryResult[0]["lastName"].ToString();
+                        user.weight = Convert.ToInt32(queryResult[0]["weight"]);
+                        user.height = Convert.ToInt32(queryResult[0]["height"]);
+                        user.status = queryResult[0]["status"].ToString();
+                        //user
+                        return user;
+                    }
+                    else // Club
+                    {
+                        return null;
+                    }
+                }
+                else
+                {
+                    // manager
+                    return null;
+                }
+            }
+            return null;
         }
+
         public int getUserId(User user)
         {
             int uid = -1;
