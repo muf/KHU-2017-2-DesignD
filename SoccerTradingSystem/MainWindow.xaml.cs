@@ -34,7 +34,7 @@ namespace SoccerTradingSystem
             DBGenerator gen = new DBGenerator();
             try
             {
-               gen.dropAll();
+                gen.dropAll();
                 gen.init();
             }
             catch (Exception e)
