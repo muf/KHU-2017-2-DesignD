@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SoccerTradingSystem
 {
-    class User
+    public class User
     {
         public String email { get; } = "";                 // 사용자의 계정 이메일
         public String password { get; } = "";             // 사용자의 게정 패스워드 @@ 이게 필요한건가?

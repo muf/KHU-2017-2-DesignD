@@ -1,0 +1,39 @@
+﻿<Page x:Class="SoccerTradingSystem.Views.main"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SoccerTradingSystem.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="760" d:DesignWidth="1280"
+      Title="Player Trading Management">
+
+    <Page.Resources>
+        <Style x:Key="buttonSytle_1">
+            <Setter Property="Button.Background" Value="#263238"></Setter>
+            <Setter Property="Button.Height" Value="30"></Setter>
+            <Setter Property="Button.BorderThickness" Value="0"></Setter>
+        </Style>
+        <Style x:Key="buttonSytle_2">
+            <Setter Property="Button.Background" Value="#37474F"></Setter>
+            <Setter Property="Button.Height" Value="30"></Setter>
+            <Setter Property="Button.BorderThickness" Value="0"></Setter>
+        </Style>
+    </Page.Resources>
+
+    <DockPanel Name="dockPanel1">
+        <Border DockPanel.Dock="Top">
+            <Frame Name="top_panel"  Source="top_panel.xaml"></Frame>
+        </Border>
+        <Border DockPanel.Dock="Left" Width="100" Background="White" BorderThickness="3" BorderBrush="Black" Height="720" VerticalAlignment="Bottom">
+            <Grid>
+                <Grid.RowDefinitions>
+
+                </Grid.RowDefinitions>
+            </Grid>
+        </Border>
+        <Border Background="White" BorderThickness="0"  BorderBrush="Black">
+            <Frame Name="content_frame" Grid.Row="1"/>
+        </Border>
+    </DockPanel>
+</Page>

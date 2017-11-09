@@ -12,7 +12,7 @@ namespace SoccerTradingSystem
     {
         private static String serverIp = "127.0.0.1";
         private static String id = "root";
-        private static String password = "tmxhs8282";
+        private static String password = "admin";
         private static String databaseName = "pms_dev";
         private String connectString;
         private MySqlConnection conn;

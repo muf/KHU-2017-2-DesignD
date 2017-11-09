@@ -18,14 +18,14 @@ namespace SoccerTradingSystem
     /// <summary>
     /// MainWindow.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class TestWindow : Window
     {
-        public MainWindow()
+        public TestWindow()
         {
             InitializeComponent();
-            디비_재구성();
-            유저_로그인_시나리오();
-            //선수_회원가입_시나리오();
+            //디비_재구성();
+            //유저_로그인_시나리오();
+            선수_회원가입_시나리오();
             //매니져_회원가입_승인_시나리오();
 
         }
@@ -34,7 +34,7 @@ namespace SoccerTradingSystem
             DBGenerator gen = new DBGenerator();
             try
             {
-                gen.dropAll();
+                //gen.dropAll();
                 gen.init();
             }
             catch (Exception e)
@@ -46,7 +46,7 @@ namespace SoccerTradingSystem
         {
             String email = "huryip@naver.com";
             String password = "tmxhs8282";
-            
+
         }
         public void 선수_회원가입_시나리오()
         {
