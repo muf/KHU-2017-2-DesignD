@@ -1,1 +1,0 @@
-# KHU-2017-2-DesignD
