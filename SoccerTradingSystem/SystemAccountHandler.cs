@@ -118,12 +118,14 @@ namespace SoccerTradingSystem
             else
                 return null;
         }
-        public List<Player> retrievePlayerData()
+        public List<Player> retrievePlayerData(String keyword)
         {
             List<Player> players = new List<Player>();
+           
             JSON result = saDAC.getPlayersData();
             for(int i = 0; i < result.Count; i++)
             {
+                String globalString = "";
                 Dictionary<string, object> data = result[i];
                 bool auth = data["authenticated"].ToString() == "True" ? true : false;
                 bool logined = data["logined"].ToString() == "True" ? true : false;
@@ -139,16 +141,22 @@ namespace SoccerTradingSystem
                 player.lastName = data["lastName"].ToString();
                 player.position= data["position"].ToString();
                 player.status = data["status"].ToString();
-                players.Add(player);
+
+                globalString += player.email + player.uid + +player.birth+player.firstName+player.middleName + player.lastName + player.position + player.status + player.playerId;
+                globalString.Replace(" ", "");
+                if(globalString.IndexOf(keyword) != -1){
+                    players.Add(player);
+                }
             }
             return players;
         }
-        public List<Club> retrieveClubData()
+        public List<Club> retrieveClubData(String keyword)
         {
             List<Club> clubs = new List<Club>();
             JSON result = saDAC.getClubsData();
             for (int i = 0; i < result.Count; i++)
             {
+                String globalString = "";
                 Dictionary<string, object> data = result[i];
                 bool auth = data["authenticated"].ToString() == "True" ? true : false;
                 bool logined = data["logined"].ToString() == "True" ? true : false;
@@ -159,54 +167,85 @@ namespace SoccerTradingSystem
                 club.birth = Convert.ToInt32(data["birth"]);
                 club.name = data["name"].ToString();
                 club.contactNumber = data["contactNumber"].ToString();
-                clubs.Add(club);
+
+                globalString += club.email + club.uid + +club.birth + club.name + club.contactNumber + club.clubId;
+                globalString.Replace(" ", "");
+                if (globalString.IndexOf(keyword) != -1)
+                {
+                    clubs.Add(club);
+                }
             }
             return clubs;
         }
-        public List<Manager> retrieveManagerData()
+        public List<Manager> retrieveManagerData(String keyword)
         {
             List<Manager> managers = new List<Manager>();
             JSON result = saDAC.getManagersData();
             for (int i = 0; i < result.Count; i++)
             {
+                String globalString = "";
                 Dictionary<string, object> data = result[i];
                 bool auth = data["authenticated"].ToString() == "True" ? true : false;
                 bool logined = data["logined"].ToString() == "True" ? true : false;
                 Manager manager = new Manager(data["email"].ToString(), data["password"].ToString(), data["name"].ToString(), data["telNumber"].ToString(), auth, logined);
                 manager.managerId = Convert.ToInt32(data["mid"]);
                 manager.uid = Convert.ToInt32(data["uid"]);
-                managers.Add(manager);
+
+                globalString += manager.email + manager.uid + +manager.managerId + manager.uid + manager.name + manager.telNumber;
+                globalString.Replace(" ", "");
+                if (globalString.IndexOf(keyword) != -1)
+                {
+                    managers.Add(manager);
+                }
             }
             return managers;
         }
-        public List<User> retrieveUnauthedUserData()
+        public List<User> retrieveUnauthedUserData(String keyword)
         {
             List<User> users = new List<User>();
             JSON result = saDAC.getUnauthedUserData();
             for (int i = 0; i < result.Count; i++)
             {
+                String globalString = "";
                 Dictionary<string, object> data = result[i];
                 bool auth = data["authenticated"].ToString() == "True" ? true : false;
                 bool logined = data["logined"].ToString() == "True" ? true : false;
                 User user = new User(data["email"].ToString(), data["password"].ToString(), auth, logined);
                 user.uid = Convert.ToInt32(data["uid"]);
-                users.Add(user);
+
+                globalString += user.email + user.uid;
+                globalString.Replace(" ", "");
+                if (globalString.IndexOf(keyword) != -1)
+                {
+                    users.Add(user);
+                }
             }
             return users;
 
         }
-        public List<User> retrieveUserData()
+        public List<User> retrieveUserData(String keyword)
         {
             List<User> users = new List<User>();
             JSON result = saDAC.getUserData();
             for (int i = 0; i < result.Count; i++)
             {
+                String globalString = "";
                 Dictionary<string, object> data = result[i];
                 bool auth = data["authenticated"].ToString() == "True" ? true : false;
                 bool logined = data["logined"].ToString() == "True" ? true : false;
                 User user = new User(data["email"].ToString(), data["password"].ToString(), auth, logined);
+<<<<<<< HEAD
+
+                globalString += user.email + user.uid;
+                globalString.Replace(" ", "");
+                if (globalString.IndexOf(keyword) != -1)
+                {
+                    users.Add(user);
+                }
+=======
                 user.uid = Convert.ToInt32(data["uid"]);
                 users.Add(user);
+>>>>>>> 84ea4991df79ebfab6adf63f4ecb82d20243bdd7
             }
             return users;
 
