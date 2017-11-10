@@ -25,7 +25,9 @@ namespace SoccerTradingSystem
             InitializeComponent();
             //디비_재구성();
             //유저_로그인_시나리오();
-            선수_회원가입_시나리오();
+            //선수_회원가입_시나리오();
+            //매니져_회원가입_시나리오();
+            구단_회원가입_시나리오();
             //매니져_회원가입_승인_시나리오();
 
         }
@@ -85,6 +87,43 @@ namespace SoccerTradingSystem
             String position = enumClass.Position.CMD;
 
             bool flag = sah.registerPlayerAccount(email, password, firstName, middleName, lastName, birth, weight, height, position);
+
+            if (flag)
+                MessageBox.Show("성공");
+            else
+                MessageBox.Show("실패");
+
+        }
+        public void 매니져_회원가입_시나리오()
+        {
+            SystemAccountHandler sah = new SystemAccountHandler();
+            // 입력 값 받아서 newPlayer에 셋팅
+
+            String email = "manager@naver.com";
+            String password = "tmxhs8282";
+            String name = "mainManager";
+            String telNumber = "010-9061-9570";
+
+            bool flag = sah.registerManagerAccount(email, password, name, telNumber);
+
+            if (flag)
+                MessageBox.Show("성공");
+            else
+                MessageBox.Show("실패");
+
+        }
+        public void 구단_회원가입_시나리오()
+        {
+            SystemAccountHandler sah = new SystemAccountHandler();
+            // 입력 값 받아서 newPlayer에 셋팅
+
+            String email = "club@naver.com";
+            String password = "tmxhs8282";
+            String name = "mainManager";
+            int birth = 123;
+            String contactNumber = "010-9061-9570";
+
+            bool flag = sah.registerClubAccount(email, password, name, birth, contactNumber);
 
             if (flag)
                 MessageBox.Show("성공");

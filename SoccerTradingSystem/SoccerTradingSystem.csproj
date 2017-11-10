@@ -67,6 +67,7 @@
     <Compile Include="DBGenerator.cs" />
     <Compile Include="enumClass.cs" />
     <Compile Include="localData.cs" />
+    <Compile Include="Manager.cs" />
     <Compile Include="Views\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
