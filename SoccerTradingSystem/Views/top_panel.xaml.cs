@@ -49,11 +49,12 @@ namespace SoccerTradingSystem.Views
             loginBtn.Visibility = System.Windows.Visibility.Visible;
             logoutBtn.Visibility = System.Windows.Visibility.Collapsed;
             topLoginedEmail.Text ="Unlogined";
+
+            main.NavigationService.Refresh();
         }
 
         private void login_Click(object sender, RoutedEventArgs e)
         {
-            //MessageBox.Show("login");
             LoginWindow loginWindow = new LoginWindow(this);
             loginWindow.Show();
         }
@@ -67,9 +68,6 @@ namespace SoccerTradingSystem.Views
 
         public void logined_success(string email)
         {
-            //logoutBtn.Visibility = System.Windows.Visibility.Visible;
-            //loginBtn.Visibility = System.Windows.Visibility.Collapsed;
-            //topLoginedEmail.Text = "Wellcome !!!  " + email;
             main.NavigationService.Refresh(); // refresh
         }
     }

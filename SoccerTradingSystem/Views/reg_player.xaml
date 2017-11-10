@@ -34,13 +34,26 @@
         <TextBlock  Grid.Row="7" Grid.Column="0" Text="Weight" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
         <TextBlock  Grid.Row="8" Grid.Column="0" Text="Height" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
 
-        <TextBox Grid.Row="0" Grid.Column="1" Name="emailBox" Margin="0,0,-118,0"></TextBox>
+        <TextBox Grid.Row="0" Grid.Column="1" Name="emailBox" Margin="0,0,-118,0" LostFocus="emailBox_Leave"></TextBox>
         <PasswordBox Grid.Row="1" Grid.Column="1" Name="passwordBox" Margin="0,0,-118,0"></PasswordBox>
         <TextBox Grid.Row="2" Grid.Column="1" Name="firstnameBox" Margin="0,0,-118,0"></TextBox>
         <TextBox Grid.Row="3" Grid.Column="1" Name="middlenameBox" Margin="0,0,-118,0"></TextBox>
         <TextBox Grid.Row="4" Grid.Column="1" Name="lastnameBox" Margin="0,0,-118,0"></TextBox>
         <TextBox Grid.Row="5" Grid.Column="1" Name="birthBox" Margin="0,0,-118,0"></TextBox>
-        <TextBox Grid.Row="6" Grid.Column="1" Name="positionBox" Margin="0,0,-118,0"></TextBox>
+        <ComboBox Grid.Row="6" Grid.Column="1" Name="positionComboBox" Margin="0,0,-108,0">
+            <ComboBoxItem IsSelected ="True" Content="GK"/>
+            <ComboBoxItem Content="RB"/>
+            <ComboBoxItem Content="LB"/>
+            <ComboBoxItem Content="CB"/>
+            <ComboBoxItem Content="CMD"/>
+            <ComboBoxItem Content="MF"/>
+            <ComboBoxItem Content="RM"/>
+            <ComboBoxItem Content="LM"/>
+            <ComboBoxItem Content="RW"/>
+            <ComboBoxItem Content="LW"/>
+            <ComboBoxItem Content="FW"/>
+            <ComboBoxItem Content="ST"/>
+        </ComboBox>
         <TextBox Grid.Row="7" Grid.Column="1" Name="weightBox" Margin="0,0,-118,0"></TextBox>
         <TextBox Grid.Row="8" Grid.Column="1" Name="heightBox" Margin="0,0,-118,0"></TextBox>
         <Button Name="resiterBtn" Grid.ColumnSpan="2" Content="Regist" HorizontalAlignment="Left" Margin="30,50,-82,-51" Grid.Row="8" Width="234" Click="resiterBtn_Click"/>
