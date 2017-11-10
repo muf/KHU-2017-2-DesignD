@@ -11,6 +11,29 @@ namespace SoccerTradingSystem
     public enum Status { Free, Contract, Lease, Expire, Retire };
     public static class enumClass
     {
+        public static class AccountRetrieveOption
+        {
+            public static String Global = "global";
+            public static class User
+            {
+                public static String Uid = "uid";
+                public static String Email = "email";
+                public static String authenticated = "authenticated";
+                public static String logined = "logined";
+            }
+            public static class Player
+            {
+
+            }
+            public static class Club
+            {
+
+            }
+            public static class Manager
+            {
+
+            }
+        }
         public static class UserType
         {
             public static String Club = "Club";

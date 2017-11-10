@@ -68,13 +68,13 @@
     <Compile Include="enumClass.cs" />
     <Compile Include="localData.cs" />
     <Compile Include="Manager.cs" />
+    <Compile Include="MariaDBConnector.cs" />
     <Compile Include="Views\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MariaDBConnector.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="STS.cs" />
     <Compile Include="SystemAccountDAC.cs" />
