@@ -21,67 +21,203 @@ namespace SoccerTradingSystem.Views
     /// </summary>
     public partial class user_info : Page
     {
+        bool flag = false;
+
         public user_info()
         {
             InitializeComponent();
         }
+
+        // 페이지가 로드 되었을 때 함수 호출 최초로 플레이어 데이터 그리드를 보여줌
         private void OnPageLoad(object sender, RoutedEventArgs e)
         {
-            Load();
+            PlayersDataGridSetting();
+            ClubsDataGridSetting();
+            ManagersDataGridSetting();
         }
-        public void Load()
+
+        // 플레이어 그리드에서 더블 클릭시 메서드 호출 인증을 업데이트함
+        private void Player_Row_DoubleClick(object sender, MouseButtonEventArgs e)
         {
-            try
+            SystemAccountHandler sah = new SystemAccountHandler();
+            DataRowView row = (DataRowView)playerDataGrid.SelectedItems[0];
+            int uid = Convert.ToInt32((row[0]));
+            if (MessageBox.Show("Authenticated?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
             {
-                SystemAccountHandler sah = new SystemAccountHandler();
-                List<Player> list = sah.retrievePlayerData();
-                List<Club> cist = sah.retrieveClubData();
-                List<Manager> mlist = sah.retrieveManagerData();
+                sah.updateUserAuth(uid, false);
+            }
+            else
+            {
+                sah.updateUserAuth(uid, true);
+            }
+            PlayersDataGridSetting();
+        }
 
-                // DataTable 생성
-                DataTable dataTable = new DataTable();
+        // 클럽 그리드에서 더블 클릭시 메서드 호출 인증을 업데이트함
+        private void Club_Row_DoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            SystemAccountHandler sah = new SystemAccountHandler();
+            DataRowView row = (DataRowView)clubDataGrid.SelectedItems[0];
+            int uid = Convert.ToInt32((row[0]));
+            if (MessageBox.Show("Authenticated?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+            {
+                sah.updateUserAuth(uid, false);
+            }
+            else
+            {
+                sah.updateUserAuth(uid, true);
+            }
+            ClubsDataGridSetting();
+        }
 
-                // 컬럼 생성
-                dataTable.Columns.Add("id", typeof(string));
-                dataTable.Columns.Add("email", typeof(string));
-                dataTable.Columns.Add("name", typeof(string));
-                dataTable.Columns.Add("birth", typeof(string));
-                dataTable.Columns.Add("position", typeof(string));
-                dataTable.Columns.Add("weight", typeof(string));
-                dataTable.Columns.Add("height", typeof(string));
-                dataTable.Columns.Add("status", typeof(string));
-                dataTable.Columns.Add("authenticated", typeof(string));
+        // 매니저 그리드에서 더블 클릭시 메서드 호출 인증을 업데이트함
+        private void Manager_Row_DoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            SystemAccountHandler sah = new SystemAccountHandler();
+            DataRowView row = (DataRowView)managerDataGrid.SelectedItems[0];
+            int uid = Convert.ToInt32((row[0]));
+            if (MessageBox.Show("Authenticated?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+            {
+                sah.updateUserAuth(uid, false);
+            }
+            else
+            {
+                sah.updateUserAuth(uid, true);
+            }
+            ManagersDataGridSetting();
+        }
 
-                // 데이터 생성
-                for(int i = 0; i<list.Count; i++)
+        // 탭을 선택할 시 그에 맞는 그리드를 업데이트함
+        public void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (flag)
+            {
+                if (PlayersTab.IsSelected)
                 {
-                    string id = Convert.ToString(list[i].playerId);
-                    string email = list[i].email;
-                    string name = list[i].firstName + list[i].middleName + list[i].lastName;
-                    string birth = Convert.ToString(list[i].birth);
-                    string postion = Convert.ToString(list[i].position);
-                    string weight = Convert.ToString(list[i].weight);
-                    string height = Convert.ToString(list[i].height);
-                    string status = list[i].status;
-                    string authenticated = Convert.ToString(list[i].authenticated);
-                    dataTable.Rows.Add(new string[] {id, email, name, birth, postion, weight, height, status, authenticated });
+                    PlayersDataGridSetting();
+                    flag = true;
                 }
 
-                // DataTable의 Default View를 바인딩하기
-                playerDataGrid.ItemsSource = dataTable.DefaultView;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("No PDF linked!");
+                if (ClubsTab.IsSelected)
+                {
+                    ClubsDataGridSetting();
+                }
+
+                if (ManagersTab.IsSelected)
+                {
+                    ManagersDataGridSetting();
+                }
             }
         }
 
-        private void Row_DoubleClick(object sender, MouseButtonEventArgs e)
+        // 플레이어 그리드 구성
+        public void PlayersDataGridSetting()
         {
-            MessageBox.Show("doubleclick");
-            DataGridRow row = sender as DataGridRow;
-            // Some operations with this row
+            SystemAccountHandler sah = new SystemAccountHandler();
+            List<Player> list = sah.retrievePlayerData();
+
+            // DataTable 생성
+            DataTable dataTable = new DataTable();
+
+            // 컬럼 생성
+            dataTable.Columns.Add("uid", typeof(string));
+            dataTable.Columns.Add("pid", typeof(string));
+            dataTable.Columns.Add("email", typeof(string));
+            dataTable.Columns.Add("name", typeof(string));
+            dataTable.Columns.Add("birth", typeof(string));
+            dataTable.Columns.Add("position", typeof(string));
+            dataTable.Columns.Add("weight", typeof(string));
+            dataTable.Columns.Add("height", typeof(string));
+            dataTable.Columns.Add("status", typeof(string));
+            dataTable.Columns.Add("authenticated", typeof(string));
+
+            // 데이터 생성
+            for (int i = 0; i < list.Count; i++)
+            {
+                string uid = Convert.ToString(list[i].uid);
+                string pid = Convert.ToString(list[i].playerId);
+                string email = list[i].email;
+                string name = list[i].firstName + list[i].middleName + list[i].lastName;
+                string birth = Convert.ToString(list[i].birth);
+                string postion = Convert.ToString(list[i].position);
+                string weight = Convert.ToString(list[i].weight);
+                string height = Convert.ToString(list[i].height);
+                string status = list[i].status;
+                string authenticated = (list[i].authenticated) ? "TRUE" : "FALSE";
+                dataTable.Rows.Add(new string[] { uid, pid, email, name, birth, postion, weight, height, status, authenticated });
+            }
+
+            // DataTable의 Default View를 바인딩하기
+            playerDataGrid.ItemsSource = dataTable.DefaultView;
         }
 
+        // 클럽 그리드 구성
+        private void ClubsDataGridSetting()
+        {
+            SystemAccountHandler sah = new SystemAccountHandler();
+            List<Club> cist = sah.retrieveClubData();
+
+            // DataTable 생성
+            DataTable dataTable = new DataTable();
+
+            // 컬럼 생성
+            dataTable.Columns.Add("uid", typeof(string));
+            dataTable.Columns.Add("cid", typeof(string));
+            dataTable.Columns.Add("email", typeof(string));
+            dataTable.Columns.Add("name", typeof(string));
+            dataTable.Columns.Add("birth", typeof(string));
+            dataTable.Columns.Add("contactnumber", typeof(string));
+            dataTable.Columns.Add("authenticated", typeof(string));
+
+            // 데이터 생성
+            for (int i = 0; i < cist.Count; i++)
+            {
+                string uid = Convert.ToString(cist[i].uid);
+                string pid = Convert.ToString(cist[i].clubId);
+                string email = cist[i].email;
+                string name = cist[i].name;
+                string birth = Convert.ToString(cist[i].birth);
+                string contactnumber = cist[i].contactNumber;
+                string authenticated = (cist[i].authenticated) ? "TRUE" : "FALSE";
+                dataTable.Rows.Add(new string[] { uid, pid, email, name, birth, contactnumber, authenticated });
+            }
+
+            // DataTable의 Default View를 바인딩하기
+            clubDataGrid.ItemsSource = dataTable.DefaultView;
+        }
+
+        // 매니저 그리드 구성
+        private void ManagersDataGridSetting()
+        {
+            SystemAccountHandler sah = new SystemAccountHandler();
+            List<Manager> mlist = sah.retrieveManagerData();
+
+            // DataTable 생성
+            DataTable dataTable = new DataTable();
+
+            // 컬럼 생성
+            dataTable.Columns.Add("uid", typeof(string));
+            dataTable.Columns.Add("mid", typeof(string));
+            dataTable.Columns.Add("email", typeof(string));
+            dataTable.Columns.Add("name", typeof(string));
+            dataTable.Columns.Add("telnumber", typeof(string));
+            dataTable.Columns.Add("authenticated", typeof(string));
+
+            // 데이터 생성
+            for (int i = 0; i < mlist.Count; i++)
+            {
+                string uid = Convert.ToString(mlist[i].uid);
+                string pid = Convert.ToString(mlist[i].managerId);
+                string email = mlist[i].email;
+                string name = mlist[i].name;
+                string telNumber = mlist[i].telNumber;
+                string authenticated = (mlist[i].authenticated) ? "TRUE" : "FALSE";
+                dataTable.Rows.Add(new string[] { uid, pid, email, name, telNumber, authenticated });
+            }
+
+            // DataTable의 Default View를 바인딩하기
+            managerDataGrid.ItemsSource = dataTable.DefaultView;
+
+        }
     }
 }

@@ -3,6 +3,8 @@
 
 SoccerTradingSystem/App.xaml
 SoccerTradingSystem/MariaDBConnector.cs
+App.xaml
+MariaDBconnector.cs
 
 # User-specific files
 *.suo

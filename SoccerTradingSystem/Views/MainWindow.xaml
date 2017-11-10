@@ -10,5 +10,5 @@
         WindowStyle="ThreeDBorderWindow"
         WindowStartupLocation="CenterScreen"
         >
-    <Frame Name="main_frame" Source="main.xaml"/>
+    <Frame NavigationUIVisibility="Hidden" Name="main_frame" Source="main.xaml"/>
 </Window>

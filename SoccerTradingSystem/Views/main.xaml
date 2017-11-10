@@ -10,13 +10,13 @@
     
     <DockPanel Name="dockPanel1">
         <Border DockPanel.Dock="Top" Height="40" Width="1280">
-            <Frame Name="top_frame" Height="40" Width="1280"></Frame>
+            <Frame NavigationUIVisibility="Hidden"  Name="top_frame" Height="40" Width="1280"></Frame>
         </Border>
         <Border DockPanel.Dock="Left" Width="100" Background="White" BorderThickness="3" BorderBrush="Black" Height="720" VerticalAlignment="Bottom">
             <Button Visibility="Collapsed" Name="userInfoBtn" Content="User Info" HorizontalAlignment="Left" Height="38" Margin="0,53,0,0" VerticalAlignment="Top" Width="87" Click="userInfoBtn_Click"/>
         </Border>
         <Border DockPanel.Dock="Bottom" Background="White" BorderThickness="3" BorderBrush="Blue" Height="720" Width="1180">
-            <Frame Name="content_frame" Background="White" Margin="10"/>
+            <Frame NavigationUIVisibility="Hidden"  Name="content_frame" Background="White" Margin="10"/>
         </Border>
     </DockPanel>
 </Page>

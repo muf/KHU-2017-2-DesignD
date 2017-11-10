@@ -12,30 +12,62 @@
     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
         <StackPanel>
             <Border Background="#99FFFFFF" BorderBrush="#CCCCFF" BorderThickness="2" HorizontalAlignment="Left" Padding="20" Margin="20,10,0,0" Width="762" Height="548">
-                <TabControl Name="Tabs1" TabStripPlacement="Top" Background="LightGray" BorderBrush="Blue" Margin="10,10,0,5">
-                    <TabItem Header="Players" IsSelected="True" Background="Gray">
-                        <DataGrid GridLinesVisibility="None"  IsReadOnly="True" AutoGenerateColumns="False"  Height="335" HorizontalAlignment="Left" Margin="38,56,0,0" Name="playerDataGrid" ItemsSource="{Binding}" VerticalAlignment="Top" Width="634" BorderThickness="0">
-                            <DataGrid.Resources>
-                                <Style TargetType="DataGridRow">
-                                    <EventSetter Event="MouseDoubleClick" Handler="Row_DoubleClick"/>
+                <TabControl Name="Tabs1" TabStripPlacement="Top" Background="LightGray" BorderBrush="Blue" Margin="10,10,0,5" SelectionChanged="TabControl_SelectionChanged">
+                    <TabItem Name="PlayersTab" Header="Players" IsSelected="True" Background="Gray">
+                        <DataGrid GridLinesVisibility="None"  IsReadOnly="True" AutoGenerateColumns="False"  Height="335" HorizontalAlignment="Left" Margin="38,56,0,0" Name="playerDataGrid" VerticalAlignment="Top" Width="634">
+                            <DataGrid.RowStyle>
+                                <Style TargetType="{x:Type DataGridRow}">
+                                    <EventSetter Event="MouseDoubleClick" Handler="Player_Row_DoubleClick"/>
                                 </Style>
-                            </DataGrid.Resources>
+                            </DataGrid.RowStyle>
                             <DataGrid.Columns>
-                                <DataGridTextColumn Header="pid" Binding="{Binding Path=id}"/>
+                                <DataGridTextColumn Header="uid" Visibility="Collapsed" Binding="{Binding Path=uid}"/>
+                                <DataGridTextColumn Header="ID" Binding="{Binding Path=pid}"/>
                                 <DataGridTextColumn Header="Name" Binding="{Binding Path=name}"/>
                                 <DataGridTextColumn Header="E-Mail" Binding="{Binding Path=email}"/>
-                                <DataGridTextColumn Header="birth" Binding="{Binding Path=birth}"/>
-                                <DataGridTextColumn Header="position" Binding="{Binding Path=position}"/>
-                                <DataGridTextColumn Header="weight" Binding="{Binding Path=weight}"/>
-                                <DataGridTextColumn Header="height" Binding="{Binding Path=height}"/>
-                                <DataGridTextColumn Header="status" Binding="{Binding Path=status}"/>
-                                <DataGridTextColumn Header="authenticated" Binding="{Binding Path=authenticated}"/>
+                                <DataGridTextColumn Header="Birth" Binding="{Binding Path=birth}"/>
+                                <DataGridTextColumn Header="Position" Binding="{Binding Path=position}"/>
+                                <DataGridTextColumn Header="Weight" Binding="{Binding Path=weight}"/>
+                                <DataGridTextColumn Header="Height" Binding="{Binding Path=height}"/>
+                                <DataGridTextColumn Header="Status" Binding="{Binding Path=status}"/>
+                                <DataGridTextColumn Header="Authenticated" Binding="{Binding Path=authenticated}"/>
                             </DataGrid.Columns>
                         </DataGrid>
                     </TabItem>
-                    <TabItem Header="Clubs" Background="Gray">
+                    <TabItem Name="ClubsTab" Header="Clubs" Background="Gray">
+                        <DataGrid GridLinesVisibility="None"  IsReadOnly="True" AutoGenerateColumns="False"  Height="335" HorizontalAlignment="Left" Margin="38,56,0,0" Name="clubDataGrid" VerticalAlignment="Top" Width="634">
+                            <DataGrid.RowStyle>
+                                <Style TargetType="{x:Type DataGridRow}">
+                                    <EventSetter Event="MouseDoubleClick" Handler="Club_Row_DoubleClick"/>
+                                </Style>
+                            </DataGrid.RowStyle>
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="uid" Visibility="Collapsed" Binding="{Binding Path=uid}"/>
+                                <DataGridTextColumn Header="ID" Binding="{Binding Path=cid}"/>
+                                <DataGridTextColumn Header="Name" Binding="{Binding Path=name}"/>
+                                <DataGridTextColumn Header="E-Mail" Binding="{Binding Path=email}"/>
+                                <DataGridTextColumn Header="Birth" Binding="{Binding Path=birth}"/>
+                                <DataGridTextColumn Header="Contact Number" Binding="{Binding Path=contactnumber}"/>
+                                <DataGridTextColumn Header="Authenticated" Binding="{Binding Path=authenticated}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
                     </TabItem>
-                    <TabItem Header="Managers" Background="Gray">
+                    <TabItem Name="ManagersTab" Header="Managers" Background="Gray">
+                        <DataGrid GridLinesVisibility="None"  IsReadOnly="True" AutoGenerateColumns="False"  Height="335" HorizontalAlignment="Left" Margin="38,56,0,0" Name="managerDataGrid" VerticalAlignment="Top" Width="634">
+                            <DataGrid.RowStyle>
+                                <Style TargetType="{x:Type DataGridRow}">
+                                    <EventSetter Event="MouseDoubleClick" Handler="Manager_Row_DoubleClick"/>
+                                </Style>
+                            </DataGrid.RowStyle>
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="uid" Visibility="Collapsed" Binding="{Binding Path=uid}"/>
+                                <DataGridTextColumn Header="ID" Binding="{Binding Path=mid}"/>
+                                <DataGridTextColumn Header="Name" Binding="{Binding Path=name}"/>
+                                <DataGridTextColumn Header="E-Mail" Binding="{Binding Path=email}"/>
+                                <DataGridTextColumn Header="Tel Number" Binding="{Binding Path=telnumber}"/>
+                                <DataGridTextColumn Header="Authenticated" Binding="{Binding Path=authenticated}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
                     </TabItem>
                 </TabControl>
             </Border>
