@@ -11,6 +11,13 @@ namespace SoccerTradingSystem
     public enum Status { Free, Contract, Lease, Expire, Retire };
     public static class enumClass
     {
+        public static class UserType
+        {
+            public static String Club = "Club";
+            public static String Player = "Player";
+            public static String Manager = "Manager";
+
+        }
         public static class Status
         {
             public static String Free = "Free";
