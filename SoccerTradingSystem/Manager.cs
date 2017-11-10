@@ -8,6 +8,7 @@ namespace SoccerTradingSystem
 {
     class Manager : User
     {
+        public int managerId { get; set; } = -1;
         public String name { get; }
         public String telNumber { get; }
         public Manager(String email, String password, String name, String telNumber, bool authenticated = false, bool logined = false) : base(email, password, authenticated, logined)

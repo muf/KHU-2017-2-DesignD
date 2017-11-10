@@ -58,7 +58,6 @@ namespace SoccerTradingSystem
             System.Console.WriteLine(query);
             queryResult = conn.query(query);
         }
-
         public void addClubData(Club club)
         {
             //query = "begin; ";
@@ -74,7 +73,6 @@ namespace SoccerTradingSystem
             System.Console.WriteLine(query);
             queryResult = conn.query(query);
         }
-
         public void addManagerData(Manager manager)
         {
             //query = "begin; ";
@@ -87,5 +85,30 @@ namespace SoccerTradingSystem
             System.Console.WriteLine(query);
             queryResult = conn.query(query);
         }
+        public JSON getPlayersData()
+        {
+            query = "SELECT * from (SELECT user.*, client.cid, client.type as client_type from user INNER JOIN client ON user.uid = client.uid) as CT INNER JOIN player ON player.uid = CT.uid";
+            queryResult = conn.query(query);
+            return queryResult;
+        }
+        public JSON getClubsData()
+        {
+            query = " SELECT* from(SELECT user.*, client.cid as clientId, client.type as client_type from user INNER JOIN client ON user.uid = client.uid) as CT INNER JOIN club ON club.uid = CT.uid";
+            queryResult = conn.query(query);
+            return queryResult;
+        }
+        public JSON getManagersData()
+        {
+            query = "SELECT user.*, manager.mid, manager.name, manager.telNumber from user INNER JOIN manager ON user.uid = manager.uid";
+            queryResult = conn.query(query);
+            return queryResult;
+        }
+        public JSON getUnauthedUserData()
+        {
+            query = "SELECT * from user where `authenticated` = 'False'";
+            queryResult = conn.query(query);
+            return queryResult;
+        }
+
     }
 }
