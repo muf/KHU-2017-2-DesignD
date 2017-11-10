@@ -13,7 +13,6 @@ namespace SoccerTradingSystem
     /// </summary>
     public partial class App : Application
     {
-        public static User current_user = null;
         public static LocalData cookie = null;
     }
 }

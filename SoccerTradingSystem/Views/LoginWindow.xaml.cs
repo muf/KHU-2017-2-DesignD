@@ -44,9 +44,18 @@ namespace SoccerTradingSystem.Views
             String email = email_string;
             String password = password_string;
             App.cookie = sah.login(email, password);
-            if(App.cookie == null || !App.cookie.authenticated)
+
+            // Dismatch Error
+            if(App.cookie == null)
             {
                 MessageBox.Show("Login Failed");
+                return;
+            }
+
+            // No Auth Error
+            if (!App.cookie.authenticated)
+            {
+                MessageBox.Show("You can not log in without administrator approval.");
                 return;
             }
 

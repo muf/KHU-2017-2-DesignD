@@ -43,7 +43,7 @@ namespace SoccerTradingSystem.Views
 
         public void logout_Click(object sender, RoutedEventArgs e)
         {
-            App.current_user = null;
+            App.cookie = null;
 
             MessageBox.Show("logout");
             loginBtn.Visibility = System.Windows.Visibility.Visible;
