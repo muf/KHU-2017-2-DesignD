@@ -14,6 +14,6 @@ namespace SoccerTradingSystem
     public partial class App : Application
     {
         public static User current_user = null;
-        public static int UID;
+        public static LocalData cookie = new LocalData();
     }
 }

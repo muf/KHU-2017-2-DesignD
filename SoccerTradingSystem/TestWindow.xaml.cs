@@ -46,10 +46,17 @@ namespace SoccerTradingSystem
         {
             SystemAccountHandler sah = new SystemAccountHandler();
             String email = "huryip@naver.com";
-            String password = "tmxhs8282";
-            App.current_user = sah.login(email, password);
-            var temp = App.current_user;
+            String password = "tmxhs822";
 
+            App.cookie = sah.new_login(email, password);
+            if(App.cookie != null)
+            {
+                MessageBox.Show("로그인 성공");
+            }
+            else
+            {
+                MessageBox.Show("인증 실패");
+            }
             MessageBox.Show("ok");
 
         }
@@ -57,7 +64,11 @@ namespace SoccerTradingSystem
         {
             SystemAccountHandler sah = new SystemAccountHandler();
             // 입력 값 받아서 newPlayer에 셋팅
+
+            String userType = enumClass.UserType.Player;
+            
             Player newPlayer = new Player("huryip@naver.com", "tmxhs8282");
+
             newPlayer.firstName = "hwang";
             newPlayer.middleName = "jin";
             newPlayer.lastName = "ha";

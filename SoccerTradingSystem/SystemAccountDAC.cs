@@ -20,6 +20,16 @@ namespace SoccerTradingSystem
         JSON queryResult = new JSON();
         MariaDBConnector conn = new MariaDBConnector();
 
+        // @@ new methods
+        public JSON authenticate(String email, String password)
+        {
+            // email, password 기반으로 해당하는 user 정보 검색
+            query = $"SELECT * from {userTable} where `email` = '{email}' AND `password` = '{password}'";
+            queryResult = conn.query(query);
+            return queryResult;
+        }
+
+       
         // @@ methods
         public User login(String email, String password)
         {
