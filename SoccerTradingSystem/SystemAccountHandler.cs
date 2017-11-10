@@ -26,11 +26,61 @@ namespace SoccerTradingSystem
                 return false;
             }
         }
+        
+        public bool registerManagerAccount(String email, String password, String name, String telNumber)
+        {
+            try
+            {
+                queryResult = saDAC.findUser(email);
+                if (queryResult.Count > 0)
+                {
+                    return false;  // email 중복
+                }
+                else
+                {
+                    Manager newManager = new Manager(email, password, name, telNumber);
+                    saDAC.addManagerData(newManager);
+                    return true;
+                }
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+                throw e;
+            }
+        }
+
+
+        public bool registerClubAccount( String email, String password, String name, int birth, String contactNumber ){
+            try
+            {
+                queryResult = saDAC.findUser(email);
+                if (queryResult.Count > 0)
+                {
+                    return false;  // email 중복
+                }
+                else
+                {
+                    Club newClub = new Club(email, password);
+                    newClub.name = name;
+                    newClub.birth = birth;
+                    newClub.contactNumber = contactNumber;
+                    saDAC.addClubData(newClub);
+                    return true;
+                }
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+                throw e;
+            }
+        }
+
 
         public bool registerPlayerAccount(
-            String email, String password, String firstName,
-            String middleName, String lastName,
-            int birth, int weight, int height, String position)
+    String email, String password, String firstName,
+    String middleName, String lastName,
+    int birth, int weight, int height, String position)
         {
             try
             {
@@ -57,9 +107,10 @@ namespace SoccerTradingSystem
             {
                 System.Diagnostics.Debug.WriteLine(e.Message);
                 throw e;
-                return false;
             }
         }
+
+
 
         public LocalData login(String email, String password)
         {

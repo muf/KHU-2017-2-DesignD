@@ -15,6 +15,8 @@ namespace SoccerTradingSystem
         private static String userTable = "User";
         private static String clientTable = "Client";
         private static String playerTable = "Player";
+        private static String clubTable = "Club";
+        private static String ManagerTable = "Manager";
 
         private String query;
         JSON queryResult = new JSON();
@@ -41,7 +43,6 @@ namespace SoccerTradingSystem
 
             return queryResult;
         }
-
         public void addPlayerData(Player player)
         {
             //query = "begin; ";
@@ -51,6 +52,35 @@ namespace SoccerTradingSystem
             query += $"INSERT INTO {playerTable} (uid, firstName, middleName, lastName, birth, position, weight, height, status)"
                         + $" VALUES ( (SELECT `uid` FROM {userTable} WHERE `email` = '{player.email}')"
                         + $" ,'{player.firstName}','{player.middleName}','{player.lastName}','{player.birth}','{player.position}','{player.weight}','{player.height}','{player.status}') ";
+            //query += "commit";
+            System.Diagnostics.Debug.WriteLine(query);
+            System.Diagnostics.Trace.WriteLine(query);
+            System.Console.WriteLine(query);
+            queryResult = conn.query(query);
+        }
+
+        public void addClubData(Club club)
+        {
+            //query = "begin; ";
+            query = $"INSERT INTO {userTable} (`email`, `password`, `type`) VALUES ('{club.email}', '{club.password}','Client');  ";
+            query += $"INSERT INTO {clientTable} (`uid`, `type`) VALUES ( "
+                + $" (SELECT `uid` FROM {userTable} WHERE `email` = '{club.email}') , 'Club');  ";
+            query += $"INSERT INTO {clubTable} (uid, birth, name, contactNumber)"
+                        + $" VALUES ( (SELECT `uid` FROM {userTable} WHERE `email` = '{club.email}')"
+                        + $" ,'{club.birth}','{club.name}','{club.contactNumber}') ";
+            //query += "commit";
+            System.Diagnostics.Debug.WriteLine(query);
+            System.Diagnostics.Trace.WriteLine(query);
+            System.Console.WriteLine(query);
+            queryResult = conn.query(query);
+        }
+
+        public void addManagerData(Manager manager)
+        {
+            //query = "begin; ";
+            query = $"INSERT INTO {userTable} (`email`, `password`, `type`) VALUES ('{manager.email}', '{manager.password}','Manager');  ";
+            query += $"INSERT INTO {ManagerTable} (`uid`, `name`, `telNumber`) VALUES ( "
+                + $" (SELECT `uid` FROM {userTable} WHERE `email` = '{manager.email}') , '{manager.name}', '{manager.telNumber}');  ";
             //query += "commit";
             System.Diagnostics.Debug.WriteLine(query);
             System.Diagnostics.Trace.WriteLine(query);
