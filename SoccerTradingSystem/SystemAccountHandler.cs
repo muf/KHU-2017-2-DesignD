@@ -10,8 +10,7 @@ namespace SoccerTradingSystem
     class SystemAccountHandler
     {
         private SystemAccountDAC saDAC = new SystemAccountDAC();
-        private JSON queryResult = new JSON();
-
+        private JSON queryResult = new JSON()
 
         // uid 정보로 update 시도. 성공 여부에 따라서 boolean type으로 반환
         public bool updateUserAuth(int uid, bool value)
@@ -183,7 +182,22 @@ namespace SoccerTradingSystem
         public List<User> retrieveUnauthedUserData()
         {
             List<User> users = new List<User>();
-            JSON result = saDAC.getManagersData();
+            JSON result = saDAC.getUnauthedUserData();
+            for (int i = 0; i < result.Count; i++)
+            {
+                Dictionary<string, object> data = result[i];
+                bool auth = data["authenticated"].ToString() == "True" ? true : false;
+                bool logined = data["logined"].ToString() == "True" ? true : false;
+                User user = new User(data["email"].ToString(), data["password"].ToString(), auth, logined);
+                users.Add(user);
+            }
+            return users;
+
+        }
+        public List<User> retrieveUserData()
+        {
+            List<User> users = new List<User>();
+            JSON result = saDAC.getUserData();
             for (int i = 0; i < result.Count; i++)
             {
                 Dictionary<string, object> data = result[i];

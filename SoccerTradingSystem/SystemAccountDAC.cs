@@ -109,6 +109,12 @@ namespace SoccerTradingSystem
             queryResult = conn.query(query);
             return queryResult;
         }
+        public JSON getUserData()
+        {
+            query = "SELECT * from user";
+            queryResult = conn.query(query);
+            return queryResult;
+        }
 
     }
 }
