@@ -26,5 +26,25 @@ namespace SoccerTradingSystem.Views
             InitializeComponent();
             regWindow = _regWindow;
         }
+
+        private void resiterBtn_Click(object sender, RoutedEventArgs e)
+        {
+            string email = emailBox.Text;
+            string password = passwordBox.Password;
+            string name = nameBox.Text;
+            int birth = Convert.ToInt32(birthBox.Text);
+            string contactNumber = contactBox.Text;
+
+            SystemAccountHandler sah = new SystemAccountHandler();
+            bool flag = sah.registerClubAccount(email, password, name, birth, contactNumber);
+
+            if (flag)
+                MessageBox.Show("성공");
+            else
+                MessageBox.Show("실패");
+
+            // 윈도우 닫음
+            regWindow.Close();
+        }
     }
 }

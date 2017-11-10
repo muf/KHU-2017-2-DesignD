@@ -37,16 +37,21 @@ namespace SoccerTradingSystem.Views
                 DataTable dataTable = new DataTable();
 
                 // 컬럼 생성
+                dataTable.Columns.Add("ID", typeof(string));
                 dataTable.Columns.Add("email", typeof(string));
+                dataTable.Columns.Add("name", typeof(string));
+                dataTable.Columns.Add("birth", typeof(string));
+                dataTable.Columns.Add("position", typeof(string));
+                dataTable.Columns.Add("weight", typeof(string));
+                dataTable.Columns.Add("height", typeof(string));
+                dataTable.Columns.Add("status", typeof(string));
+                dataTable.Columns.Add("authenticated", typeof(string));
 
                 // 데이터 생성
-                dataTable.Rows.Add(new string[] { "fkrlsp2@naver.com" });
-                dataTable.Rows.Add(new string[] { "huripy@nate.com" });
-                dataTable.Rows.Add(new string[] { "jinseng@naver.com" });
-                dataTable.Rows.Add(new string[] { "helloworld@naver.com" });
+                dataTable.Rows.Add(new string[] { "1", "fkrlsp2@naver.com", "JinHa Hwang", "1994-01-29", "GW", "80", "192", "FREE", "TRUE" });
 
                 // DataTable의 Default View를 바인딩하기
-                userDataGrid.ItemsSource = dataTable.DefaultView;
+                playerDataGrid.ItemsSource = dataTable.DefaultView;
             }
             catch (Exception ex)
             {

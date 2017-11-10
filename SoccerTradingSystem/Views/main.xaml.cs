@@ -31,7 +31,13 @@ namespace SoccerTradingSystem.Views
                 if (App.cookie.userType == enumClass.UserType.Manager)
                 {
                     userInfoBtn.Visibility = System.Windows.Visibility.Visible;
+                }else
+                {
+                    userInfoBtn.Visibility = System.Windows.Visibility.Collapsed;
                 }
+            }else
+            {
+                userInfoBtn.Visibility = System.Windows.Visibility.Collapsed;
             }
         }
 

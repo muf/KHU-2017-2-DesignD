@@ -9,6 +9,32 @@
       Title="reg_club">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="30"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock  Grid.Row="0" Grid.Column="0" Text="E-Mail" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+        <TextBlock  Grid.Row="1" Grid.Column="0" Text="Password" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+        <TextBlock  Grid.Row="2" Grid.Column="0" Text="Name" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+        <TextBlock  Grid.Row="3" Grid.Column="0" Text="Birth" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+        <TextBlock  Grid.Row="4" Grid.Column="0" Text="Contact Tel" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+
+        <TextBox Grid.Row="0" Grid.Column="1" Name="emailBox" Margin="0,0,-118,0"></TextBox>
+        <PasswordBox Grid.Row="1" Grid.Column="1" Name="passwordBox" Margin="0,0,-118,0"></PasswordBox>
+        <TextBox Grid.Row="2" Grid.Column="1" Name="nameBox" Margin="0,0,-118,0"></TextBox>
+        <TextBox Grid.Row="3" Grid.Column="1" Name="birthBox" Margin="0,0,-118,0"></TextBox>
+        <TextBox Grid.Row="4" Grid.Column="1" Name="contactBox" Margin="0,0,-118,0"></TextBox>
+        <Button Name="resiterBtn" Grid.ColumnSpan="2" Content="Regist" HorizontalAlignment="Left" Height="32" Margin="34,31,-86,-32" Grid.Row="8" VerticalAlignment="Top" Width="234" Click="resiterBtn_Click"/>
     </Grid>
 </Page>

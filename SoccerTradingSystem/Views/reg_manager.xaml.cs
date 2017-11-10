@@ -30,11 +30,22 @@ namespace SoccerTradingSystem.Views
         private void resiterBtn_Click(object sender, RoutedEventArgs e)
         {
             string email = emailBox.Text;
-            string passsword = passwordBox.Password;
+            string password = passwordBox.Password;
+            string name = nameBox.Text;
+            string telNumber = telBox.Text;
 
             // 유효성 검사
 
             // 레지스트
+            SystemAccountHandler sah = new SystemAccountHandler();
+            // 입력 값 받아서 newPlayer에 셋팅
+            bool flag = sah.registerManagerAccount(email, password, name, telNumber);
+
+            if (flag)
+                MessageBox.Show("성공");
+            else
+                MessageBox.Show("실패");
+
 
             // 윈도우 닫음
             regWindow.Close();

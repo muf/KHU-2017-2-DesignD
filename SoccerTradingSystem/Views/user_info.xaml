@@ -9,16 +9,37 @@
       Title="user_info" ShowsNavigationUI="False"
       Loaded="OnPageLoad">
 
-    <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
-        <DataGrid AutoGenerateColumns="True"  Height="217" HorizontalAlignment="Left" Margin="38,56,0,0" Name="userDataGrid" VerticalAlignment="Top" Width="420">
-            <DataGrid.Resources>
-                <Style TargetType="DataGridRow">
-                    <EventSetter Event="MouseDoubleClick" Handler="Row_DoubleClick"/>
-                </Style>
-            </DataGrid.Resources>
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="E-Mail" Binding="{Binding Path=email}"/>
-            </DataGrid.Columns>
-        </DataGrid>
-    </Grid>
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+        <StackPanel>
+            <Border Background="#99FFFFFF" BorderBrush="#CCCCFF" BorderThickness="2" HorizontalAlignment="Left" Padding="20" Margin="20,10,0,0" Width="762" Height="548">
+                <TabControl Name="Tabs1" TabStripPlacement="Top" Background="LightGray" BorderBrush="Blue" Margin="10,10,0,5">
+                    <TabItem Header="Players" IsSelected="True" Background="Gray">
+                        <DataGrid AutoGenerateColumns="False"  Height="335" HorizontalAlignment="Left" Margin="38,56,0,0" Name="playerDataGrid" ItemsSource="{Binding}" VerticalAlignment="Top" Width="634">
+                            <DataGrid.Resources>
+                                <Style TargetType="DataGridRow">
+                                    <EventSetter Event="MouseDoubleClick" Handler="Row_DoubleClick"/>
+                                </Style>
+                            </DataGrid.Resources>
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="pid" Binding="{Binding Path=id}"/>
+                                <DataGridTextColumn Header="Name" Binding="{Binding Path=name}"/>
+                                <DataGridTextColumn Header="E-Mail" Binding="{Binding Path=email}"/>
+                                <DataGridTextColumn Header="birth" Binding="{Binding Path=birth}"/>
+                                <DataGridTextColumn Header="position" Binding="{Binding Path=position}"/>
+                                <DataGridTextColumn Header="weight" Binding="{Binding Path=weight}"/>
+                                <DataGridTextColumn Header="height" Binding="{Binding Path=height}"/>
+                                <DataGridTextColumn Header="status" Binding="{Binding Path=status}"/>
+                                <DataGridTextColumn Header="authenticated" Binding="{Binding Path=authenticated}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </TabItem>
+                    <TabItem Header="Clubs" Background="Gray">
+                    </TabItem>
+                    <TabItem Header="Managers" Background="Gray">
+                    </TabItem>
+                </TabControl>
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
+
 </Page>
