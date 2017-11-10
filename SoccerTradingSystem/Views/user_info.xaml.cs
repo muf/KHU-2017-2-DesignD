@@ -33,11 +33,16 @@ namespace SoccerTradingSystem.Views
         {
             try
             {
+                SystemAccountHandler sah = new SystemAccountHandler();
+                List<Player> list = sah.retrievePlayerData();
+                List<Club> cist = sah.retrieveClubData();
+                List<Manager> mlist = sah.retrieveManagerData();
+
                 // DataTable 생성
                 DataTable dataTable = new DataTable();
 
                 // 컬럼 생성
-                dataTable.Columns.Add("ID", typeof(string));
+                dataTable.Columns.Add("id", typeof(string));
                 dataTable.Columns.Add("email", typeof(string));
                 dataTable.Columns.Add("name", typeof(string));
                 dataTable.Columns.Add("birth", typeof(string));
@@ -48,7 +53,19 @@ namespace SoccerTradingSystem.Views
                 dataTable.Columns.Add("authenticated", typeof(string));
 
                 // 데이터 생성
-                dataTable.Rows.Add(new string[] { "1", "fkrlsp2@naver.com", "JinHa Hwang", "1994-01-29", "GW", "80", "192", "FREE", "TRUE" });
+                for(int i = 0; i<list.Count; i++)
+                {
+                    string id = Convert.ToString(list[i].playerId);
+                    string email = list[i].email;
+                    string name = list[i].firstName + list[i].middleName + list[i].lastName;
+                    string birth = Convert.ToString(list[i].birth);
+                    string postion = Convert.ToString(list[i].position);
+                    string weight = Convert.ToString(list[i].weight);
+                    string height = Convert.ToString(list[i].height);
+                    string status = list[i].status;
+                    string authenticated = Convert.ToString(list[i].authenticated);
+                    dataTable.Rows.Add(new string[] {id, email, name, birth, postion, weight, height, status, authenticated });
+                }
 
                 // DataTable의 Default View를 바인딩하기
                 playerDataGrid.ItemsSource = dataTable.DefaultView;
@@ -61,6 +78,7 @@ namespace SoccerTradingSystem.Views
 
         private void Row_DoubleClick(object sender, MouseButtonEventArgs e)
         {
+            MessageBox.Show("doubleclick");
             DataGridRow row = sender as DataGridRow;
             // Some operations with this row
         }

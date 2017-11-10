@@ -14,7 +14,7 @@
             <Border Background="#99FFFFFF" BorderBrush="#CCCCFF" BorderThickness="2" HorizontalAlignment="Left" Padding="20" Margin="20,10,0,0" Width="762" Height="548">
                 <TabControl Name="Tabs1" TabStripPlacement="Top" Background="LightGray" BorderBrush="Blue" Margin="10,10,0,5">
                     <TabItem Header="Players" IsSelected="True" Background="Gray">
-                        <DataGrid AutoGenerateColumns="False"  Height="335" HorizontalAlignment="Left" Margin="38,56,0,0" Name="playerDataGrid" ItemsSource="{Binding}" VerticalAlignment="Top" Width="634">
+                        <DataGrid GridLinesVisibility="None"  IsReadOnly="True" AutoGenerateColumns="False"  Height="335" HorizontalAlignment="Left" Margin="38,56,0,0" Name="playerDataGrid" ItemsSource="{Binding}" VerticalAlignment="Top" Width="634" BorderThickness="0">
                             <DataGrid.Resources>
                                 <Style TargetType="DataGridRow">
                                     <EventSetter Event="MouseDoubleClick" Handler="Row_DoubleClick"/>

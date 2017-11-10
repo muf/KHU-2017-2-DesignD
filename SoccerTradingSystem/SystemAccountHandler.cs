@@ -10,7 +10,7 @@ namespace SoccerTradingSystem
     class SystemAccountHandler
     {
         private SystemAccountDAC saDAC = new SystemAccountDAC();
-        private JSON queryResult = new JSON()
+        private JSON queryResult = new JSON();
 
         // uid 정보로 update 시도. 성공 여부에 따라서 boolean type으로 반환
         public bool updateUserAuth(int uid, bool value)
