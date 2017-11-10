@@ -234,18 +234,13 @@ namespace SoccerTradingSystem
                 bool auth = data["authenticated"].ToString() == "True" ? true : false;
                 bool logined = data["logined"].ToString() == "True" ? true : false;
                 User user = new User(data["email"].ToString(), data["password"].ToString(), auth, logined);
-<<<<<<< HEAD
-
+                user.uid = Convert.ToInt32(data["uid"]);
                 globalString += user.email + user.uid;
                 globalString.Replace(" ", "");
                 if (globalString.IndexOf(keyword) != -1)
                 {
                     users.Add(user);
                 }
-=======
-                user.uid = Convert.ToInt32(data["uid"]);
-                users.Add(user);
->>>>>>> 84ea4991df79ebfab6adf63f4ecb82d20243bdd7
             }
             return users;
 
