@@ -114,7 +114,7 @@ namespace SoccerTradingSystem.Views
         public void PlayersDataGridSetting()
         {
             SystemAccountHandler sah = new SystemAccountHandler();
-            List<Player> list = sah.retrievePlayerData();
+            List<Player> list = sah.retrievePlayerData("");
 
             // DataTable 생성
             DataTable dataTable = new DataTable();
@@ -155,7 +155,7 @@ namespace SoccerTradingSystem.Views
         private void ClubsDataGridSetting()
         {
             SystemAccountHandler sah = new SystemAccountHandler();
-            List<Club> cist = sah.retrieveClubData();
+            List<Club> cist = sah.retrieveClubData("");
 
             // DataTable 생성
             DataTable dataTable = new DataTable();
@@ -190,7 +190,7 @@ namespace SoccerTradingSystem.Views
         private void ManagersDataGridSetting()
         {
             SystemAccountHandler sah = new SystemAccountHandler();
-            List<Manager> mlist = sah.retrieveManagerData();
+            List<Manager> mlist = sah.retrieveManagerData("");
 
             // DataTable 생성
             DataTable dataTable = new DataTable();

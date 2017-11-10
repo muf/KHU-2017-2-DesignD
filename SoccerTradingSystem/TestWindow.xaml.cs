@@ -35,9 +35,9 @@ namespace SoccerTradingSystem
         public void 계정_정보조회_시나리오()
         {
             SystemAccountHandler sah = new SystemAccountHandler();
-            List<Player> list = sah.retrievePlayerData();
-            List<Club> cist = sah.retrieveClubData();
-            List<Manager> mlist = sah.retrieveManagerData();
+            List<Player> list = sah.retrievePlayerData("");
+            List<Club> cist = sah.retrieveClubData("");
+            List<Manager> mlist = sah.retrieveManagerData("");
             MessageBox.Show(list.ToString());
         }
         public void 매니져_회원가입_승인_시나리오()
