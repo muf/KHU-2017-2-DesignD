@@ -189,6 +189,7 @@ namespace SoccerTradingSystem
                 bool auth = data["authenticated"].ToString() == "True" ? true : false;
                 bool logined = data["logined"].ToString() == "True" ? true : false;
                 User user = new User(data["email"].ToString(), data["password"].ToString(), auth, logined);
+                user.uid = Convert.ToInt32(data["uid"]);
                 users.Add(user);
             }
             return users;
@@ -204,6 +205,7 @@ namespace SoccerTradingSystem
                 bool auth = data["authenticated"].ToString() == "True" ? true : false;
                 bool logined = data["logined"].ToString() == "True" ? true : false;
                 User user = new User(data["email"].ToString(), data["password"].ToString(), auth, logined);
+                user.uid = Convert.ToInt32(data["uid"]);
                 users.Add(user);
             }
             return users;

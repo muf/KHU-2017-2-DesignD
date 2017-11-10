@@ -34,6 +34,7 @@ namespace SoccerTradingSystem.Views
             PlayersDataGridSetting();
             ClubsDataGridSetting();
             ManagersDataGridSetting();
+            UserDataGridSetting();
         }
 
         // 플레이어 그리드에서 더블 클릭시 메서드 호출 인증을 업데이트함
@@ -87,6 +88,23 @@ namespace SoccerTradingSystem.Views
             ManagersDataGridSetting();
         }
 
+        // 매니저 그리드에서 더블 클릭시 메서드 호출 인증을 업데이트함
+        private void User_Row_DoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            SystemAccountHandler sah = new SystemAccountHandler();
+            DataRowView row = (DataRowView)userDataGrid.SelectedItems[0];
+            int uid = Convert.ToInt32((row[0]));
+            if (MessageBox.Show("Authenticated?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+            {
+                sah.updateUserAuth(uid, false);
+            }
+            else
+            {
+                sah.updateUserAuth(uid, true);
+            }
+            UserDataGridSetting();
+        }
+
         // 탭을 선택할 시 그에 맞는 그리드를 업데이트함
         public void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -106,6 +124,11 @@ namespace SoccerTradingSystem.Views
                 if (ManagersTab.IsSelected)
                 {
                     ManagersDataGridSetting();
+                }
+
+                if (UsersTab.IsSelected)
+                {
+                    UserDataGridSetting();
                 }
             }
         }
@@ -217,6 +240,37 @@ namespace SoccerTradingSystem.Views
 
             // DataTable의 Default View를 바인딩하기
             managerDataGrid.ItemsSource = dataTable.DefaultView;
+
+        }
+
+        private void UserDataGridSetting()
+        {
+            SystemAccountHandler sah = new SystemAccountHandler();
+            List<User> ulist = sah.retrieveUserData();
+
+            // DataTable 생성
+            DataTable dataTable = new DataTable();
+
+            // 컬럼 생성
+            dataTable.Columns.Add("uid", typeof(string));
+            dataTable.Columns.Add("email", typeof(string));
+            dataTable.Columns.Add("password", typeof(string));
+            dataTable.Columns.Add("logined", typeof(string));
+            dataTable.Columns.Add("authenticated", typeof(string));
+
+            // 데이터 생성
+            for (int i = 0; i < ulist.Count; i++)
+            {
+                string uid = Convert.ToString(ulist[i].uid);
+                string email = Convert.ToString(ulist[i].email);
+                string password = Convert.ToString(ulist[i].password);
+                string logined = Convert.ToString(ulist[i].logined);
+                string authenticated = (ulist[i].authenticated) ? "TRUE" : "FALSE";
+                dataTable.Rows.Add(new string[] { uid, email, password, logined, authenticated });
+            }
+
+            // DataTable의 Default View를 바인딩하기
+           userDataGrid.ItemsSource = dataTable.DefaultView;
 
         }
     }

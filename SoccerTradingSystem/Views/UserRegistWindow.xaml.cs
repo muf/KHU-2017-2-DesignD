@@ -73,42 +73,6 @@ namespace SoccerTradingSystem.Views
             string postion = regPPage.positionBox.Text;
             string height = regPPage.heightBox.Text;
             string weight = regPPage.weightBox.Text;
-
-            
-
-            //if(Application.Current.Properties["regSelected"].ToString() == "player")
-            //{
-            //    string email = regPPage.emailBox.Text;
-            //    string passsword = regPPage.passwordBox.Password;
-            //    string firstName = regPPage.firstnameBox.Text;
-            //    string middleName = regPPage.middlenameBox.Text;
-            //    string lastName = regPPage.lastnameBox.Text;
-            //    string birth = regPPage.birthBox.Text;
-            //    string postion = regPPage.positionBox.Text;
-            //    string height = regPPage.heightBox.Text;
-            //    string weight = regPPage.weightBox.Text;
-
-            //    SystemAccountHandler sah = new SystemAccountHandler();
-            //    // 입력 값 받아서 newPlayer에 셋팅
-            //    Player newPlayer = new Player(email, passsword);
-            //    newPlayer.firstName = firstName;
-            //    newPlayer.middleName = middleName;
-            //    newPlayer.lastName = lastName;
-            //    newPlayer.birth = Convert.ToInt32(birth);
-            //    newPlayer.weight = Convert.ToInt32(weight); // kg
-            //    newPlayer.height = Convert.ToInt32(height); // cm
-            //    newPlayer.position = enumClass.Position.CMD;
-
-            //    try
-            //    {
-            //        String message = sah.registerPlayerAccount(newPlayer) == true ? "가입 요청 성공" : "가입 요청 실패";
-            //        MessageBox.Show(message);
-            //    }
-            //    catch (Exception err)
-            //    {
-            //        MessageBox.Show(err.Message.ToString());
-            //    }
-            //}
         }
 
 

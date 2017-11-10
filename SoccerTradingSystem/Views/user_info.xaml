@@ -69,6 +69,22 @@
                             </DataGrid.Columns>
                         </DataGrid>
                     </TabItem>
+                    <TabItem Name="UsersTab" Header="Users" Background="Gray">
+                        <DataGrid GridLinesVisibility="None"  IsReadOnly="True" AutoGenerateColumns="False"  Height="335" HorizontalAlignment="Left" Margin="38,56,0,0" Name="userDataGrid" VerticalAlignment="Top" Width="634">
+                            <DataGrid.RowStyle>
+                                <Style TargetType="{x:Type DataGridRow}">
+                                    <EventSetter Event="MouseDoubleClick" Handler="User_Row_DoubleClick"/>
+                                </Style>
+                            </DataGrid.RowStyle>
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="User ID" Binding="{Binding Path=uid}"/>
+                                <DataGridTextColumn Header="E-Mail" Binding="{Binding Path=email}"/>
+                                <DataGridTextColumn Header="Password" Binding="{Binding Path=password}"/>
+                                <DataGridTextColumn Header="Login State" Binding="{Binding Path=logined}"/>
+                                <DataGridTextColumn Header="Authenticated" Binding="{Binding Path=authenticated}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </TabItem>
                 </TabControl>
             </Border>
         </StackPanel>
