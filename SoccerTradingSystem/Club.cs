@@ -8,6 +8,7 @@ namespace SoccerTradingSystem
 {
     class Club : Client
     {
+        public int clubId { get; set; } = -1;
         public String name { get; set; }
         public String contactNumber { get; set; }
         public int birth { get; set; }

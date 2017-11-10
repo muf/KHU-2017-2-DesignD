@@ -27,9 +27,18 @@ namespace SoccerTradingSystem
             //유저_로그인_시나리오();
             //선수_회원가입_시나리오();
             //매니져_회원가입_시나리오();
-            구단_회원가입_시나리오();
+            //구단_회원가입_시나리오();
             //매니져_회원가입_승인_시나리오();
+            계정_정보조회_시나리오();
 
+        }
+        public void 계정_정보조회_시나리오()
+        {
+            SystemAccountHandler sah = new SystemAccountHandler();
+            List<Player> list = sah.retrievePlayerData();
+            List<Club> cist = sah.retrieveClubData();
+            List<Manager> mlist = sah.retrieveManagerData();
+            MessageBox.Show(list.ToString());
         }
         public void 매니져_회원가입_승인_시나리오()
         {
