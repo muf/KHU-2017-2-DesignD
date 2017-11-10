@@ -13,7 +13,7 @@
             <Frame Name="top_frame"></Frame>
         </Border>
         <Border DockPanel.Dock="Left" Width="100" Background="White" BorderThickness="3" BorderBrush="Black" Height="720" VerticalAlignment="Bottom">
-            <Button Name="button_test" Content="Button" HorizontalAlignment="Left" Height="38" Margin="0,53,0,0" VerticalAlignment="Top" Width="87"/>
+            <Button Visibility="Collapsed" Name="userAuthBtn" Content="User Info" HorizontalAlignment="Left" Height="38" Margin="0,53,0,0" VerticalAlignment="Top" Width="87"/>
         </Border>
         <Border Background="White" BorderThickness="0"  BorderBrush="Black">
             <Frame Name="content_frame" Grid.Row="1"/>

@@ -43,9 +43,9 @@ namespace SoccerTradingSystem.Views
             SystemAccountHandler sah = new SystemAccountHandler();
             String email = email_string;
             String password = password_string;
-            App.current_user = sah.login(email, password);
 
-            // Top Panel logined form setting
+            // Top Panel & Main logined form setting
+            App.userType = "manager";
             TP.logined_success(email);
             this.Close();
         }

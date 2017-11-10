@@ -16,20 +16,20 @@ using System.Windows.Shapes;
 namespace SoccerTradingSystem.Views
 {
     /// <summary>
-    /// main.xaml에 대한 상호 작용 논리
+    /// reg_manager.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class main : Page
+    public partial class reg_manager : Page
     {
-        public main()
+        public reg_manager()
         {
             InitializeComponent();
-            top_panel TP = new top_panel(this);
-            top_frame.Navigate(TP);
+        }
 
-            if(App.userType == "manager")
-            {
-                userAuthBtn.Visibility = System.Windows.Visibility.Visible;
-            }
+        private void resiterBtn_Click(object sender, RoutedEventArgs e)
+        {
+            string userType = "manager";
+            string email = emailBox.Text;
+            string passsword = passwordBox.Password;
         }
     }
 }

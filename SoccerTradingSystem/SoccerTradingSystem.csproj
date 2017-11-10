@@ -89,6 +89,12 @@
     <Compile Include="Views\main.xaml.cs">
       <DependentUpon>main.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\reg_club.xaml.cs">
+      <DependentUpon>reg_club.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\reg_manager.xaml.cs">
+      <DependentUpon>reg_manager.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\reg_player.xaml.cs">
       <DependentUpon>reg_player.xaml</DependentUpon>
     </Compile>
@@ -141,6 +147,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\main.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\reg_club.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\reg_manager.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

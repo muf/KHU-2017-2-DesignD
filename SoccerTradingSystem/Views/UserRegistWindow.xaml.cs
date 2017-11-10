@@ -19,58 +19,98 @@ namespace SoccerTradingSystem.Views
     /// </summary>
     public partial class PlayerRegistWindow : Window
     {
-        reg_player regPage;
+        reg_player regPPage = null;
+        reg_club regCPage = null;
+        reg_manager regMPage = null;
 
         public PlayerRegistWindow()
         {
             InitializeComponent();
-            regPage = new reg_player();
-            regContent.Navigate(regPage);
+            regPPage = new reg_player();
+            regContent.Navigate(regPPage);
             Application.Current.Properties["regSelected"] = "player";
         }
 
         private void regPlayerBtn_Click(object sender, RoutedEventArgs e)
         {
-            
-            regContent.Navigate(regPage);
+            pageReset();
+            regPPage = new reg_player();
+            regContent.Navigate(regPPage);
             Application.Current.Properties["regSelected"] = "player";
+        }
+
+        private void regClubBtn_Click(object sender, RoutedEventArgs e)
+        {
+            pageReset();
+            regCPage = new reg_club();
+            regContent.Navigate(regCPage);
+            Application.Current.Properties["regSelected"] = "club";
+        }
+
+        private void regManagerBtn_Click(object sender, RoutedEventArgs e)
+        {
+            pageReset();
+            regMPage = new reg_manager();
+            regContent.Navigate(regMPage);
+            Application.Current.Properties["regSelected"] = "manager";
+        }
+
+        private void pageReset()
+        {
+            regPPage = null;
+            regCPage = null;
+            regMPage = null;
         }
 
         private void regBtn_Click(object sender, RoutedEventArgs e)
         {
-            if(Application.Current.Properties["regSelected"].ToString() == "player")
-            {
-                string email = regPage.emailBox.Text;
-                string passsword = regPage.passwordBox.Text;
-                string firstName = regPage.firstnameBox.Text;
-                string middleName = regPage.middlenameBox.Text;
-                string lastName = regPage.lastnameBox.Text;
-                string birth = regPage.birthBox.Text;
-                string postion = regPage.positionBox.Text;
-                string height = regPage.heightBox.Text;
-                string weight = regPage.weightBox.Text;
+            string email = regPPage.emailBox.Text;
+            string passsword = regPPage.passwordBox.Password;
+            string firstName = regPPage.firstnameBox.Text;
+            string middleName = regPPage.middlenameBox.Text;
+            string lastName = regPPage.lastnameBox.Text;
+            string birth = regPPage.birthBox.Text;
+            string postion = regPPage.positionBox.Text;
+            string height = regPPage.heightBox.Text;
+            string weight = regPPage.weightBox.Text;
 
-                SystemAccountHandler sah = new SystemAccountHandler();
-                // 입력 값 받아서 newPlayer에 셋팅
-                Player newPlayer = new Player(email, passsword);
-                newPlayer.firstName = firstName;
-                newPlayer.middleName = middleName;
-                newPlayer.lastName = lastName;
-                newPlayer.birth = Convert.ToInt32(birth);
-                newPlayer.weight = Convert.ToInt32(weight); // kg
-                newPlayer.height = Convert.ToInt32(height); // cm
-                newPlayer.position = enumClass.Position.CMD;
+            
 
-                try
-                {
-                    String message = sah.registerPlayerAccount(newPlayer) == true ? "가입 요청 성공" : "가입 요청 실패";
-                    MessageBox.Show(message);
-                }
-                catch (Exception err)
-                {
-                    MessageBox.Show(err.Message.ToString());
-                }
-            }
+            //if(Application.Current.Properties["regSelected"].ToString() == "player")
+            //{
+            //    string email = regPPage.emailBox.Text;
+            //    string passsword = regPPage.passwordBox.Password;
+            //    string firstName = regPPage.firstnameBox.Text;
+            //    string middleName = regPPage.middlenameBox.Text;
+            //    string lastName = regPPage.lastnameBox.Text;
+            //    string birth = regPPage.birthBox.Text;
+            //    string postion = regPPage.positionBox.Text;
+            //    string height = regPPage.heightBox.Text;
+            //    string weight = regPPage.weightBox.Text;
+
+            //    SystemAccountHandler sah = new SystemAccountHandler();
+            //    // 입력 값 받아서 newPlayer에 셋팅
+            //    Player newPlayer = new Player(email, passsword);
+            //    newPlayer.firstName = firstName;
+            //    newPlayer.middleName = middleName;
+            //    newPlayer.lastName = lastName;
+            //    newPlayer.birth = Convert.ToInt32(birth);
+            //    newPlayer.weight = Convert.ToInt32(weight); // kg
+            //    newPlayer.height = Convert.ToInt32(height); // cm
+            //    newPlayer.position = enumClass.Position.CMD;
+
+            //    try
+            //    {
+            //        String message = sah.registerPlayerAccount(newPlayer) == true ? "가입 요청 성공" : "가입 요청 실패";
+            //        MessageBox.Show(message);
+            //    }
+            //    catch (Exception err)
+            //    {
+            //        MessageBox.Show(err.Message.ToString());
+            //    }
+            //}
         }
+
+
     }
 }

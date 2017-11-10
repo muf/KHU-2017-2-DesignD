@@ -24,5 +24,19 @@ namespace SoccerTradingSystem.Views
         {
             InitializeComponent();
         }
+
+        private void resiterBtn_Click(object sender, RoutedEventArgs e)
+        {
+            string userType = "player";
+            string email = emailBox.Text;
+            string passsword = passwordBox.Password;
+            string firstName = firstnameBox.Text;
+            string middleName = middlenameBox.Text;
+            string lastName = lastnameBox.Text;
+            string birth = birthBox.Text;
+            string postion = positionBox.Text;
+            string height = heightBox.Text;
+            string weight = weightBox.Text;
+        }
     }
 }
