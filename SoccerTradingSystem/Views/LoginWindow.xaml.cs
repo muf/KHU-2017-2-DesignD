@@ -30,7 +30,7 @@ namespace SoccerTradingSystem.Views
         {
             // get email & password
             string email_string = emailBox.Text;
-            string password_string = passwordBox.Text;
+            string password_string = passwordBox.Password;
 
             // Validation Check (null)
             if(email_string == "" || password_string == "")

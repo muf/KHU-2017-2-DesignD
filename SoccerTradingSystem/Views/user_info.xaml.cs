@@ -31,10 +31,10 @@ namespace SoccerTradingSystem.Views
         // 페이지가 로드 되었을 때 함수 호출 최초로 플레이어 데이터 그리드를 보여줌
         private void OnPageLoad(object sender, RoutedEventArgs e)
         {
-            PlayersDataGridSetting();
-            ClubsDataGridSetting();
-            ManagersDataGridSetting();
-            UserDataGridSetting();
+            PlayersDataGridSetting("");
+            ClubsDataGridSetting("");
+            ManagersDataGridSetting("");
+            UserDataGridSetting("");
         }
 
         // 플레이어 그리드에서 더블 클릭시 메서드 호출 인증을 업데이트함
@@ -51,7 +51,7 @@ namespace SoccerTradingSystem.Views
             {
                 sah.updateUserAuth(uid, true);
             }
-            PlayersDataGridSetting();
+            PlayersDataGridSetting("");
         }
 
         // 클럽 그리드에서 더블 클릭시 메서드 호출 인증을 업데이트함
@@ -68,7 +68,7 @@ namespace SoccerTradingSystem.Views
             {
                 sah.updateUserAuth(uid, true);
             }
-            ClubsDataGridSetting();
+            ClubsDataGridSetting("");
         }
 
         // 매니저 그리드에서 더블 클릭시 메서드 호출 인증을 업데이트함
@@ -85,7 +85,7 @@ namespace SoccerTradingSystem.Views
             {
                 sah.updateUserAuth(uid, true);
             }
-            ManagersDataGridSetting();
+            ManagersDataGridSetting("");
         }
 
         // 매니저 그리드에서 더블 클릭시 메서드 호출 인증을 업데이트함
@@ -102,7 +102,7 @@ namespace SoccerTradingSystem.Views
             {
                 sah.updateUserAuth(uid, true);
             }
-            UserDataGridSetting();
+            UserDataGridSetting("");
         }
 
         // 탭을 선택할 시 그에 맞는 그리드를 업데이트함
@@ -112,32 +112,32 @@ namespace SoccerTradingSystem.Views
             {
                 if (PlayersTab.IsSelected)
                 {
-                    PlayersDataGridSetting();
+                    PlayersDataGridSetting("");
                     flag = true;
                 }
 
                 if (ClubsTab.IsSelected)
                 {
-                    ClubsDataGridSetting();
+                    ClubsDataGridSetting("");
                 }
 
                 if (ManagersTab.IsSelected)
                 {
-                    ManagersDataGridSetting();
+                    ManagersDataGridSetting("");
                 }
 
                 if (UsersTab.IsSelected)
                 {
-                    UserDataGridSetting();
+                    UserDataGridSetting("");
                 }
             }
         }
 
         // 플레이어 그리드 구성
-        public void PlayersDataGridSetting()
+        public void PlayersDataGridSetting(string context)
         {
             SystemAccountHandler sah = new SystemAccountHandler();
-            List<Player> list = sah.retrievePlayerData("");
+            List<Player> list = sah.retrievePlayerData(context);
 
             // DataTable 생성
             DataTable dataTable = new DataTable();
@@ -175,10 +175,10 @@ namespace SoccerTradingSystem.Views
         }
 
         // 클럽 그리드 구성
-        private void ClubsDataGridSetting()
+        private void ClubsDataGridSetting(string context)
         {
             SystemAccountHandler sah = new SystemAccountHandler();
-            List<Club> cist = sah.retrieveClubData("");
+            List<Club> cist = sah.retrieveClubData(context);
 
             // DataTable 생성
             DataTable dataTable = new DataTable();
@@ -210,10 +210,10 @@ namespace SoccerTradingSystem.Views
         }
 
         // 매니저 그리드 구성
-        private void ManagersDataGridSetting()
+        private void ManagersDataGridSetting(string context)
         {
             SystemAccountHandler sah = new SystemAccountHandler();
-            List<Manager> mlist = sah.retrieveManagerData("");
+            List<Manager> mlist = sah.retrieveManagerData(context);
 
             // DataTable 생성
             DataTable dataTable = new DataTable();
@@ -243,10 +243,10 @@ namespace SoccerTradingSystem.Views
 
         }
 
-        private void UserDataGridSetting()
+        private void UserDataGridSetting(string context)
         {
             SystemAccountHandler sah = new SystemAccountHandler();
-            List<User> ulist = sah.retrieveUserData("");
+            List<User> ulist = sah.retrieveUserData(context);
 
             // DataTable 생성
             DataTable dataTable = new DataTable();
@@ -272,6 +272,26 @@ namespace SoccerTradingSystem.Views
             // DataTable의 Default View를 바인딩하기
            userDataGrid.ItemsSource = dataTable.DefaultView;
 
+        }
+
+        private void plyaerSearchBtn_Click(object sender, RoutedEventArgs e)
+        {
+            PlayersDataGridSetting(playerSearchBox.Text);
+        }
+
+        private void clubSearchBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ClubsDataGridSetting(clubSearchBox.Text);
+        }
+
+        private void managerSearchBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ManagersDataGridSetting(managerSearchBox.Text);
+        }
+
+        private void userSearchBtn_Click(object sender, RoutedEventArgs e)
+        {
+            UserDataGridSetting(userSearchBox.Text);
         }
     }
 }

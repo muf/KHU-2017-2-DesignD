@@ -27,8 +27,8 @@
                                     <ComboBoxItem Content="ID"/>
                                     <ComboBoxItem Content="Name"/>
                                 </ComboBox>
-                                <TextBox Grid.Column="2" Text=" Hello"/>
-                                <Button Grid.Column="3" Content="Search"/>
+                                <TextBox Grid.Column="2" Name="playerSearchBox"/>
+                                <Button Grid.Column="3" Content="Search" Name="plyaerSearchBtn" Click="plyaerSearchBtn_Click"/>
                             </Grid>
                             <DataGrid GridLinesVisibility="None"  IsReadOnly="True" AutoGenerateColumns="False"  Height="335" HorizontalAlignment="Left" Margin="38,56,0,0" x:Name="playerDataGrid" VerticalAlignment="Top" Width="634">
                                 <DataGrid.RowStyle>
@@ -52,55 +52,108 @@
                         </StackPanel>
                     </TabItem>
                     <TabItem Name="ClubsTab" Header="Clubs" Background="Gray">
-                        <DataGrid GridLinesVisibility="None"  IsReadOnly="True" AutoGenerateColumns="False"  Height="335" HorizontalAlignment="Left" Margin="38,56,0,0" Name="clubDataGrid" VerticalAlignment="Top" Width="634">
-                            <DataGrid.RowStyle>
-                                <Style TargetType="{x:Type DataGridRow}">
-                                    <EventSetter Event="MouseDoubleClick" Handler="Club_Row_DoubleClick"/>
-                                </Style>
-                            </DataGrid.RowStyle>
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="uid" Visibility="Collapsed" Binding="{Binding Path=uid}"/>
-                                <DataGridTextColumn Header="ID" Binding="{Binding Path=cid}"/>
-                                <DataGridTextColumn Header="Name" Binding="{Binding Path=name}"/>
-                                <DataGridTextColumn Header="E-Mail" Binding="{Binding Path=email}"/>
-                                <DataGridTextColumn Header="Birth" Binding="{Binding Path=birth}"/>
-                                <DataGridTextColumn Header="Contact Number" Binding="{Binding Path=contactnumber}"/>
-                                <DataGridTextColumn Header="Authenticated" Binding="{Binding Path=authenticated}"/>
-                            </DataGrid.Columns>
-                        </DataGrid>
+                        <StackPanel>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="239"/>
+                                    <ColumnDefinition Width="133*"/>
+                                    <ColumnDefinition Width="246*"/>
+                                    <ColumnDefinition Width="80*"/>
+                                </Grid.ColumnDefinitions>
+                                <ComboBox Grid.Column="1">
+                                    <ComboBoxItem IsSelected ="True" Content="Entry"/>
+                                    <ComboBoxItem Content="ID"/>
+                                    <ComboBoxItem Content="Name"/>
+                                </ComboBox>
+                                <TextBox Grid.Column="2" Name="clubSearchBox"/>
+                                <Button Grid.Column="3" Content="Search" Name="clubSearchBtn" Click="clubSearchBtn_Click"/>
+                            </Grid>
+
+                            <DataGrid GridLinesVisibility="None"  IsReadOnly="True" AutoGenerateColumns="False"  Height="335" HorizontalAlignment="Left" Margin="38,56,0,0" Name="clubDataGrid" VerticalAlignment="Top" Width="634">
+                                <DataGrid.RowStyle>
+                                    <Style TargetType="{x:Type DataGridRow}">
+                                        <EventSetter Event="MouseDoubleClick" Handler="Club_Row_DoubleClick"/>
+                                    </Style>
+                                </DataGrid.RowStyle>
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="uid" Visibility="Collapsed" Binding="{Binding Path=uid}"/>
+                                    <DataGridTextColumn Header="ID" Binding="{Binding Path=cid}"/>
+                                    <DataGridTextColumn Header="Name" Binding="{Binding Path=name}"/>
+                                    <DataGridTextColumn Header="E-Mail" Binding="{Binding Path=email}"/>
+                                    <DataGridTextColumn Header="Birth" Binding="{Binding Path=birth}"/>
+                                    <DataGridTextColumn Header="Contact Number" Binding="{Binding Path=contactnumber}"/>
+                                    <DataGridTextColumn Header="Authenticated" Binding="{Binding Path=authenticated}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </StackPanel>
                     </TabItem>
                     <TabItem Name="ManagersTab" Header="Managers" Background="Gray">
-                        <DataGrid GridLinesVisibility="None"  IsReadOnly="True" AutoGenerateColumns="False"  Height="335" HorizontalAlignment="Left" Margin="38,56,0,0" Name="managerDataGrid" VerticalAlignment="Top" Width="634">
-                            <DataGrid.RowStyle>
-                                <Style TargetType="{x:Type DataGridRow}">
-                                    <EventSetter Event="MouseDoubleClick" Handler="Manager_Row_DoubleClick"/>
-                                </Style>
-                            </DataGrid.RowStyle>
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="uid" Visibility="Collapsed" Binding="{Binding Path=uid}"/>
-                                <DataGridTextColumn Header="ID" Binding="{Binding Path=mid}"/>
-                                <DataGridTextColumn Header="Name" Binding="{Binding Path=name}"/>
-                                <DataGridTextColumn Header="E-Mail" Binding="{Binding Path=email}"/>
-                                <DataGridTextColumn Header="Tel Number" Binding="{Binding Path=telnumber}"/>
-                                <DataGridTextColumn Header="Authenticated" Binding="{Binding Path=authenticated}"/>
-                            </DataGrid.Columns>
-                        </DataGrid>
+                        <StackPanel>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="239"/>
+                                    <ColumnDefinition Width="133*"/>
+                                    <ColumnDefinition Width="246*"/>
+                                    <ColumnDefinition Width="31*"/>
+                                    <ColumnDefinition Width="49*"/>
+                                </Grid.ColumnDefinitions>
+                                <ComboBox Grid.Column="1">
+                                    <ComboBoxItem IsSelected ="True" Content="Entry"/>
+                                    <ComboBoxItem Content="ID"/>
+                                    <ComboBoxItem Content="Name"/>
+                                </ComboBox>
+                                <TextBox Grid.Column="2" Name="managerSearchBox"/>
+                                <Button Grid.Column="3" Content="Search" Name="managerSearchBtn" Grid.ColumnSpan="2" Click="managerSearchBtn_Click"/>
+                            </Grid>
+                            <DataGrid GridLinesVisibility="None"  IsReadOnly="True" AutoGenerateColumns="False"  Height="335" HorizontalAlignment="Left" Margin="38,56,0,0" Name="managerDataGrid" VerticalAlignment="Top" Width="634">
+                                <DataGrid.RowStyle>
+                                    <Style TargetType="{x:Type DataGridRow}">
+                                        <EventSetter Event="MouseDoubleClick" Handler="Manager_Row_DoubleClick"/>
+                                    </Style>
+                                </DataGrid.RowStyle>
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="uid" Visibility="Collapsed" Binding="{Binding Path=uid}"/>
+                                    <DataGridTextColumn Header="ID" Binding="{Binding Path=mid}"/>
+                                    <DataGridTextColumn Header="Name" Binding="{Binding Path=name}"/>
+                                    <DataGridTextColumn Header="E-Mail" Binding="{Binding Path=email}"/>
+                                    <DataGridTextColumn Header="Tel Number" Binding="{Binding Path=telnumber}"/>
+                                    <DataGridTextColumn Header="Authenticated" Binding="{Binding Path=authenticated}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </StackPanel>
                     </TabItem>
                     <TabItem Name="UsersTab" Header="Users" Background="Gray">
-                        <DataGrid GridLinesVisibility="None"  IsReadOnly="True" AutoGenerateColumns="False"  Height="335" HorizontalAlignment="Left" Margin="38,56,0,0" Name="userDataGrid" VerticalAlignment="Top" Width="634">
-                            <DataGrid.RowStyle>
-                                <Style TargetType="{x:Type DataGridRow}">
-                                    <EventSetter Event="MouseDoubleClick" Handler="User_Row_DoubleClick"/>
-                                </Style>
-                            </DataGrid.RowStyle>
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="User ID" Binding="{Binding Path=uid}"/>
-                                <DataGridTextColumn Header="E-Mail" Binding="{Binding Path=email}"/>
-                                <DataGridTextColumn Header="Password" Binding="{Binding Path=password}"/>
-                                <DataGridTextColumn Header="Login State" Binding="{Binding Path=logined}"/>
-                                <DataGridTextColumn Header="Authenticated" Binding="{Binding Path=authenticated}"/>
-                            </DataGrid.Columns>
-                        </DataGrid>
+                        <StackPanel>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="239"/>
+                                    <ColumnDefinition Width="133*"/>
+                                    <ColumnDefinition Width="246*"/>
+                                    <ColumnDefinition Width="80*"/>
+                                </Grid.ColumnDefinitions>
+                                <ComboBox Grid.Column="1">
+                                    <ComboBoxItem IsSelected ="True" Content="Entry"/>
+                                    <ComboBoxItem Content="ID"/>
+                                    <ComboBoxItem Content="Name"/>
+                                </ComboBox>
+                                <TextBox Grid.Column="2" Name="userSearchBox"/>
+                                <Button Grid.Column="3" Content="Search" Name="userSearchBtn" Click="userSearchBtn_Click"/>
+                            </Grid>
+                            <DataGrid GridLinesVisibility="None"  IsReadOnly="True" AutoGenerateColumns="False"  Height="335" HorizontalAlignment="Left" Margin="38,56,0,0" Name="userDataGrid" VerticalAlignment="Top" Width="634">
+                                <DataGrid.RowStyle>
+                                    <Style TargetType="{x:Type DataGridRow}">
+                                        <EventSetter Event="MouseDoubleClick" Handler="User_Row_DoubleClick"/>
+                                    </Style>
+                                </DataGrid.RowStyle>
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="User ID" Binding="{Binding Path=uid}"/>
+                                    <DataGridTextColumn Header="E-Mail" Binding="{Binding Path=email}"/>
+                                    <DataGridTextColumn Header="Password" Binding="{Binding Path=password}"/>
+                                    <DataGridTextColumn Header="Login State" Binding="{Binding Path=logined}"/>
+                                    <DataGridTextColumn Header="Authenticated" Binding="{Binding Path=authenticated}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </StackPanel>
                     </TabItem>
                 </TabControl>
             </Border>

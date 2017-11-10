@@ -25,7 +25,7 @@
         <TextBlock Text="E-Mail" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="5"></TextBlock>
         <TextBox Name="emailBox" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Margin="6" Text=""></TextBox>
         <TextBlock Text="Password" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Margin="5"></TextBlock>
-        <TextBox Name="passwordBox" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Margin="6" Text=""></TextBox>
+        <PasswordBox Name="passwordBox" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Margin="6" Password=""></PasswordBox>
         <Button Style="{StaticResource SuccessButton}" Content="Login" Name="loginBtn" Grid.Row="3" Grid.Column="3" VerticalAlignment="Center" Margin="5" Click="loginBtn_Click"></Button>
     </Grid>
 </Window>
