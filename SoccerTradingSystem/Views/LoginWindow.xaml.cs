@@ -46,9 +46,7 @@ namespace SoccerTradingSystem.Views
             App.current_user = sah.login(email, password);
 
             // Top Panel logined form setting
-            TP.logoutBtn.Visibility = System.Windows.Visibility.Visible;
-            TP.loginBtn.Visibility = System.Windows.Visibility.Collapsed;
-            TP.logined_email_change("Wellcome !!! " + email);
+            TP.logined_success(email);
             this.Close();
         }
     }

@@ -20,9 +20,11 @@ namespace SoccerTradingSystem.Views
     /// </summary>
     public partial class top_panel : Page
     {
-        public top_panel()
+        private Page main;
+        public top_panel(Page _main)
         {
             InitializeComponent();
+            main = _main;
             // 체크
         }
 
@@ -33,7 +35,7 @@ namespace SoccerTradingSystem.Views
             MessageBox.Show("logout");
             loginBtn.Visibility = System.Windows.Visibility.Visible;
             logoutBtn.Visibility = System.Windows.Visibility.Collapsed;
-            logined_email_change("Unlogined");
+            topLoginedEmail.Text ="Unlogined";
         }
 
         private void login_Click(object sender, RoutedEventArgs e)
@@ -50,9 +52,12 @@ namespace SoccerTradingSystem.Views
             userRegWindow.Show();
         }
 
-        public void logined_email_change(string e)
+        public void logined_success(string email)
         {
-            topLoginedEmail.Text = e;
+            logoutBtn.Visibility = System.Windows.Visibility.Visible;
+            loginBtn.Visibility = System.Windows.Visibility.Collapsed;
+            topLoginedEmail.Text = "Wellcome !!!  " + email;
+            main.NavigationService.Refresh(); // refresh
         }
     }
 }

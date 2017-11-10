@@ -7,30 +7,13 @@
       mc:Ignorable="d" 
       d:DesignHeight="760" d:DesignWidth="1280"
       Title="Player Trading Management">
-
-    <Page.Resources>
-        <Style x:Key="buttonSytle_1">
-            <Setter Property="Button.Background" Value="#263238"></Setter>
-            <Setter Property="Button.Height" Value="30"></Setter>
-            <Setter Property="Button.BorderThickness" Value="0"></Setter>
-        </Style>
-        <Style x:Key="buttonSytle_2">
-            <Setter Property="Button.Background" Value="#37474F"></Setter>
-            <Setter Property="Button.Height" Value="30"></Setter>
-            <Setter Property="Button.BorderThickness" Value="0"></Setter>
-        </Style>
-    </Page.Resources>
-
+    
     <DockPanel Name="dockPanel1">
         <Border DockPanel.Dock="Top">
-            <Frame Name="top_panel"  Source="top_panel.xaml"></Frame>
+            <Frame Name="top_frame"></Frame>
         </Border>
         <Border DockPanel.Dock="Left" Width="100" Background="White" BorderThickness="3" BorderBrush="Black" Height="720" VerticalAlignment="Bottom">
-            <Grid>
-                <Grid.RowDefinitions>
-
-                </Grid.RowDefinitions>
-            </Grid>
+            <Button Name="button_test" Content="Button" HorizontalAlignment="Left" Height="38" Margin="0,53,0,0" VerticalAlignment="Top" Width="87"/>
         </Border>
         <Border Background="White" BorderThickness="0"  BorderBrush="Black">
             <Frame Name="content_frame" Grid.Row="1"/>

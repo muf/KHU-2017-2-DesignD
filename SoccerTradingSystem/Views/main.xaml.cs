@@ -23,9 +23,8 @@ namespace SoccerTradingSystem.Views
         public main()
         {
             InitializeComponent();
+            top_panel TP = new top_panel(this);
+            top_frame.Navigate(TP);
         }
-
-
-
     }
 }

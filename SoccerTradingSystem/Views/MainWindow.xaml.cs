@@ -23,6 +23,7 @@ namespace SoccerTradingSystem
         public MainWindow()
         {
             InitializeComponent();
+
         }
     }
 }
