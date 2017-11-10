@@ -10,14 +10,21 @@
 
     <Grid Background="#455A64">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1124*"/>
-            <ColumnDefinition Width="80*"/>
-            <ColumnDefinition Width="80*"/>
-            <ColumnDefinition Width="80*"/>
+            <ColumnDefinition Width="896*"/>
+            <ColumnDefinition Width="143*"/>
+            <ColumnDefinition Width="28*"/>
+            <ColumnDefinition Width="71*"/>
+            <ColumnDefinition Width="71*"/>
+            <ColumnDefinition Width="71*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Foreground="White" FontSize="20" Grid.Column="0" VerticalAlignment="Center" FontFamily="./font/#GosmickSans"  Margin="10,0,0,0" Text="Player Trading Management"/>
-        <Button Grid.Column="1" Name="option"  Content="Option"/>
-        <Button Grid.Column="2" Name="logBtn" Height="40" VerticalAlignment="Bottom"/>
-        <Button Grid.Column="3" Name="user_regist" Content="Regist"/>
+        <TextBlock Foreground="White" FontSize="20" Grid.Column="0" VerticalAlignment="Center" FontFamily="./font/#GosmickSans"  Margin="10,8,0,8" Text="Player Trading Management" Height="24"/>
+
+        <Border Background="{StaticResource BgPrimary}" TextBlock.Foreground="White" Grid.ColumnSpan="2" Margin="746,0,0,0">
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" Name="topLoginedEmail" Text="Unlogined"/>
+        </Border>
+        <Button Grid.Column="3" Name="option"  Content="Option"/>
+        <Button Grid.Column="4" Name="loginBtn" Height="40" VerticalAlignment="Bottom" Content="Login" Click="login_Click" Visibility="Visible"/>
+        <Button Grid.Column="4" Name="logoutBtn" Height="40" VerticalAlignment="Bottom" Content="Logout" Click="logout_Click" Visibility="Collapsed"/>
+        <Button Grid.Column="5" Name="user_registBtn" Content="Regist" Click="user_registBtn_Click"/>
     </Grid>
 </Page>

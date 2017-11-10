@@ -19,6 +19,7 @@ namespace SoccerTradingSystem
      "`password` VARCHAR(50) NOT NULL," +
      "`type` ENUM('Client','Manager') NOT NULL DEFAULT 'Client'," +
      "`authenticated` ENUM('True', 'False') NOT NULL DEFAULT 'False'," +
+
      "`logined` ENUM('True', 'False') NOT NULL DEFAULT 'False'," +
      "PRIMARY KEY (`uid`)," +
      "UNIQUE INDEX `email` (`email`)" +

@@ -19,15 +19,37 @@ namespace SoccerTradingSystem.Views
     /// </summary>
     public partial class LoginWindow : Window
     {
-        public LoginWindow()
+        private top_panel TP;
+        public LoginWindow(top_panel top_panel)
         {
             InitializeComponent();
+            this.TP = top_panel;
         }
 
         private void loginBtn_Click(object sender, RoutedEventArgs e)
         {
-            // login
+            // get email & password
+            string email_string = emailBox.Text;
+            string password_string = passwordBox.Text;
 
+            // Validation Check (null)
+            if(email_string == "" || password_string == "")
+            {
+                MessageBox.Show("Null Error");
+                return;
+            }
+
+            // user login
+            SystemAccountHandler sah = new SystemAccountHandler();
+            String email = email_string;
+            String password = password_string;
+            App.current_user = sah.login(email, password);
+
+            // Top Panel logined form setting
+            TP.logoutBtn.Visibility = System.Windows.Visibility.Visible;
+            TP.loginBtn.Visibility = System.Windows.Visibility.Collapsed;
+            TP.logined_email_change("Wellcome !!! " + email);
+            this.Close();
         }
     }
 }

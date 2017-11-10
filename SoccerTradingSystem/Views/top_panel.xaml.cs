@@ -24,27 +24,35 @@ namespace SoccerTradingSystem.Views
         {
             InitializeComponent();
             // 체크
-            logBtn.Content = "Login";
-            logBtn.Click += new RoutedEventHandler(login_Click);
         }
 
-        private void logout_Click(object sender, RoutedEventArgs e)
+        public void logout_Click(object sender, RoutedEventArgs e)
         {
-            //MessageBox.Show("logout");
-            logBtn.Content = "Login";
-            logBtn.Click -= new RoutedEventHandler(logout_Click);
-            logBtn.Click += new RoutedEventHandler(login_Click);
+            App.current_user = null;
+
+            MessageBox.Show("logout");
+            loginBtn.Visibility = System.Windows.Visibility.Visible;
+            logoutBtn.Visibility = System.Windows.Visibility.Collapsed;
+            logined_email_change("Unlogined");
         }
 
         private void login_Click(object sender, RoutedEventArgs e)
         {
             //MessageBox.Show("login");
-            LoginWindow loginWindow = new LoginWindow();
+            LoginWindow loginWindow = new LoginWindow(this);
             loginWindow.Show();
+        }
 
-            logBtn.Content = "Logout";
-            logBtn.Click += new RoutedEventHandler(logout_Click);
-            logBtn.Click -= new RoutedEventHandler(login_Click);
+        private void user_registBtn_Click(object sender, RoutedEventArgs e)
+        {
+            // regist
+            PlayerRegistWindow userRegWindow = new PlayerRegistWindow();
+            userRegWindow.Show();
+        }
+
+        public void logined_email_change(string e)
+        {
+            topLoginedEmail.Text = e;
         }
     }
 }

@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SoccerTradingSystem.Views"
         mc:Ignorable="d"
-        Title="LoginWindow" Height="300" Width="300"
+        Title="LoginWindow" Height="200" Width="300"
+        WindowStartupLocation="CenterScreen"
         >
-    <Grid Background="Ivory">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="25*"></RowDefinition>
             <RowDefinition Height="25*"></RowDefinition>
@@ -21,10 +22,10 @@
             <ColumnDefinition Width="25*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <TextBlock Text="Login" Grid.Row="0" Grid.ColumnSpan="4" FontSize="16" FontWeight="bold" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-        <TextBlock Text="ID" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="5"></TextBlock>
-        <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Margin="6"></TextBox>
+        <TextBlock Text="E-Mail" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="5"></TextBlock>
+        <TextBox Name="emailBox" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Margin="6" Text=""></TextBox>
         <TextBlock Text="Password" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Margin="5"></TextBlock>
-        <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Margin="6"></TextBox>
+        <TextBox Name="passwordBox" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Margin="6" Text=""></TextBox>
         <Button Style="{StaticResource SuccessButton}" Content="Login" Name="loginBtn" Grid.Row="3" Grid.Column="3" VerticalAlignment="Center" Margin="5" Click="loginBtn_Click"></Button>
     </Grid>
 </Window>
