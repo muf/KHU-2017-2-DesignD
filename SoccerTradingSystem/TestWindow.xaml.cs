@@ -24,10 +24,19 @@ namespace SoccerTradingSystem
         {
             InitializeComponent();
             //디비_재구성();
-            유저_로그인_시나리오();
-            //선수_회원가입_시나리오();
+            //유저_로그인_시나리오();
+            선수_회원가입_시나리오();
             //매니져_회원가입_승인_시나리오();
 
+        }
+        public void 매니져_회원가입_승인_시나리오()
+        {
+            SystemAccountHandler sah = new SystemAccountHandler();
+            bool flag = sah.updateUserAuth(1, false);
+            if (flag)
+                MessageBox.Show("성공");
+            else
+                MessageBox.Show("실패");
         }
         public void 디비_재구성()
         {
@@ -46,10 +55,17 @@ namespace SoccerTradingSystem
         {
             SystemAccountHandler sah = new SystemAccountHandler();
             String email = "huryip@naver.com";
-            String password = "tmxhs8282";
-            App.current_user = sah.login(email, password);
-            var temp = App.current_user;
+            String password = "tmxhs822";
 
+            App.cookie = sah.login(email, password);
+            if (App.cookie != null)
+            {
+                MessageBox.Show("로그인 성공");
+            }
+            else
+            {
+                MessageBox.Show("인증 실패");
+            }
             MessageBox.Show("ok");
 
         }
@@ -57,42 +73,24 @@ namespace SoccerTradingSystem
         {
             SystemAccountHandler sah = new SystemAccountHandler();
             // 입력 값 받아서 newPlayer에 셋팅
-            Player newPlayer = new Player("huryip@naver.com", "tmxhs8282");
-            newPlayer.firstName = "hwang";
-            newPlayer.middleName = "jin";
-            newPlayer.lastName = "ha";
-            newPlayer.birth = 19940831;
-            newPlayer.weight = 33; // kg
-            newPlayer.height = 17790; // cm
-            newPlayer.position = enumClass.Position.CMD;
 
-            try
-            {
-                String message = sah.registerPlayerAccount(newPlayer) == true ? "가입 요청 성공" : "가입 요청 실패";
-                MessageBox.Show(message);
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message.ToString());
-            }
+            String email = "huryip3@naver.com";
+            String password = "tmxhs8282";
+            String firstName = "park";
+            String middleName = "jin";
+            String lastName = "ha";
+            int birth = 19940831;
+            int weight = 33; // kg
+            int height = 17790; // cm
+            String position = enumClass.Position.CMD;
 
-        }
-        public void 매니져_회원가입_승인_시나리오()
-        {
+            bool flag = sah.registerPlayerAccount(email, password, firstName, middleName, lastName, birth, weight, height, position);
 
-            SystemAccountHandler sah = new SystemAccountHandler();
-            // 입력 값 받아서 newPlayer에 셋팅
-            Player newPlayer = new Player("huryip@naver.com", "tmxhs8282");
+            if (flag)
+                MessageBox.Show("성공");
+            else
+                MessageBox.Show("실패");
 
-            try
-            {
-                String message = sah.enrollAccount(newPlayer, true) == true ? "계정 등록 변경 성공" : "계정 등록 변경 실패";
-                MessageBox.Show(message);
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message.ToString());
-            }
         }
     }
 }

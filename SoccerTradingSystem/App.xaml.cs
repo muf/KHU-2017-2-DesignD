@@ -14,8 +14,6 @@ namespace SoccerTradingSystem
     public partial class App : Application
     {
         public static User current_user = null;
-        public static int uid;
-        public static String userType;
-        public static String email;
+        public static LocalData cookie = null;
     }
 }

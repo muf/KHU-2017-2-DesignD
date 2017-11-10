@@ -66,7 +66,7 @@
     <Compile Include="Club.cs" />
     <Compile Include="DBGenerator.cs" />
     <Compile Include="enumClass.cs" />
-    <Compile Include="Interface1.cs" />
+    <Compile Include="localData.cs" />
     <Compile Include="Views\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
@@ -103,6 +103,9 @@
     </Compile>
     <Compile Include="Views\top_panel.xaml.cs">
       <DependentUpon>top_panel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\user_info.xaml.cs">
+      <DependentUpon>user_info.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -167,6 +170,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\top_panel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\user_info.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -20,23 +20,40 @@ namespace SoccerTradingSystem.Views
     /// </summary>
     public partial class reg_player : Page
     {
-        public reg_player()
+        private Window regWindow;
+        public reg_player(Window _regWindow)
         {
             InitializeComponent();
+            regWindow = _regWindow;
         }
+
 
         private void resiterBtn_Click(object sender, RoutedEventArgs e)
         {
-            string userType = "player";
             string email = emailBox.Text;
-            string passsword = passwordBox.Password;
+            string password = passwordBox.Password;
             string firstName = firstnameBox.Text;
             string middleName = middlenameBox.Text;
             string lastName = lastnameBox.Text;
-            string birth = birthBox.Text;
-            string postion = positionBox.Text;
-            string height = heightBox.Text;
-            string weight = weightBox.Text;
+            int birth = Convert.ToInt32(birthBox.Text);
+            string position = positionBox.Text;
+            int height = Convert.ToInt32(heightBox.Text);
+            int weight = Convert.ToInt32(weightBox.Text);
+
+            SystemAccountHandler sah = new SystemAccountHandler();
+            try
+            {
+                bool flag = sah.registerPlayerAccount(email, password, firstName, middleName, lastName, birth, weight, height, position);
+
+                if (flag)
+                    MessageBox.Show("성공");
+                else
+                    MessageBox.Show("실패");
+            }
+            catch( Exception eee)
+            {
+                MessageBox.Show(eee.Message.ToString());
+            }
         }
     }
 }

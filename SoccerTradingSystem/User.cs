@@ -8,6 +8,7 @@ namespace SoccerTradingSystem
 {
     public class User
     {
+        public int uid { get; set; } = -1;
         public String email { get; } = "";                 // 사용자의 계정 이메일
         public String password { get; } = "";             // 사용자의 게정 패스워드 @@ 이게 필요한건가?
         public bool authenticated { get; } = false;     // @@ 수정.. 회원가입 승인 되었는지 여부로 대체  

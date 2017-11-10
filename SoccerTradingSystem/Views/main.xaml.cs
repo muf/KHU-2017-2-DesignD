@@ -26,10 +26,19 @@ namespace SoccerTradingSystem.Views
             top_panel TP = new top_panel(this);
             top_frame.Navigate(TP);
 
-            if(App.userType == "manager")
+            if (App.cookie != null)
             {
-                userAuthBtn.Visibility = System.Windows.Visibility.Visible;
+                if (App.cookie.userType == enumClass.UserType.Manager)
+                {
+                    userInfoBtn.Visibility = System.Windows.Visibility.Visible;
+                }
             }
+        }
+
+        private void userInfoBtn_Click(object sender, RoutedEventArgs e)
+        {
+            user_info _user_info = new user_info();
+            content_frame.Navigate(_user_info);
         }
     }
 }

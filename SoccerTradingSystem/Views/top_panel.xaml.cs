@@ -25,7 +25,20 @@ namespace SoccerTradingSystem.Views
         {
             InitializeComponent();
             main = _main;
-            // 체크
+
+            // 로그아웃 된 상태
+            if(App.cookie == null)
+            {
+                loginBtn.Visibility = System.Windows.Visibility.Visible;
+                logoutBtn.Visibility = System.Windows.Visibility.Collapsed;
+                topLoginedEmail.Text = "Unlogined";
+            }
+            else
+            {
+                logoutBtn.Visibility = System.Windows.Visibility.Visible;
+                loginBtn.Visibility = System.Windows.Visibility.Collapsed;
+                topLoginedEmail.Text = "Wellcome !!!  " + App.cookie.email;
+            }
         }
 
         public void logout_Click(object sender, RoutedEventArgs e)
@@ -54,9 +67,9 @@ namespace SoccerTradingSystem.Views
 
         public void logined_success(string email)
         {
-            logoutBtn.Visibility = System.Windows.Visibility.Visible;
-            loginBtn.Visibility = System.Windows.Visibility.Collapsed;
-            topLoginedEmail.Text = "Wellcome !!!  " + email;
+            //logoutBtn.Visibility = System.Windows.Visibility.Visible;
+            //loginBtn.Visibility = System.Windows.Visibility.Collapsed;
+            //topLoginedEmail.Text = "Wellcome !!!  " + email;
             main.NavigationService.Refresh(); // refresh
         }
     }

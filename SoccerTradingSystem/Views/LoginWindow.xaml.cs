@@ -43,9 +43,14 @@ namespace SoccerTradingSystem.Views
             SystemAccountHandler sah = new SystemAccountHandler();
             String email = email_string;
             String password = password_string;
+            App.cookie = sah.login(email, password);
+            if(App.cookie == null)
+            {
+                MessageBox.Show("Login Failed");
+                return;
+            }
 
             // Top Panel & Main logined form setting
-            App.userType = "manager";
             TP.logined_success(email);
             this.Close();
         }

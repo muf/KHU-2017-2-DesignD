@@ -26,7 +26,7 @@ namespace SoccerTradingSystem.Views
         public PlayerRegistWindow()
         {
             InitializeComponent();
-            regPPage = new reg_player();
+            regPPage = new reg_player(this);
             regContent.Navigate(regPPage);
             Application.Current.Properties["regSelected"] = "player";
         }
@@ -34,7 +34,7 @@ namespace SoccerTradingSystem.Views
         private void regPlayerBtn_Click(object sender, RoutedEventArgs e)
         {
             pageReset();
-            regPPage = new reg_player();
+            regPPage = new reg_player(this);
             regContent.Navigate(regPPage);
             Application.Current.Properties["regSelected"] = "player";
         }
@@ -42,7 +42,7 @@ namespace SoccerTradingSystem.Views
         private void regClubBtn_Click(object sender, RoutedEventArgs e)
         {
             pageReset();
-            regCPage = new reg_club();
+            regCPage = new reg_club(this);
             regContent.Navigate(regCPage);
             Application.Current.Properties["regSelected"] = "club";
         }
@@ -50,7 +50,7 @@ namespace SoccerTradingSystem.Views
         private void regManagerBtn_Click(object sender, RoutedEventArgs e)
         {
             pageReset();
-            regMPage = new reg_manager();
+            regMPage = new reg_manager(this);
             regContent.Navigate(regMPage);
             Application.Current.Properties["regSelected"] = "manager";
         }

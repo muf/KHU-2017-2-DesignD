@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SoccerTradingSystem.Views"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
+      d:DesignHeight="500" d:DesignWidth="300"
       Title="reg_manager">
 
     <Grid>
@@ -29,6 +29,6 @@
 
         <TextBox Grid.Row="0" Grid.Column="1" Name="emailBox" Margin="0,0,-118,0"></TextBox>
         <PasswordBox Grid.Row="1" Grid.Column="1" Name="passwordBox" Margin="0,0,-118,0"></PasswordBox>
-        <Button Name="resiterBtn" Grid.ColumnSpan="2" Content="Regist" HorizontalAlignment="Left" Height="32" Margin="34,10,-86,-11" Grid.Row="8" VerticalAlignment="Top" Width="234" Click="resiterBtn_Click"/>
+        <Button Name="resiterBtn" Grid.ColumnSpan="2" Content="Regist" HorizontalAlignment="Left" Height="32" Margin="34,31,-86,-32" Grid.Row="8" VerticalAlignment="Top" Width="234" Click="resiterBtn_Click"/>
     </Grid>
 </Page>

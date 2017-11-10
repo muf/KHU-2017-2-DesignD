@@ -20,16 +20,24 @@ namespace SoccerTradingSystem.Views
     /// </summary>
     public partial class reg_manager : Page
     {
-        public reg_manager()
+        private Window regWindow;
+        public reg_manager(Window _regWindow)
         {
             InitializeComponent();
+            regWindow = _regWindow;
         }
 
         private void resiterBtn_Click(object sender, RoutedEventArgs e)
         {
-            string userType = "manager";
             string email = emailBox.Text;
             string passsword = passwordBox.Password;
+
+            // 유효성 검사
+
+            // 레지스트
+
+            // 윈도우 닫음
+            regWindow.Close();
         }
     }
 }

@@ -16,15 +16,13 @@ using System.Windows.Shapes;
 namespace SoccerTradingSystem.Views
 {
     /// <summary>
-    /// reg_club.xaml에 대한 상호 작용 논리
+    /// user_info.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class reg_club : Page
+    public partial class user_info : Page
     {
-        private Window regWindow;
-        public reg_club(Window _regWindow)
+        public user_info()
         {
             InitializeComponent();
-            regWindow = _regWindow;
         }
     }
 }
