@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data;
 
 namespace SoccerTradingSystem.Views
 {
@@ -24,5 +25,40 @@ namespace SoccerTradingSystem.Views
         {
             InitializeComponent();
         }
+        private void OnPageLoad(object sender, RoutedEventArgs e)
+        {
+            Load();
+        }
+        public void Load()
+        {
+            try
+            {
+                // DataTable 생성
+                DataTable dataTable = new DataTable();
+
+                // 컬럼 생성
+                dataTable.Columns.Add("email", typeof(string));
+
+                // 데이터 생성
+                dataTable.Rows.Add(new string[] { "fkrlsp2@naver.com" });
+                dataTable.Rows.Add(new string[] { "huripy@nate.com" });
+                dataTable.Rows.Add(new string[] { "jinseng@naver.com" });
+                dataTable.Rows.Add(new string[] { "helloworld@naver.com" });
+
+                // DataTable의 Default View를 바인딩하기
+                userDataGrid.ItemsSource = dataTable.DefaultView;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No PDF linked!");
+            }
+        }
+
+        private void Row_DoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            DataGridRow row = sender as DataGridRow;
+            // Some operations with this row
+        }
+
     }
 }

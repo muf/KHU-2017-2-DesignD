@@ -107,6 +107,7 @@
     <Compile Include="Views\user_info.xaml.cs">
       <DependentUpon>user_info.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\user_info_ViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
