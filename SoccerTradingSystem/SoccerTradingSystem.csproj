@@ -80,6 +80,9 @@
     <Compile Include="Views\club_list.xaml.cs">
       <DependentUpon>club_list.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ContractionDetailWindow.xaml.cs">
+      <DependentUpon>ContractionDetailWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\contraction_list.xaml.cs">
       <DependentUpon>contraction_list.xaml</DependentUpon>
     </Compile>
@@ -177,6 +180,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\club_list.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ContractionDetailWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

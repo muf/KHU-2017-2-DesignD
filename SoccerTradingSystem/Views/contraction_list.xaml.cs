@@ -33,7 +33,11 @@ namespace SoccerTradingSystem.Views
 
         private void Contraction_Row_DoubleClick(object sender, MouseButtonEventArgs e)
         {
-            MessageBox.Show("double clicked");
+            DataRowView row = (DataRowView)contractionDataGrid.SelectedItems[0];
+            int contractionId = Convert.ToInt32((row[0]));
+
+            ContractionDetailWindow _ContractionDetailWindow = new ContractionDetailWindow(contractionId);
+            _ContractionDetailWindow.Show();
         }
 
         // 계약 그리드 구성
