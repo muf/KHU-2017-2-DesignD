@@ -30,8 +30,16 @@ namespace SoccerTradingSystem
             //구단_회원가입_시나리오();
             //매니져_회원가입_승인_시나리오();
             //계정_정보조회_시나리오();
-            선수_구단_계약_시나리오();
+            //선수_구단_계약_시나리오();
+            사용자_계약_조회_시나리오();
 
+            }
+       public void 사용자_계약_조회_시나리오()
+        {
+            SystemAccountHandler sah = new SystemAccountHandler();
+            List<Contract> contracts = sah.retrieveContractData(1, "");
+
+            int a = 3;
         }
         public void 선수_구단_계약_시나리오() {
             SystemAccountHandler sah = new SystemAccountHandler();

@@ -345,14 +345,16 @@ namespace SoccerTradingSystem
             return users;
 
         }
-        public Contract retrieveContractData(int uid)
+        public List<Contract> retrieveContractData(int uid, String keyword)
         {
+            List<Contract> contracts = new List<Contract>();
             JSON result = saDAC.getContractData(uid);
-            if (result.Count > 0)
-            {
-                Dictionary<string, object> data = result[0];
-                int clubId = Convert.ToInt32(data["clubId"]);
-                int playerId = Convert.ToInt32(data["playerId"]);
+
+            for (int i = 0; i < result.Count; i++) {
+                String globalString = "";
+                Dictionary<string, object> data = result[i];
+                int clubId = Convert.ToInt32(data["cid"]);
+                int playerId = Convert.ToInt32(data["pid"]);
                 String startDate = data["startDate"].ToString();
                 String endDate = data["endDate"].ToString();
                 int transferFee = Convert.ToInt32(data["transferFee"]);
@@ -367,12 +369,14 @@ namespace SoccerTradingSystem
                 contract.contractType = contractType;
                 contract.tradeType = tradeType;
 
-                return contract;
+                globalString += contract.clubId + contract.playerId + contract.startDate + contract.endDate + contract.tradeType + contract.contractType ;
+                globalString.Replace(" ", "");
+                if (globalString.IndexOf(keyword) != -1)
+                {
+                    contracts.Add(contract);
+                }
             }
-            else
-            {
-                return null;
-            }
+            return contracts;
         }
         // 임시 함수
         public bool makeContract(int clubUid, int playerUid, 
