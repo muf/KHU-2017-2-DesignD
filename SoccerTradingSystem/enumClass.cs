@@ -11,6 +11,21 @@ namespace SoccerTradingSystem
     public enum Status { Free, Contract, Lease, Expire, Retire };
     public static class enumClass
     {
+        public static class contractType
+        {
+            public static String Offer = "Offer";
+            public static String Expire = "Expire";
+            public static String Destruct = "Destruct";
+            public static String Decline = "Decline";
+            public static String Under = "Under";
+
+        }
+        public static class tradeType
+        {
+            public static String Lease = "Lease";
+            public static String Belong = "Belong";
+            public static String Offer = "Offer";
+        }
         public static class AccountRetrieveOption
         {
             public static String Global = "global";
@@ -48,6 +63,7 @@ namespace SoccerTradingSystem
             public static String Lease = "Lease";
             public static String Expire = "Expire";
             public static String Retire = "Retire";
+            public static String NearExpire = "NearExpire";
         }
         public static class Position
         {

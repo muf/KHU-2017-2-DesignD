@@ -29,7 +29,20 @@ namespace SoccerTradingSystem
             //매니져_회원가입_시나리오();
             //구단_회원가입_시나리오();
             //매니져_회원가입_승인_시나리오();
-            계정_정보조회_시나리오();
+            //계정_정보조회_시나리오();
+            선수_구단_계약_시나리오();
+
+        }
+        public void 선수_구단_계약_시나리오() {
+            SystemAccountHandler sah = new SystemAccountHandler();
+            int clubUid = 7;
+            int playerUid = 1;
+            bool flag = sah.makeContract(clubUid, playerUid, "1", "1", 1, 1, 1);
+
+            if (flag)
+                MessageBox.Show("성공");
+            else
+                MessageBox.Show("실패");
 
         }
         public void 계정_정보조회_시나리오()

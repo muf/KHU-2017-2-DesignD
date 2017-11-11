@@ -47,7 +47,7 @@ namespace SoccerTradingSystem
                 throw e;
             }
         }
-        public bool registerClubAccount( String email, String password, String name, int birth, String contactNumber ){
+        public bool registerClubAccount(String email, String password, String name, int birth, String contactNumber) {
             try
             {
                 queryResult = saDAC.findUser(email);
@@ -71,7 +71,7 @@ namespace SoccerTradingSystem
                 throw e;
             }
         }
-        public bool registerPlayerAccount( String email, String password, String firstName,String middleName, String lastName,int birth, int weight, int height, String position)
+        public bool registerPlayerAccount(String email, String password, String firstName, String middleName, String lastName, int birth, int weight, int height, String position)
         {
             try
             {
@@ -121,9 +121,9 @@ namespace SoccerTradingSystem
         public List<Player> retrievePlayerData(String keyword)
         {
             List<Player> players = new List<Player>();
-           
+
             JSON result = saDAC.getPlayersData();
-            for(int i = 0; i < result.Count; i++)
+            for (int i = 0; i < result.Count; i++)
             {
                 String globalString = "";
                 Dictionary<string, object> data = result[i];
@@ -139,16 +139,45 @@ namespace SoccerTradingSystem
                 player.firstName = data["firstName"].ToString();
                 player.middleName = data["middleName"].ToString();
                 player.lastName = data["lastName"].ToString();
-                player.position= data["position"].ToString();
+                player.position = data["position"].ToString();
                 player.status = data["status"].ToString();
 
-                globalString += player.email + player.uid + +player.birth+player.firstName+player.middleName + player.lastName + player.position + player.status + player.playerId;
+                globalString += player.email + player.uid + +player.birth + player.firstName + player.middleName + player.lastName + player.position + player.status + player.playerId;
                 globalString.Replace(" ", "");
-                if(globalString.IndexOf(keyword) != -1){
+                if (globalString.IndexOf(keyword) != -1)
+                {
                     players.Add(player);
                 }
             }
             return players;
+        }
+        public Player retrievePlayerData(int uid)
+        {
+            JSON result = saDAC.getPlayersData(uid);
+            if(result.Count > 0)
+            {
+                Dictionary<string, object> data = result[0];
+                bool auth = data["authenticated"].ToString() == "True" ? true : false;
+                bool logined = data["logined"].ToString() == "True" ? true : false;
+                Player player = new Player(data["email"].ToString(), data["password"].ToString(), auth, logined);
+                player.weight = Convert.ToInt32(data["weight"]);
+                player.height = Convert.ToInt32(data["height"]);
+                player.birth = Convert.ToInt32(data["birth"]);
+                player.playerId = Convert.ToInt32(data["pid"]);
+                player.clientId = Convert.ToInt32(data["cid"]);
+                player.uid = Convert.ToInt32(data["uid"]);
+                player.firstName = data["firstName"].ToString();
+                player.middleName = data["middleName"].ToString();
+                player.lastName = data["lastName"].ToString();
+                player.position = data["position"].ToString();
+                player.status = data["status"].ToString();
+
+                return player;
+            }
+            else
+            {
+                return null;
+            }
         }
         public List<Club> retrieveClubData(String keyword)
         {
@@ -177,6 +206,29 @@ namespace SoccerTradingSystem
             }
             return clubs;
         }
+        public Club retrieveClubData(int uid)
+        {
+            JSON result = saDAC.getClubsData();
+            if(result.Count>0)
+            {
+                Dictionary<string, object> data = result[0];
+                bool auth = data["authenticated"].ToString() == "True" ? true : false;
+                bool logined = data["logined"].ToString() == "True" ? true : false;
+                Club club = new Club(data["email"].ToString(), data["password"].ToString(), auth, logined);
+                club.clientId = Convert.ToInt32(data["clientId"]);
+                club.clubId = Convert.ToInt32(data["cid"]);
+                club.uid = Convert.ToInt32(data["uid"]);
+                club.birth = Convert.ToInt32(data["birth"]);
+                club.name = data["name"].ToString();
+                club.contactNumber = data["contactNumber"].ToString();
+
+                return club;
+            }
+            else
+            {
+                return null;
+            }
+        }
         public List<Manager> retrieveManagerData(String keyword)
         {
             List<Manager> managers = new List<Manager>();
@@ -199,6 +251,64 @@ namespace SoccerTradingSystem
                 }
             }
             return managers;
+        }
+        public Manager retrieveManagerData(int uid)
+        {
+            JSON result = saDAC.getManagersData();
+
+            if (result.Count > 0)
+            {
+                Dictionary<string, object> data = result[0];
+                bool auth = data["authenticated"].ToString() == "True" ? true : false;
+                bool logined = data["logined"].ToString() == "True" ? true : false;
+                Manager manager = new Manager(data["email"].ToString(), data["password"].ToString(), data["name"].ToString(), data["telNumber"].ToString(), auth, logined);
+                manager.managerId = Convert.ToInt32(data["mid"]);
+                manager.uid = Convert.ToInt32(data["uid"]);
+
+                return manager;
+            }
+            else
+            {
+                return null;
+            }
+        }
+        public List<User> retrieveUserData(String keyword)
+        {
+            List<User> users = new List<User>();
+            JSON result = saDAC.getUserData();
+            for (int i = 0; i < result.Count; i++)
+            {
+                String globalString = "";
+                Dictionary<string, object> data = result[i];
+                bool auth = data["authenticated"].ToString() == "True" ? true : false;
+                bool logined = data["logined"].ToString() == "True" ? true : false;
+                User user = new User(data["email"].ToString(), data["password"].ToString(), auth, logined);
+                user.uid = Convert.ToInt32(data["uid"]);
+                globalString += user.email + user.uid;
+                globalString.Replace(" ", "");
+                if (globalString.IndexOf(keyword) != -1)
+                {
+                    users.Add(user);
+                }
+            }
+            return users;
+
+        }
+        public User retrieveUserData(int uid)
+        {
+            JSON result = saDAC.getUserData();
+            if (result.Count > 0) {
+                Dictionary<string, object> data = result[0];
+                bool auth = data["authenticated"].ToString() == "True" ? true : false;
+                bool logined = data["logined"].ToString() == "True" ? true : false;
+                User user = new User(data["email"].ToString(), data["password"].ToString(), auth, logined);
+                user.uid = Convert.ToInt32(data["uid"]);
+
+                return user;
+            }
+            else{
+                return null;
+            }
         }
         public List<User> retrieveUnauthedUserData(String keyword)
         {
@@ -223,27 +333,32 @@ namespace SoccerTradingSystem
             return users;
 
         }
-        public List<User> retrieveUserData(String keyword)
+        // 임시 함수
+        public bool makeContract(int clubUid, int playerUid, 
+            String startDate, String endData, int transferFee, int yearlyPay, int penalityFee, 
+            bool leasePossibility = true)
         {
-            List<User> users = new List<User>();
-            JSON result = saDAC.getUserData();
-            for (int i = 0; i < result.Count; i++)
+            try
             {
-                String globalString = "";
-                Dictionary<string, object> data = result[i];
-                bool auth = data["authenticated"].ToString() == "True" ? true : false;
-                bool logined = data["logined"].ToString() == "True" ? true : false;
-                User user = new User(data["email"].ToString(), data["password"].ToString(), auth, logined);
-                user.uid = Convert.ToInt32(data["uid"]);
-                globalString += user.email + user.uid;
-                globalString.Replace(" ", "");
-                if (globalString.IndexOf(keyword) != -1)
-                {
-                    users.Add(user);
-                }
+                int clubId = retrieveClubData(clubUid).clubId;
+                int playerId = retrievePlayerData(playerUid).playerId;
+                Contract contract = new Contract(clubId, playerId, startDate, endData, transferFee, yearlyPay, penalityFee, leasePossibility);
+                //sah.addContractData(contract);
+                return true;
+            }catch(Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message.ToString());
+                return false;
             }
-            return users;
+            // 선수,구단 조합인지 체크
+            String contractType = enumClass.contractType.Offer;
+            String tradeType = enumClass.tradeType.Offer;
+
 
         }
+        public void accepctContract()
+        {
+
+        } 
     }
 }

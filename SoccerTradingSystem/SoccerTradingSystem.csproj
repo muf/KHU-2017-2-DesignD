@@ -64,6 +64,7 @@
     <Compile Include="BankAccountAuth.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="Club.cs" />
+    <Compile Include="Contract.cs" />
     <Compile Include="DBGenerator.cs" />
     <Compile Include="enumClass.cs" />
     <Compile Include="localData.cs" />
