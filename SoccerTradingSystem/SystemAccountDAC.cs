@@ -43,6 +43,8 @@ namespace SoccerTradingSystem
 
             return queryResult;
         }
+
+        // add
         public void addPlayerData(Player player)
         {
             //query = "begin; ";
@@ -85,9 +87,26 @@ namespace SoccerTradingSystem
             System.Console.WriteLine(query);
             queryResult = conn.query(query);
         }
+        public void addContractData(Contract contract)
+        {
+            //query = "begin; ";
+            //query = $"INSERT INTO {userTable} (`email`, `password`, `type`) VALUES ('{player.email}', '{player.password}','Client');  ";
+            System.Diagnostics.Debug.WriteLine(query);
+            System.Diagnostics.Trace.WriteLine(query);
+            System.Console.WriteLine(query);
+            queryResult = conn.query(query);
+
+        }
+        // get
         public JSON getPlayersData()
         {
             query = "SELECT * from (SELECT user.*, client.cid, client.type as client_type from user INNER JOIN client ON user.uid = client.uid) as CT INNER JOIN player ON player.uid = CT.uid";
+            queryResult = conn.query(query);
+            return queryResult;
+        }
+        public JSON getPlayersData(int uid)
+        {
+            query = $"SELECT * from (SELECT user.*, client.cid, client.type as client_type from user INNER JOIN client ON user.uid = client.uid) as CT INNER JOIN player ON player.uid = CT.uid where player.uid={uid}";
             queryResult = conn.query(query);
             return queryResult;
         }
@@ -97,15 +116,21 @@ namespace SoccerTradingSystem
             queryResult = conn.query(query);
             return queryResult;
         }
+        public JSON getClubsData(int uid)
+        {
+            query = $" SELECT* from(SELECT user.*, client.cid as clientId, client.type as client_type from user INNER JOIN client ON user.uid = client.uid) as CT INNER JOIN club ON club.uid = CT.uid where club.uid={uid}";
+            queryResult = conn.query(query);
+            return queryResult;
+        }
         public JSON getManagersData()
         {
             query = "SELECT user.*, manager.mid, manager.name, manager.telNumber from user INNER JOIN manager ON user.uid = manager.uid";
             queryResult = conn.query(query);
             return queryResult;
         }
-        public JSON getUnauthedUserData()
+        public JSON getManagersData(int uid)
         {
-            query = "SELECT * from user where `authenticated` = 'False'";
+            query = $"SELECT user.*, manager.mid, manager.name, manager.telNumber from user INNER JOIN manager ON user.uid = manager.uid where manager.uid={uid}";
             queryResult = conn.query(query);
             return queryResult;
         }
@@ -115,6 +140,17 @@ namespace SoccerTradingSystem
             queryResult = conn.query(query);
             return queryResult;
         }
-
+        public JSON getUserData(int uid)
+        {
+            query = $"SELECT * from user WHERE `uid`={uid}";
+            queryResult = conn.query(query);
+            return queryResult;
+        }
+        public JSON getUnauthedUserData()
+        {
+            query = "SELECT * from user where `authenticated` = 'False'";
+            queryResult = conn.query(query);
+            return queryResult;
+        }
     }
 }
