@@ -26,7 +26,17 @@ namespace SoccerTradingSystem.Views
 
         private void OnWindowLoaded(object sender, RoutedEventArgs e)
         {
-
+            if (App.cookie != null)
+            {
+                if (App.cookie.userType == "Club")
+                {
+                    PlayerOfferBtn.Visibility = System.Windows.Visibility.Visible;
+                }
+                else
+                {
+                    PlayerOfferBtn.Visibility = System.Windows.Visibility.Collapsed;
+                }
+            }
         }
     }
 }
