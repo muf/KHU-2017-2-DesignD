@@ -112,11 +112,23 @@ namespace SoccerTradingSystem
                 cookie.email = email;
                 cookie.authenticated = authenticated == "True" ? true : false;
                 cookie.userType = userType;
-
+                cookie.clientType = getClientType(cookie.uid);
                 return cookie; // 정상적인 경우 cookie 셋팅 후 전달
             }
             else
                 return null;
+        }
+        public String getClientType(int uid)
+        {
+            JSON result = saDAC.getAccountData(uid);
+            if(queryResult.Count == 0)
+            {
+                return "NONE";
+            }
+            else
+            {
+                return result[0]["client_type"].ToString();
+            }
         }
         public List<Player> retrievePlayerData(String keyword)
         {
@@ -343,7 +355,7 @@ namespace SoccerTradingSystem
                 int clubId = retrieveClubData(clubUid).clubId;
                 int playerId = retrievePlayerData(playerUid).playerId;
                 Contract contract = new Contract(clubId, playerId, startDate, endData, transferFee, yearlyPay, penalityFee, leasePossibility);
-                //sah.addContractData(contract);
+                saDAC.addContractData(contract);
                 return true;
             }catch(Exception e)
             {

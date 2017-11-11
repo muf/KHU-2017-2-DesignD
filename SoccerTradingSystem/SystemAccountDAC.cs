@@ -90,14 +90,37 @@ namespace SoccerTradingSystem
         public void addContractData(Contract contract)
         {
             //query = "begin; ";
-            //query = $"INSERT INTO {userTable} (`email`, `password`, `type`) VALUES ('{player.email}', '{player.password}','Client');  ";
+            query = $"INSERT INTO {userTable} (`email`, `password`, `type`) VALUES ('{contract.clubId}', '{contract.playerId}', '{contract.playerId}'"
+                +$"'{contract.playerId}', '{contract.playerId}', '{contract.playerId}', '{contract.playerId}', '{contract.playerId}', '{contract.playerId}'"
+                +");  ";
             System.Diagnostics.Debug.WriteLine(query);
             System.Diagnostics.Trace.WriteLine(query);
             System.Console.WriteLine(query);
-            queryResult = conn.query(query);
+            //queryResult = conn.query(query);
 
         }
         // get
+        public JSON getAccountData(int uid)
+        {
+            queryResult = getClubsData(uid);
+            if (queryResult.Count >0) // client인 경우
+            {
+                queryResult = getPlayersData(uid);
+                if(queryResult.Count > 0) // player인 경우
+                {
+                    return queryResult;
+                }
+                else // Club인 경우 혹은 알수 없는 경우
+                {
+                    return getClubsData(uid); // Club인 경우 혹은 알수 없는 경우
+                }
+            }
+            else // manager인 경우 혹은 알수 없는 경우
+            {
+                return getClubsData(uid);
+            }
+        }
+
         public JSON getPlayersData()
         {
             query = "SELECT * from (SELECT user.*, client.cid, client.type as client_type from user INNER JOIN client ON user.uid = client.uid) as CT INNER JOIN player ON player.uid = CT.uid";

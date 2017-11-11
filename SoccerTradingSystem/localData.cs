@@ -9,7 +9,8 @@ namespace SoccerTradingSystem
     public class LocalData
     {
         public  int uid;
-        public  String userType;
+        public String userType;
+        public String clientType;
         public  String email;
         public bool authenticated;
     }
