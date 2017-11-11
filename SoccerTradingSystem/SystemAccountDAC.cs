@@ -180,10 +180,36 @@ namespace SoccerTradingSystem
         public JSON getContractData(int uid)
         {
             queryResult = getAccountData(uid);
+            if (queryResult.Count > 0)
+            {
+                if (queryResult[0]["type"].ToString() == enumClass.UserType.Manager) // Manager 인 경우 // 불가능한 path
+                {
+                    return new JSON();
 
-            query = $"SELECT * from user WHERE `uid`={uid}";
-            queryResult = conn.query(query);
-            return queryResult;
+                }
+                else if (queryResult[0]["client_type"].ToString() == enumClass.UserType.Player) //Player 인 경우
+                {
+                    int pid = Convert.ToInt32(queryResult[0]["pid"]);
+                    query = $"SELECT * from {contractTable} WHERE `pid`={pid}";
+                    queryResult = conn.query(query);
+                    return queryResult;
+                }
+                else if (queryResult[0]["client_type"].ToString() == enumClass.UserType.Club) //Club 인 경우
+                {
+                    int cid = Convert.ToInt32(queryResult[0]["clientId"]); 
+                    query = $"SELECT * from {contractTable} WHERE `cid`={cid}";
+                    queryResult = conn.query(query);
+                    return queryResult;
+                }
+                else
+                {
+                    return new JSON();
+                }
+            }
+            else
+            {
+                return queryResult;
+            }
 
         }
     }
