@@ -29,16 +29,16 @@
                     <RowDefinition Height="30*"/>
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Row="0" Grid.Column="0" Text="Name"/>
-                <TextBlock Grid.Row="1" Grid.Column="0" Text="address"/>
-                <TextBlock Grid.Row="2" Grid.Column="0" Text="position"/>
-                <TextBlock Grid.Row="3" Grid.Column="0" Text="기타 등등"/>
-                <TextBlock Grid.Row="4" Grid.Column="0" Text="Name"/>
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="Birth"/>
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="Position"/>
+                <TextBlock Grid.Row="3" Grid.Column="0" Text="Weight"/>
+                <TextBlock Grid.Row="4" Grid.Column="0" Text="Height"/>
 
-                <TextBlock Grid.Row="0" Grid.Column="1" Text="load"/>
-                <TextBlock Grid.Row="1" Grid.Column="1" Text="load"/>
-                <TextBlock Grid.Row="2" Grid.Column="1" Text="load"/>
-                <TextBlock Grid.Row="3" Grid.Column="1" Text="load"/>
-                <TextBlock Grid.Row="4" Grid.Column="1" Text="load"/>
+                <TextBlock Grid.Row="0" Grid.Column="1" Name="nameBlock"/>
+                <TextBlock Grid.Row="1" Grid.Column="1" Name="birthBlock"/>
+                <TextBlock Grid.Row="2" Grid.Column="1" Name="positionBlock"/>
+                <TextBlock Grid.Row="3" Grid.Column="1" Name="weightBlock"/>
+                <TextBlock Grid.Row="4" Grid.Column="1" Name="heightBlock"/>
             </Grid>
         </Grid>
         <Button Visibility="Hidden" Grid.Row="1" Content="Test Offer Button (Club)" Name="PlayerOfferBtn" Margin="48,10,42,125" Click="PlayerOfferBtn_Click"></Button>

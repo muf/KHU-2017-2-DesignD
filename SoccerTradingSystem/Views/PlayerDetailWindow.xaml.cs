@@ -17,11 +17,15 @@ namespace SoccerTradingSystem.Views
     /// <summary>
     /// PlayerDetailWindow.xaml에 대한 상호 작용 논리
     /// </summary>
+
     public partial class PlayerDetailWindow : Window
     {
-        public PlayerDetailWindow()
+        private int curPlayerUid;
+
+        public PlayerDetailWindow(int uid)
         {
             InitializeComponent();
+            curPlayerUid = uid;
         }
 
         private void OnWindowLoaded(object sender, RoutedEventArgs e)
@@ -37,11 +41,26 @@ namespace SoccerTradingSystem.Views
                     PlayerOfferBtn.Visibility = System.Windows.Visibility.Hidden;
                 }
             }
+
+            SystemAccountHandler sah = new SystemAccountHandler();
+            Player curPlayer = sah.retrievePlayerData(curPlayerUid);
+
+            string pName = curPlayer.firstName + curPlayer.middleName +" "+ curPlayer.lastName;
+            string pBirth = curPlayer.birth.ToString();
+            string pPosition = curPlayer.position;
+            string pWeight = curPlayer.weight.ToString();
+            string pHeight = curPlayer.height.ToString();
+
+            nameBlock.Text = pName;
+            birthBlock.Text = pBirth;
+            positionBlock.Text = pPosition;
+            weightBlock.Text = pWeight;
+            heightBlock.Text = pHeight;
         }
 
         private void PlayerOfferBtn_Click(object sender, RoutedEventArgs e)
         {
-            MakeContractWindow _MakeContractWindow = new MakeContractWindow();
+            MakeContractWindow _MakeContractWindow = new MakeContractWindow(curPlayerUid);
             _MakeContractWindow.Show();
         }
     }

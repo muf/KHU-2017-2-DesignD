@@ -24,7 +24,7 @@
                     <ComboBoxItem Content="Name"/>
                 </ComboBox>
                 <TextBox Grid.Column="2" Name="contractionSearchBox"/>
-                <Button Grid.Column="3" Content="Search" Name="contractionSearchBtn"/>
+                <Button Grid.Column="3" Content="Search" Name="contractionSearchBtn" Click="contractionSearchBtn_Click"/>
             </Grid>
             <DataGrid GridLinesVisibility="None"  IsReadOnly="True" AutoGenerateColumns="False"  Height="335" HorizontalAlignment="Left" Margin="38,56,0,0" x:Name="contractionDataGrid" VerticalAlignment="Top" Width="634">
                 <DataGrid.RowStyle>

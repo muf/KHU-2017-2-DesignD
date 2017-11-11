@@ -26,45 +26,62 @@ namespace SoccerTradingSystem.Views
             InitializeComponent();
         }
 
+        private void OnPageLoad(object sender, RoutedEventArgs e)
+        {
+            ContractionsDataGridSetting("");
+        }
+
+        private void Contraction_Row_DoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            MessageBox.Show("double clicked");
+        }
+
         // 계약 그리드 구성
         public void ContractionsDataGridSetting(string context)
         {
             SystemAccountHandler sah = new SystemAccountHandler();
-            //List<Player> list = sah.retrievePlayerData(context);
+            List<Contract> list = sah.retrieveContractData(App.cookie.uid, context);
 
             // DataTable 생성
             DataTable dataTable = new DataTable();
 
-            // 컬럼 생성
-            dataTable.Columns.Add("uid", typeof(string));
+            dataTable.Columns.Add("contractionid", typeof(string));
+            dataTable.Columns.Add("cid", typeof(string));
             dataTable.Columns.Add("pid", typeof(string));
-            dataTable.Columns.Add("email", typeof(string));
-            dataTable.Columns.Add("name", typeof(string));
-            dataTable.Columns.Add("birth", typeof(string));
-            dataTable.Columns.Add("position", typeof(string));
-            dataTable.Columns.Add("weight", typeof(string));
-            dataTable.Columns.Add("height", typeof(string));
-            dataTable.Columns.Add("status", typeof(string));
-            dataTable.Columns.Add("authenticated", typeof(string));
+            dataTable.Columns.Add("trade_type", typeof(string));
+            dataTable.Columns.Add("contract_type", typeof(string));
+            dataTable.Columns.Add("start_date", typeof(string));
+            dataTable.Columns.Add("end_date", typeof(string));
+            dataTable.Columns.Add("lease", typeof(string));
+            dataTable.Columns.Add("penalty_fee", typeof(string));
+            dataTable.Columns.Add("transfer_fee", typeof(string));
+            dataTable.Columns.Add("yearly_pay", typeof(string));
 
             // 데이터 생성
             for (int i = 0; i < list.Count; i++)
             {
-                string uid = Convert.ToString(list[i].uid);
+                string contractid = Convert.ToString(list[i].contractId);
+                string cid = Convert.ToString(list[i].clubId);
                 string pid = Convert.ToString(list[i].playerId);
-                string email = list[i].email;
-                string name = list[i].firstName + list[i].middleName + list[i].lastName;
-                string birth = Convert.ToString(list[i].birth);
-                string postion = Convert.ToString(list[i].position);
-                string weight = Convert.ToString(list[i].weight);
-                string height = Convert.ToString(list[i].height);
-                string status = list[i].status;
-                string authenticated = (list[i].authenticated) ? "TRUE" : "FALSE";
-                dataTable.Rows.Add(new string[] { uid, pid, email, name, birth, postion, weight, height, status, authenticated });
+                string trade_type = list[i].tradeType;
+                string contract_type = list[i].contractType;
+                string start_date = list[i].startDate;
+                string end_date = list[i].endDate;
+                string lease = (list[i].leasePossibility) ? "TRUE" : "FALSE";
+                string penalty_fee = Convert.ToString(list[i].penaltyFee);
+                string transfer_fee = Convert.ToString(list[i].transferFee);
+                string yearly_pay = Convert.ToString(list[i].yearlyPay);
+
+                dataTable.Rows.Add(new string[] { contractid, cid, pid, trade_type, contract_type, start_date, end_date, lease, penalty_fee, transfer_fee, yearly_pay });
             }
 
             // DataTable의 Default View를 바인딩하기
-            playerDataGrid.ItemsSource = dataTable.DefaultView;
+            contractionDataGrid.ItemsSource = dataTable.DefaultView;
+        }
+
+        private void contractionSearchBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ContractionsDataGridSetting(contractionSearchBox.Text);
         }
     }
 }

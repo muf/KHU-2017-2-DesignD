@@ -19,16 +19,18 @@ namespace SoccerTradingSystem.Views
     /// </summary>
     public partial class MakeContractWindow : Window
     {
-        public MakeContractWindow()
+        public MakeContractWindow(int uid)
         {
             InitializeComponent();
 
             if (App.cookie.type == "Club")
             {
                 clubIdBox.Text = App.cookie.email;
+                playerIdBox.Text = uid.ToString();
             }
             else if (App.cookie.type == "Player")
             {
+                clubIdBox.Text = uid.ToString();
                 playerIdBox.Text = App.cookie.email;
             }
             else

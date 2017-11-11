@@ -69,5 +69,11 @@ namespace SoccerTradingSystem.Views
             club_list _club_list = new club_list();
             content_frame.Navigate(_club_list);
         }
+
+        private void ContractionBtn_Click(object sender, RoutedEventArgs e)
+        {
+            contraction_list _contraction_list = new contraction_list();
+            content_frame.Navigate(_contraction_list);
+        }
     }
 }

@@ -19,25 +19,44 @@ namespace SoccerTradingSystem.Views
     /// </summary>
     public partial class ClubDetailWindow : Window
     {
-        public ClubDetailWindow()
+        private int curClubUid;
+
+        public ClubDetailWindow(int uid)
         {
             InitializeComponent();
-        }
+            curClubUid = uid;
+    }
 
         private void OnWindowLoaded(object sender, RoutedEventArgs e)
         {
             if (App.cookie != null)
             {
-                ClubOfferBtn.Visibility = System.Windows.Visibility.Visible;
-                //if (App.cookie.userType == "Club")
-                //{
-                //    PlayerOfferBtn.Visibility = System.Windows.Visibility.Visible;
-                //}
-                //else
-                //{
-                //    PlayerOfferBtn.Visibility = System.Windows.Visibility.Collapsed;
-                //}
+                if (App.cookie.type == "Player")
+                {
+                    ClubOfferBtn.Visibility = System.Windows.Visibility.Visible;
+                }
+                else
+                {
+                    ClubOfferBtn.Visibility = System.Windows.Visibility.Hidden;
+                }
+
+                SystemAccountHandler sah = new SystemAccountHandler();
+                Club curClub = sah.retrieveClubData(curClubUid);
+
+                string cName = curClub.name;
+                string cBirth = curClub.birth.ToString();
+                string cContactNumber = curClub.contactNumber;
+
+                nameBlock.Text = cName;
+                birthBlock.Text = cBirth;
+                contactNumberBlock.Text = cContactNumber;
             }
+        }
+
+        private void ClubOfferBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MakeContractWindow _MakeContractWindow = new MakeContractWindow(curClubUid);
+            _MakeContractWindow.Show();
         }
     }
 }
