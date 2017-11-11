@@ -397,10 +397,14 @@ namespace SoccerTradingSystem
                 return false;
             }
         }
-        public void accepctContract()
+        public bool accecptContract()
         {
-
+            return true;
         } 
-    
+        public bool declineContract()
+        {
+            return true;
+        }   
+         
     }
 }
