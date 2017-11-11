@@ -404,7 +404,17 @@ namespace SoccerTradingSystem
         public bool declineContract()
         {
             return true;
-        }   
-         
+        }
+        public bool destructContract()
+        {
+
+            return true;
+        }
+        public bool deleteContract()
+        {
+
+            return true;
+        }
+
     }
 }
