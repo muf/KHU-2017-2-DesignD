@@ -354,6 +354,7 @@ namespace SoccerTradingSystem
             {
                 int clubId = retrieveClubData(clubUid).clubId;
                 int playerId = retrievePlayerData(playerUid).playerId;
+                // 선수,구단 조합인지 체크
                 Contract contract = new Contract(clubId, playerId, startDate, endData, transferFee, yearlyPay, penalityFee, leasePossibility);
                 saDAC.addContractData(contract);
                 return true;
@@ -362,11 +363,6 @@ namespace SoccerTradingSystem
                 System.Diagnostics.Debug.WriteLine(e.Message.ToString());
                 return false;
             }
-            // 선수,구단 조합인지 체크
-            String contractType = enumClass.contractType.Offer;
-            String tradeType = enumClass.tradeType.Offer;
-
-
         }
         public void accepctContract()
         {

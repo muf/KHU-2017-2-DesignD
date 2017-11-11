@@ -83,6 +83,9 @@
     <Compile Include="Views\game_list.xaml.cs">
       <DependentUpon>game_list.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\home.xaml.cs">
+      <DependentUpon>home.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
@@ -103,6 +106,9 @@
     </Compile>
     <Compile Include="Views\main.xaml.cs">
       <DependentUpon>main.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MakeContractWindow.xaml.cs">
+      <DependentUpon>MakeContractWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PlayerDetailWindow.xaml.cs">
       <DependentUpon>PlayerDetailWindow.xaml</DependentUpon>
@@ -175,6 +181,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\home.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\LoginWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -188,6 +198,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\main.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MakeContractWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

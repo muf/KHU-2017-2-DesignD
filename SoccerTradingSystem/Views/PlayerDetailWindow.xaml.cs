@@ -28,16 +28,21 @@ namespace SoccerTradingSystem.Views
         {
             if (App.cookie != null)
             {
-                PlayerOfferBtn.Visibility = System.Windows.Visibility.Visible;
-                //if (App.cookie.userType == "Club")
-                //{
-                //    PlayerOfferBtn.Visibility = System.Windows.Visibility.Visible;
-                //}
-                //else
-                //{
-                //    PlayerOfferBtn.Visibility = System.Windows.Visibility.Collapsed;
-                //}
+                if (App.cookie.type == "Club")
+                {
+                    PlayerOfferBtn.Visibility = System.Windows.Visibility.Visible;
+                }
+                else
+                {
+                    PlayerOfferBtn.Visibility = System.Windows.Visibility.Hidden;
+                }
             }
+        }
+
+        private void PlayerOfferBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MakeContractWindow _MakeContractWindow = new MakeContractWindow();
+            _MakeContractWindow.Show();
         }
     }
 }

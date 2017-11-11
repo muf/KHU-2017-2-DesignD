@@ -20,8 +20,8 @@ namespace SoccerTradingSystem.Views
     /// </summary>
     public partial class top_panel : Page
     {
-        private Page main;
-        public top_panel(Page _main)
+        private main main;
+        public top_panel(main _main)
         {
             InitializeComponent();
             main = _main;
@@ -51,6 +51,7 @@ namespace SoccerTradingSystem.Views
             topLoginedEmail.Text ="Unlogined";
 
             main.NavigationService.Refresh();
+            main.returnToHome();
         }
 
         private void login_Click(object sender, RoutedEventArgs e)

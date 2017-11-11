@@ -41,6 +41,11 @@ namespace SoccerTradingSystem.Views
             }
         }
 
+        public void returnToHome()
+        {
+            content_frame.Navigate(new home());
+        }
+
         private void gameInfoBtn_Click(object sender, RoutedEventArgs e)
         {
             game_list _game_list = new game_list();

@@ -1,0 +1,29 @@
+﻿<Window x:Class="SoccerTradingSystem.Views.MakeContractWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SoccerTradingSystem.Views"
+        mc:Ignorable="d"
+        Title="MakeContractWindow" Height="300" Width="300"
+        WindowStartupLocation="CenterScreen"
+        >
+    <Grid>
+        <TextBlock x:Name="clubIdBlock" HorizontalAlignment="Left" Height="20" Margin="32,26,0,0" TextWrapping="Wrap" Text="clubid(delete)" VerticalAlignment="Top" Width="69"/>
+        <TextBlock x:Name="playerIdBlock" HorizontalAlignment="Left" Height="22" Margin="32,51,0,0" TextWrapping="Wrap" Text="playerid(delete?)" VerticalAlignment="Top" Width="69"/>
+        <TextBlock x:Name="startDateBlock" HorizontalAlignment="Left" Height="19" Margin="32,78,0,0" TextWrapping="Wrap" Text="startDate" VerticalAlignment="Top" Width="69"/>
+        <TextBlock x:Name="endDateBlock" HorizontalAlignment="Left" Height="23" Margin="31,102,0,0" TextWrapping="Wrap" Text="endDate" VerticalAlignment="Top" Width="70"/>
+        <TextBlock x:Name="tranferFeeBlock" HorizontalAlignment="Left" Height="22" Margin="32,125,0,0" TextWrapping="Wrap" Text="tranferFee" VerticalAlignment="Top" Width="71"/>
+        <TextBlock x:Name="yearlyPayBlock" HorizontalAlignment="Left" Height="22" Margin="32,147,0,0" TextWrapping="Wrap" Text="yearlyPay" VerticalAlignment="Top" Width="71"/>
+        <TextBlock x:Name="penaltyBlock" HorizontalAlignment="Left" Height="22" Margin="32,170,0,0" TextWrapping="Wrap" Text="penalty" VerticalAlignment="Top" Width="71"/>
+
+        <TextBox x:Name="clubIdBox" HorizontalAlignment="Left" Height="29" Margin="137,17,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="68"/>
+        <TextBox x:Name="playerIdBox" HorizontalAlignment="Left" Height="22" Margin="137,51,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="68"/>
+        <TextBox x:Name="startDateBox" HorizontalAlignment="Left" Height="24" Margin="137,73,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="68"/>
+        <TextBox x:Name="endDateBox" HorizontalAlignment="Left" Height="23" Margin="137,102,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="68"/>
+        <TextBox x:Name="tranferFeeBox" HorizontalAlignment="Left" Height="22" Margin="137,125,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="68"/>
+        <TextBox x:Name="yearlyPayBox" HorizontalAlignment="Left" Height="23" Margin="137,152,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="68"/>
+        <TextBox x:Name="penaltyBox" HorizontalAlignment="Left" Height="23" Margin="137,179,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="68"/>
+        <Button x:Name="ContractBtn" Content="Contract" HorizontalAlignment="Left" Height="34" Margin="79,208,0,0" VerticalAlignment="Top" Width="126" Click="ContractBtn_Click"/>
+    </Grid>
+</Window>
