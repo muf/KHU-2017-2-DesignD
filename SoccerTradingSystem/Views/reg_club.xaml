@@ -30,7 +30,7 @@
         <TextBlock  Grid.Row="3" Grid.Column="0" Text="Birth" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
         <TextBlock  Grid.Row="4" Grid.Column="0" Text="Contact Tel" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
 
-        <TextBox Grid.Row="0" Grid.Column="1" Name="emailBox" Margin="0,0,-118,0"></TextBox>
+        <TextBox Grid.Row="0" Grid.Column="1" Name="emailBox" Margin="0,0,-118,0" LostFocus="emailBox_Leave"></TextBox>
         <PasswordBox Grid.Row="1" Grid.Column="1" Name="passwordBox" Margin="0,0,-118,0"></PasswordBox>
         <TextBox Grid.Row="2" Grid.Column="1" Name="nameBox" Margin="0,0,-118,0"></TextBox>
         <TextBox Grid.Row="3" Grid.Column="1" Name="birthBox" Margin="0,0,-118,0"></TextBox>

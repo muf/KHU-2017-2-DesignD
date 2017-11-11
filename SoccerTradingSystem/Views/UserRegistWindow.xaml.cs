@@ -64,15 +64,15 @@ namespace SoccerTradingSystem.Views
 
         private void regBtn_Click(object sender, RoutedEventArgs e)
         {
-            string email = regPPage.emailBox.Text;
-            string passsword = regPPage.passwordBox.Password;
-            string firstName = regPPage.firstnameBox.Text;
-            string middleName = regPPage.middlenameBox.Text;
-            string lastName = regPPage.lastnameBox.Text;
-            string birth = regPPage.birthBox.Text;
-            string postion = regPPage.positionBox.Text;
-            string height = regPPage.heightBox.Text;
-            string weight = regPPage.weightBox.Text;
+            //string email = regPPage.emailBox.Text;
+            //string passsword = regPPage.passwordBox.Password;
+            //string firstName = regPPage.firstnameBox.Text;
+            //string middleName = regPPage.middlenameBox.Text;
+            //string lastName = regPPage.lastnameBox.Text;
+            //string birth = regPPage.birthBox.Text;
+            //string postion = regPPage.positionBox.Text;
+            //string height = regPPage.heightBox.Text;
+            //string weight = regPPage.weightBox.Text;
         }
 
 

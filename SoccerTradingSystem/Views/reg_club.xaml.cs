@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Text.RegularExpressions;
 
 namespace SoccerTradingSystem.Views
 {
@@ -45,6 +46,15 @@ namespace SoccerTradingSystem.Views
 
             // 윈도우 닫음
             regWindow.Close();
+        }
+
+        private void emailBox_Leave(object sender, System.EventArgs e)
+        {
+            bool emailCheck = Regex.IsMatch(emailBox.Text, @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$");
+            if (!emailCheck)
+            {
+                MessageBox.Show("틀린 이메일 주소");
+            }
         }
     }
 }

@@ -33,7 +33,7 @@ namespace SoccerTradingSystem.Views
             string password_string = passwordBox.Password;
 
             // Validation Check (null)
-            if(email_string == "" || password_string == "")
+            if(email_string.Trim() == "" || password_string.Trim() == "")
             {
                 MessageBox.Show("Null Error");
                 return;
