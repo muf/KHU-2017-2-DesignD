@@ -17,6 +17,7 @@ namespace SoccerTradingSystem
         private static String playerTable = "Player";
         private static String clubTable = "Club";
         private static String ManagerTable = "Manager";
+        private static String contractTable = "Contract";
 
         private String query;
         JSON queryResult = new JSON();
@@ -90,17 +91,18 @@ namespace SoccerTradingSystem
         public void addContractData(Contract contract)
         {
             //query = "begin; ";
-            query = $"INSERT INTO {userTable} (`email`, `password`, `type`) VALUES ('{contract.clubId}', '{contract.playerId}', '{contract.playerId}'"
-                +$"'{contract.playerId}', '{contract.playerId}', '{contract.playerId}', '{contract.playerId}', '{contract.playerId}', '{contract.playerId}'"
+            query = $"INSERT INTO {contractTable} VALUES ( '0',  '{contract.clubId}', '{contract.playerId}', '{contract.tradeType}',"
+                +$"'{contract.contractType}', '{contract.startDate}', '{contract.endDate}', '{contract.leasePossibility}', '{contract.penaltyFee}', '{contract.transferFee}', '{contract.yearlyPay}'"
                 +");  ";
             System.Diagnostics.Debug.WriteLine(query);
             System.Diagnostics.Trace.WriteLine(query);
             System.Console.WriteLine(query);
-            //queryResult = conn.query(query);
+            queryResult = conn.query(query);
 
         }
+
         // get
-        public JSON getAccountData(int uid)
+        public JSON getAccountData(int uid) // 빈 객체, client, player, club중 하나를 반환
         {
             queryResult = getManagersData(uid);
             if (queryResult.Count == 0) // client인 경우
@@ -174,6 +176,15 @@ namespace SoccerTradingSystem
             query = "SELECT * from user where `authenticated` = 'False'";
             queryResult = conn.query(query);
             return queryResult;
+        }
+        public JSON getContractData(int uid)
+        {
+            queryResult = getAccountData(uid);
+
+            query = $"SELECT * from user WHERE `uid`={uid}";
+            queryResult = conn.query(query);
+            return queryResult;
+
         }
     }
 }

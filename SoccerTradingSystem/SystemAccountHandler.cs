@@ -345,6 +345,35 @@ namespace SoccerTradingSystem
             return users;
 
         }
+        public Contract retrieveContractData(int uid)
+        {
+            JSON result = saDAC.getContractData(uid);
+            if (result.Count > 0)
+            {
+                Dictionary<string, object> data = result[0];
+                int clubId = Convert.ToInt32(data["clubId"]);
+                int playerId = Convert.ToInt32(data["playerId"]);
+                String startDate = data["startDate"].ToString();
+                String endDate = data["endDate"].ToString();
+                int transferFee = Convert.ToInt32(data["transferFee"]);
+                int yearlyPay = Convert.ToInt32(data["yearlyPay"]);
+                int penaltyFee = Convert.ToInt32(data["penaltyFee"]);
+                bool leasePossibility = data["leasePossibility"].ToString() == "True" ? true : false;
+                String contractType = data["contractType"].ToString();
+                String tradeType = data["tradeType"].ToString();
+
+                Contract contract = new Contract(clubId, playerId, startDate, endDate, transferFee, yearlyPay, penaltyFee, leasePossibility);
+                contract.contractId = Convert.ToInt32(data["contractId"]);
+                contract.contractType = contractType;
+                contract.tradeType = tradeType;
+
+                return contract;
+            }
+            else
+            {
+                return null;
+            }
+        }
         // 임시 함수
         public bool makeContract(int clubUid, int playerUid, 
             String startDate, String endData, int transferFee, int yearlyPay, int penalityFee, 
@@ -354,6 +383,7 @@ namespace SoccerTradingSystem
             {
                 int clubId = retrieveClubData(clubUid).clubId;
                 int playerId = retrievePlayerData(playerUid).playerId;
+                // 선수,구단 조합인지 체크
                 Contract contract = new Contract(clubId, playerId, startDate, endData, transferFee, yearlyPay, penalityFee, leasePossibility);
                 saDAC.addContractData(contract);
                 return true;
@@ -362,15 +392,11 @@ namespace SoccerTradingSystem
                 System.Diagnostics.Debug.WriteLine(e.Message.ToString());
                 return false;
             }
-            // 선수,구단 조합인지 체크
-            String contractType = enumClass.contractType.Offer;
-            String tradeType = enumClass.tradeType.Offer;
-
-
         }
         public void accepctContract()
         {
 
         } 
+    
     }
 }
