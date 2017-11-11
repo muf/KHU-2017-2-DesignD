@@ -9,6 +9,7 @@
         ResizeMode="NoResize"
         WindowStyle="ThreeDBorderWindow"
         WindowStartupLocation="CenterScreen"
+        Closing="MainWindow_Closing"  
         >
     <Frame NavigationUIVisibility="Hidden" Name="main_frame" Source="main.xaml"/>
 </Window>

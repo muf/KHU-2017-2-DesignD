@@ -11,24 +11,17 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using System.Windows.Navigation;
-using System.ComponentModel;
 
-namespace SoccerTradingSystem
+namespace SoccerTradingSystem.Views
 {
     /// <summary>
-    /// MainWindow.xaml에 대한 상호 작용 논리
+    /// AddGameWindow.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class AddGameWindow : Window
     {
-        public MainWindow()
+        public AddGameWindow()
         {
             InitializeComponent();
-        }
-
-        void MainWindow_Closing(object sender, CancelEventArgs e)
-        {
-            App.Current.Shutdown();
         }
     }
 }

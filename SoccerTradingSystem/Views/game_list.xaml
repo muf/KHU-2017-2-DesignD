@@ -1,4 +1,4 @@
-﻿<Page x:Class="SoccerTradingSystem.Views.club_list"
+﻿<Page x:Class="SoccerTradingSystem.Views.game_list"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,8 +6,10 @@
       xmlns:local="clr-namespace:SoccerTradingSystem.Views"
       mc:Ignorable="d" 
       d:DesignHeight="800" d:DesignWidth="800"
-      Title="club_list"
-      Loaded="OnPageLoad">
+      Title="game_list"
+      Loaded="OnPageLoad"
+      >
+
     <Grid>
         <StackPanel>
             <Grid>
@@ -22,24 +24,24 @@
                     <ComboBoxItem Content="ID"/>
                     <ComboBoxItem Content="Name"/>
                 </ComboBox>
-                <TextBox Grid.Column="2" Name="clubSearchBox"/>
-                <Button Grid.Column="3" Content="Search" Name="clubSearchBtn" Click="clubSearchBtn_Click"/>
+                <TextBox Grid.Column="2" Name="gameSearchBox"/>
+                <Button Grid.Column="3" Content="Search" Name="gameSearchBtn"/>
             </Grid>
 
-            <DataGrid GridLinesVisibility="None"  IsReadOnly="True" AutoGenerateColumns="False"  Height="335" HorizontalAlignment="Left" Margin="38,56,0,0" Name="clubDataGrid" VerticalAlignment="Top" Width="634">
+            <DataGrid GridLinesVisibility="None"  IsReadOnly="True" AutoGenerateColumns="False"  Height="335" HorizontalAlignment="Left" Margin="38,56,0,0" Name="gameDataGrid" VerticalAlignment="Top" Width="634">
                 <DataGrid.RowStyle>
                     <Style TargetType="{x:Type DataGridRow}">
-                        <EventSetter Event="MouseDoubleClick" Handler="Club_Row_DoubleClick"/>
+                        <!--<EventSetter Event="MouseDoubleClick" Handler="Game_Row_DoubleClick"/>-->
                     </Style>
                 </DataGrid.RowStyle>
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="uid" Visibility="Collapsed" Binding="{Binding Path=uid}"/>
-                    <DataGridTextColumn Header="ID" Binding="{Binding Path=cid}"/>
-                    <DataGridTextColumn Header="Name" Binding="{Binding Path=name}"/>
-                    <DataGridTextColumn Header="E-Mail" Binding="{Binding Path=email}"/>
-                    <DataGridTextColumn Header="Birth" Binding="{Binding Path=birth}"/>
-                    <DataGridTextColumn Header="Contact Number" Binding="{Binding Path=contactnumber}"/>
-                    <DataGridTextColumn Header="Authenticated" Binding="{Binding Path=authenticated}"/>
+                    <DataGridTextColumn Header="hometeam" Visibility="Collapsed" Binding="{Binding Path=uid}"/>
+                    <DataGridTextColumn Header="awayteam" Binding="{Binding Path=cid}"/>
+                    <DataGridTextColumn Header="homescore" Binding="{Binding Path=name}"/>
+                    <DataGridTextColumn Header="away score" Binding="{Binding Path=email}"/>
+                    <DataGridTextColumn Header="winner" Binding="{Binding Path=birth}"/>
+                    <DataGridTextColumn Header="date" Binding="{Binding Path=contactnumber}"/>
+                    <DataGridTextColumn Header="time" Binding="{Binding Path=authenticated}"/>
                 </DataGrid.Columns>
             </DataGrid>
         </StackPanel>

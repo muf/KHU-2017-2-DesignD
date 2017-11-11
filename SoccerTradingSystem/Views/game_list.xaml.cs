@@ -10,25 +10,27 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using System.Windows.Navigation;
-using System.ComponentModel;
+using System.Windows.Shapes;
 
-namespace SoccerTradingSystem
+namespace SoccerTradingSystem.Views
 {
     /// <summary>
-    /// MainWindow.xaml에 대한 상호 작용 논리
+    /// game_list.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class game_list : Page
     {
-        public MainWindow()
+        public game_list()
         {
             InitializeComponent();
         }
 
-        void MainWindow_Closing(object sender, CancelEventArgs e)
+        // 페이지가 로드 되었을 때 리뉴
+        private void OnPageLoad(object sender, RoutedEventArgs e)
         {
-            App.Current.Shutdown();
+            //ClubsDataGridSetting("");
         }
     }
+
+
 }

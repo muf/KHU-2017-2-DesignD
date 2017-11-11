@@ -70,8 +70,18 @@
     <Compile Include="localData.cs" />
     <Compile Include="Manager.cs" />
     <Compile Include="MariaDBConnector.cs" />
+    <Compile Include="Views\AddGameWindow.xaml.cs">
+      <DependentUpon>AddGameWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ClubDetailWindow.xaml.cs">
+      <DependentUpon>ClubDetailWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Views\club_list.xaml.cs">
       <DependentUpon>club_list.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\game_list.xaml.cs">
+      <DependentUpon>game_list.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
@@ -149,7 +159,19 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Views\AddGameWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ClubDetailWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\club_list.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\game_list.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

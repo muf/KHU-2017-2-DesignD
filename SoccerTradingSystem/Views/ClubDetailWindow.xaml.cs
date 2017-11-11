@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace SoccerTradingSystem.Views
 {
     /// <summary>
-    /// PlayerDetailWindow.xaml에 대한 상호 작용 논리
+    /// ClubDetailWindow.xaml에 대한 상호 작용 논리
     /// </summary>
-    public partial class PlayerDetailWindow : Window
+    public partial class ClubDetailWindow : Window
     {
-        public PlayerDetailWindow()
+        public ClubDetailWindow()
         {
             InitializeComponent();
         }
@@ -28,7 +28,7 @@ namespace SoccerTradingSystem.Views
         {
             if (App.cookie != null)
             {
-                PlayerOfferBtn.Visibility = System.Windows.Visibility.Visible;
+                ClubOfferBtn.Visibility = System.Windows.Visibility.Visible;
                 //if (App.cookie.userType == "Club")
                 //{
                 //    PlayerOfferBtn.Visibility = System.Windows.Visibility.Visible;

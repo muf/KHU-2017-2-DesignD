@@ -35,18 +35,8 @@ namespace SoccerTradingSystem.Views
         // 클럽 그리드에서 더블 클릭시 메서드 호출 인증을 업데이트함
         private void Club_Row_DoubleClick(object sender, MouseButtonEventArgs e)
         {
-            SystemAccountHandler sah = new SystemAccountHandler();
-            DataRowView row = (DataRowView)clubDataGrid.SelectedItems[0];
-            int uid = Convert.ToInt32((row[0]));
-            if (MessageBox.Show("Authenticated?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
-            {
-                sah.updateUserAuth(uid, false);
-            }
-            else
-            {
-                sah.updateUserAuth(uid, true);
-            }
-            ClubsDataGridSetting("");
+            ClubDetailWindow _ClubDetailWindwo = new ClubDetailWindow();
+            _ClubDetailWindwo.Show();
         }
 
 
