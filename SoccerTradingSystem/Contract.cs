@@ -20,7 +20,6 @@ namespace SoccerTradingSystem
         public String contractType { get; set; } = enumClass.contractType.Offer;
         public String tradeType{ get; set; } = enumClass.contractType.Offer;
 
-
         public Contract(int clubId, int playerId, String startDate, String endDate, int transferFee, int yearlyPay, int penaltyFee, 
             bool leasePossibility = true)
         {
