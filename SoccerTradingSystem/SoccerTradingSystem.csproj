@@ -80,8 +80,14 @@
     <Compile Include="Views\club_list.xaml.cs">
       <DependentUpon>club_list.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\contraction_list.xaml.cs">
+      <DependentUpon>contraction_list.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\game_list.xaml.cs">
       <DependentUpon>game_list.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\home.xaml.cs">
+      <DependentUpon>home.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
@@ -103,6 +109,9 @@
     </Compile>
     <Compile Include="Views\main.xaml.cs">
       <DependentUpon>main.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MakeContractWindow.xaml.cs">
+      <DependentUpon>MakeContractWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PlayerDetailWindow.xaml.cs">
       <DependentUpon>PlayerDetailWindow.xaml</DependentUpon>
@@ -171,7 +180,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\contraction_list.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\game_list.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\home.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -188,6 +205,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\main.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MakeContractWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

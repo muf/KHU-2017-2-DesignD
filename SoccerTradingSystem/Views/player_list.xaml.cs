@@ -34,7 +34,11 @@ namespace SoccerTradingSystem.Views
         // 플레이어 그리드에서 더블 클릭시 선수 정보 창을 생성
         private void Player_Row_DoubleClick(object sender, MouseButtonEventArgs e)
         {
-            PlayerDetailWindow _PlyaerDetailWindow = new PlayerDetailWindow();
+            DataRowView row = (DataRowView)playerDataGrid.SelectedItems[0];
+            int uid = Convert.ToInt32((row[0]));
+
+            // 윈도우 호출
+            PlayerDetailWindow _PlyaerDetailWindow = new PlayerDetailWindow(uid);
             _PlyaerDetailWindow.Show();
         }
 
@@ -58,6 +62,7 @@ namespace SoccerTradingSystem.Views
             dataTable.Columns.Add("height", typeof(string));
             dataTable.Columns.Add("status", typeof(string));
             dataTable.Columns.Add("authenticated", typeof(string));
+            dataTable.Columns.Add("player", typeof(Player));
 
             // 데이터 생성
             for (int i = 0; i < list.Count; i++)
@@ -72,7 +77,7 @@ namespace SoccerTradingSystem.Views
                 string height = Convert.ToString(list[i].height);
                 string status = list[i].status;
                 string authenticated = (list[i].authenticated) ? "TRUE" : "FALSE";
-                dataTable.Rows.Add(new string[] { uid, pid, email, name, birth, postion, weight, height, status, authenticated });
+                dataTable.Rows.Add(new object[] { uid, pid, email, name, birth, postion, weight, height, status, authenticated, list[i] });
             }
 
             // DataTable의 Default View를 바인딩하기

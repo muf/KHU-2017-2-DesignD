@@ -28,18 +28,14 @@
                     <RowDefinition Height="30*"/>
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Row="0" Grid.Column="0" Text="Club Name"/>
-                <TextBlock Grid.Row="1" Grid.Column="0" Text="Club address"/>
-                <TextBlock Grid.Row="2" Grid.Column="0" Text="Club description"/>
-                <TextBlock Grid.Row="3" Grid.Column="0" Text="기타 등등"/>
-                <TextBlock Grid.Row="4" Grid.Column="0" Text="Name"/>
+                <TextBlock Grid.Row="1" Grid.Column="0" Text="Club Birth"/>
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="Club ContactNumber"/>
 
-                <TextBlock Grid.Row="0" Grid.Column="1" Text="load"/>
-                <TextBlock Grid.Row="1" Grid.Column="1" Text="load"/>
-                <TextBlock Grid.Row="2" Grid.Column="1" Text="load"/>
-                <TextBlock Grid.Row="3" Grid.Column="1" Text="load"/>
-                <TextBlock Grid.Row="4" Grid.Column="1" Text="load"/>
+                <TextBlock Grid.Row="0" Grid.Column="1" Name="nameBlock"/>
+                <TextBlock Grid.Row="1" Grid.Column="1" Name="birthBlock"/>
+                <TextBlock Grid.Row="2" Grid.Column="1" Name="contactNumberBlock"/>
             </Grid>
         </Grid>
-        <Button Grid.Row="1" Content="Test Offer Button (Player)" Name="ClubOfferBtn" Margin="48,10,42,125"></Button>
+        <Button Visibility="Hidden" Grid.Row="1" Content="Test Offer Button (Player)" Name="ClubOfferBtn" Margin="48,10,42,125" Click="ClubOfferBtn_Click"></Button>
     </Grid>
 </Window>

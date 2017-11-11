@@ -18,6 +18,7 @@
                 <Button Visibility="Collapsed" Name="userInfoBtn" Content="User Info" Margin="10" Click="userInfoBtn_Click"/>
                 <Button Visibility="Visible" Name="PlayerBtn" Content="Player View" Margin ="10" Click="PlayerBtn_Click"></Button>
                 <Button Visibility="Visible" Name="ClubBtn" Content="Club View" Margin ="10" Click="ClubBtn_Click"></Button>
+                <Button Visibility="Visible" Name="ContractionBtn" Content="Contraction View" Margin ="10" Click="ContractionBtn_Click"></Button>
             </StackPanel>
         </Border>
         <Border DockPanel.Dock="Bottom" Background="White" BorderThickness="3" BorderBrush="Blue" Height="720" Width="1180">

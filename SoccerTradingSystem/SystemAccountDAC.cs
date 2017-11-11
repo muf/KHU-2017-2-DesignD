@@ -196,7 +196,7 @@ namespace SoccerTradingSystem
                 }
                 else if (queryResult[0]["client_type"].ToString() == enumClass.UserType.Club) //Club 인 경우
                 {
-                    int cid = Convert.ToInt32(queryResult[0]["clientId"]); 
+                    int cid = Convert.ToInt32(queryResult[0]["cid"]); 
                     query = $"SELECT * from {contractTable} WHERE `cid`={cid}";
                     queryResult = conn.query(query);
                     return queryResult;
