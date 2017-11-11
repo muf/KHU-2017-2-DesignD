@@ -102,8 +102,8 @@ namespace SoccerTradingSystem
         // get
         public JSON getAccountData(int uid)
         {
-            queryResult = getClubsData(uid);
-            if (queryResult.Count >0) // client인 경우
+            queryResult = getManagersData(uid);
+            if (queryResult.Count == 0) // client인 경우
             {
                 queryResult = getPlayersData(uid);
                 if(queryResult.Count > 0) // player인 경우
@@ -117,7 +117,7 @@ namespace SoccerTradingSystem
             }
             else // manager인 경우 혹은 알수 없는 경우
             {
-                return getClubsData(uid);
+                return queryResult;
             }
         }
 

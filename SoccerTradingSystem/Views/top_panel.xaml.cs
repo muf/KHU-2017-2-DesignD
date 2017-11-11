@@ -37,7 +37,7 @@ namespace SoccerTradingSystem.Views
             {
                 logoutBtn.Visibility = System.Windows.Visibility.Visible;
                 loginBtn.Visibility = System.Windows.Visibility.Collapsed;
-                topLoginedEmail.Text = "Welcome !!!  " + App.cookie.email;
+                topLoginedEmail.Text = "Welcome !!!  " + App.cookie.email + "[ "+App.cookie.type+" ]";
             }
         }
 

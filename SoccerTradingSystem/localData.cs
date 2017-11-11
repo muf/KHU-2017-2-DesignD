@@ -10,7 +10,7 @@ namespace SoccerTradingSystem
     {
         public  int uid;
         public String userType;
-        public String clientType;
+        public String type;
         public  String email;
         public bool authenticated;
     }

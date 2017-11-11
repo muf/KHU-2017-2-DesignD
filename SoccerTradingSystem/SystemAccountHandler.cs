@@ -112,7 +112,7 @@ namespace SoccerTradingSystem
                 cookie.email = email;
                 cookie.authenticated = authenticated == "True" ? true : false;
                 cookie.userType = userType;
-                cookie.clientType = getClientType(cookie.uid);
+                cookie.type = cookie.userType == "Client" ? getClientType(cookie.uid) : cookie.userType;
                 return cookie; // 정상적인 경우 cookie 셋팅 후 전달
             }
             else
@@ -121,7 +121,7 @@ namespace SoccerTradingSystem
         public String getClientType(int uid)
         {
             JSON result = saDAC.getAccountData(uid);
-            if(queryResult.Count == 0)
+            if(result.Count == 0)
             {
                 return "NONE";
             }
