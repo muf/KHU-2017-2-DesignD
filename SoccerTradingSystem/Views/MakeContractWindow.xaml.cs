@@ -23,7 +23,18 @@ namespace SoccerTradingSystem.Views
         {
             InitializeComponent();
 
-
+            if (App.cookie.type == "Club")
+            {
+                clubIdBox.Text = App.cookie.email;
+            }
+            else if (App.cookie.type == "Player")
+            {
+                playerIdBox.Text = App.cookie.email;
+            }
+            else
+            {
+                MessageBox.Show("비 정상적인 접근 클럽이나 플레이어로 로그인 되지않음.");
+            }
 
         }
 
@@ -36,12 +47,14 @@ namespace SoccerTradingSystem.Views
             {
                 clubuid = App.cookie.uid;
                 playeruid = Convert.ToInt32(playerIdBox.Text);
-            }
-
-            if (App.cookie.type == "Player")
+            } else if (App.cookie.type == "Player")
             {
                 clubuid = Convert.ToInt32(clubIdBox.Text);
                 playeruid = App.cookie.uid;
+            }
+            else
+            {
+                MessageBox.Show("비 정상적인 접근 클럽이나 플레이어로 로그인 되지않음.");
             }
 
             string startDate = startDateBox.Text;

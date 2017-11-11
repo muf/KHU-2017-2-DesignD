@@ -41,6 +41,6 @@
                 <TextBlock Grid.Row="4" Grid.Column="1" Text="load"/>
             </Grid>
         </Grid>
-        <Button Visibility="Visible" Grid.Row="1" Content="Test Offer Button (Club)" Name="PlayerOfferBtn" Margin="48,10,42,125" Click="PlayerOfferBtn_Click"></Button>
+        <Button Visibility="Hidden" Grid.Row="1" Content="Test Offer Button (Club)" Name="PlayerOfferBtn" Margin="48,10,42,125" Click="PlayerOfferBtn_Click"></Button>
     </Grid>
 </Window>

@@ -9,16 +9,16 @@
         WindowStartupLocation="CenterScreen"
         >
     <Grid>
-        <TextBlock x:Name="clubIdBlock" HorizontalAlignment="Left" Height="20" Margin="32,26,0,0" TextWrapping="Wrap" Text="clubid(delete)" VerticalAlignment="Top" Width="69"/>
-        <TextBlock x:Name="playerIdBlock" HorizontalAlignment="Left" Height="22" Margin="32,51,0,0" TextWrapping="Wrap" Text="playerid(delete?)" VerticalAlignment="Top" Width="69"/>
+        <TextBlock x:Name="clubIdBlock" HorizontalAlignment="Left" Height="20" Margin="32,26,0,0" TextWrapping="Wrap" Text="club email)" VerticalAlignment="Top" Width="69"/>
+        <TextBlock x:Name="playerIdBlock" HorizontalAlignment="Left" Height="22" Margin="32,51,0,0" TextWrapping="Wrap" Text="player email)" VerticalAlignment="Top" Width="71"/>
         <TextBlock x:Name="startDateBlock" HorizontalAlignment="Left" Height="19" Margin="32,78,0,0" TextWrapping="Wrap" Text="startDate" VerticalAlignment="Top" Width="69"/>
         <TextBlock x:Name="endDateBlock" HorizontalAlignment="Left" Height="23" Margin="31,102,0,0" TextWrapping="Wrap" Text="endDate" VerticalAlignment="Top" Width="70"/>
         <TextBlock x:Name="tranferFeeBlock" HorizontalAlignment="Left" Height="22" Margin="32,125,0,0" TextWrapping="Wrap" Text="tranferFee" VerticalAlignment="Top" Width="71"/>
         <TextBlock x:Name="yearlyPayBlock" HorizontalAlignment="Left" Height="22" Margin="32,147,0,0" TextWrapping="Wrap" Text="yearlyPay" VerticalAlignment="Top" Width="71"/>
         <TextBlock x:Name="penaltyBlock" HorizontalAlignment="Left" Height="22" Margin="32,170,0,0" TextWrapping="Wrap" Text="penalty" VerticalAlignment="Top" Width="71"/>
 
-        <TextBox x:Name="clubIdBox" HorizontalAlignment="Left" Height="29" Margin="137,17,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="68"/>
-        <TextBox x:Name="playerIdBox" HorizontalAlignment="Left" Height="22" Margin="137,51,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="68"/>
+        <TextBox x:Name="clubIdBox" HorizontalAlignment="Left" Height="29" Margin="137,17,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="68" IsReadOnly="True"/>
+        <TextBox x:Name="playerIdBox" HorizontalAlignment="Left" Height="22" Margin="137,51,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="68" IsReadOnly="True"/>
         <TextBox x:Name="startDateBox" HorizontalAlignment="Left" Height="24" Margin="137,73,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="68"/>
         <TextBox x:Name="endDateBox" HorizontalAlignment="Left" Height="23" Margin="137,102,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="68"/>
         <TextBox x:Name="tranferFeeBox" HorizontalAlignment="Left" Height="22" Margin="137,125,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="68"/>
