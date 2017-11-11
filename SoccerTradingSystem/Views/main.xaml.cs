@@ -46,5 +46,17 @@ namespace SoccerTradingSystem.Views
             user_info _user_info = new user_info();
             content_frame.Navigate(_user_info);
         }
+
+        private void PlayerBtn_Click(object sender, RoutedEventArgs e)
+        {
+            player_list _plyaer_list = new player_list();
+            content_frame.Navigate(_plyaer_list);
+        }
+
+        private void ClubBtn_Click(object sender, RoutedEventArgs e)
+        {
+            club_list _club_list = new club_list();
+            content_frame.Navigate(_club_list);
+        }
     }
 }

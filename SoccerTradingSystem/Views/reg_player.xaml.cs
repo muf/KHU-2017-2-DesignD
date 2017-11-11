@@ -38,8 +38,7 @@ namespace SoccerTradingSystem.Views
             string middleName = middlenameBox.Text;
             string lastName = lastnameBox.Text;
             int birth = Convert.ToInt32(birthBox.Text);
-            MessageBox.Show((Convert.ToInt32(positionComboBox.SelectedIndex) + 1).ToString());
-            string position = (Convert.ToInt32(positionComboBox.SelectedIndex) + 1).ToString();
+            string position = positionComboBox.SelectionBoxItem.ToString();
             int height = Convert.ToInt32(heightBox.Text);
             int weight = Convert.ToInt32(weightBox.Text);
 

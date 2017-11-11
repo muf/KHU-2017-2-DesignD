@@ -88,7 +88,7 @@ namespace SoccerTradingSystem.Views
             ManagersDataGridSetting("");
         }
 
-        // 매니저 그리드에서 더블 클릭시 메서드 호출 인증을 업데이트함
+        // 유저 그리드에서 더블 클릭시 메서드 호출 인증을 업데이트함
         private void User_Row_DoubleClick(object sender, MouseButtonEventArgs e)
         {
             SystemAccountHandler sah = new SystemAccountHandler();
