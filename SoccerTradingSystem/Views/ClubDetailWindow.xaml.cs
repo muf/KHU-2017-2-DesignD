@@ -39,18 +39,18 @@ namespace SoccerTradingSystem.Views
                 {
                     ClubOfferBtn.Visibility = System.Windows.Visibility.Hidden;
                 }
-
-                SystemAccountHandler sah = new SystemAccountHandler();
-                Club curClub = sah.retrieveClubData(curClubUid);
-
-                string cName = curClub.name;
-                string cBirth = curClub.birth.ToString();
-                string cContactNumber = curClub.contactNumber;
-
-                nameBlock.Text = cName;
-                birthBlock.Text = cBirth;
-                contactNumberBlock.Text = cContactNumber;
             }
+
+            SystemAccountHandler sah = new SystemAccountHandler();
+            Club curClub = sah.retrieveClubData(curClubUid);
+
+            string cName = curClub.name;
+            string cBirth = curClub.birth.ToString();
+            string cContactNumber = curClub.contactNumber;
+
+            nameBlock.Text = cName;
+            birthBlock.Text = cBirth;
+            contactNumberBlock.Text = cContactNumber;
         }
 
         private void ClubOfferBtn_Click(object sender, RoutedEventArgs e)

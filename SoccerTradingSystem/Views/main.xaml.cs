@@ -30,14 +30,21 @@ namespace SoccerTradingSystem.Views
             {
                 if (App.cookie.userType == enumClass.UserType.Manager)
                 {
+                    managerMenu.Visibility = System.Windows.Visibility.Visible;
                     userInfoBtn.Visibility = System.Windows.Visibility.Visible;
-                }else
+                    gameInfoBtn.Visibility = System.Windows.Visibility.Visible;
+                }
+                else
                 {
+                    managerMenu.Visibility = System.Windows.Visibility.Collapsed;
                     userInfoBtn.Visibility = System.Windows.Visibility.Collapsed;
+                    gameInfoBtn.Visibility = System.Windows.Visibility.Collapsed;
                 }
             }else
             {
+                managerMenu.Visibility = System.Windows.Visibility.Collapsed;
                 userInfoBtn.Visibility = System.Windows.Visibility.Collapsed;
+                gameInfoBtn.Visibility = System.Windows.Visibility.Collapsed;
             }
         }
 

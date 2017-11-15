@@ -23,6 +23,7 @@ namespace SoccerTradingSystem.Views
         public LoginWindow(top_panel top_panel)
         {
             InitializeComponent();
+            this.PreviewKeyDown += new KeyEventHandler(HandleEsc);
             this.TP = top_panel;
         }
 
@@ -35,7 +36,7 @@ namespace SoccerTradingSystem.Views
             // Validation Check (null)
             if(email_string.Trim() == "" || password_string.Trim() == "")
             {
-                MessageBox.Show("Null Error");
+                MessageBox.Show("입력되지 않은 값이 있습니다.");
                 return;
             }
 
@@ -48,20 +49,35 @@ namespace SoccerTradingSystem.Views
             // Dismatch Error
             if(App.cookie == null)
             {
-                MessageBox.Show("Login Failed");
+                MessageBox.Show("로그인 실패");
                 return;
             }
 
             // No Auth Error
             if (!App.cookie.authenticated)
             {
-                MessageBox.Show("You can not log in without administrator approval.");
+                MessageBox.Show("해당 아이디는 관리자의 승인을 허가 받지 못한 아이디입니다.");
                 return;
             }
 
             // Top Panel & Main logined form setting
             TP.logined_success(email);
             this.Close();
+        }
+
+        private void PW_Keydown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                loginBtn_Click(sender, e);
+            }
+        }
+
+        // Eecape
+        private void HandleEsc(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+                Close();
         }
     }
 }

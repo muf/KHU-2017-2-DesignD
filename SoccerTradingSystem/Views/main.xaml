@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SoccerTradingSystem.Views"
+      xmlns:bootstrap="http://github.com/scheshan/bootstrap"
       mc:Ignorable="d" 
       d:DesignHeight="760" d:DesignWidth="1280"
       Title="Player Trading Management">
@@ -12,17 +13,24 @@
         <Border DockPanel.Dock="Top" Height="40" Width="1280">
             <Frame NavigationUIVisibility="Hidden"  Name="top_frame" Height="40" Width="1280"></Frame>
         </Border>
-        <Border DockPanel.Dock="Left" Width="100" Background="White" BorderThickness="3" BorderBrush="Black" Height="720" VerticalAlignment="Bottom">
-            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-                <Button Visibility="Collapsed" Name="gameInfoBtn" Content="Game Info" Margin="10" Click="gameInfoBtn_Click"/>
-                <Button Visibility="Collapsed" Name="userInfoBtn" Content="User Info" Margin="10" Click="userInfoBtn_Click"/>
-                <Button Visibility="Visible" Name="PlayerBtn" Content="Player View" Margin ="10" Click="PlayerBtn_Click"></Button>
-                <Button Visibility="Visible" Name="ClubBtn" Content="Club View" Margin ="10" Click="ClubBtn_Click"></Button>
-                <Button Visibility="Visible" Name="ContractionBtn" Content="Contraction View" Margin ="10" Click="ContractionBtn_Click"></Button>
+        <Border DockPanel.Dock="Left" Width="100" Background="#455A64" Height="720" VerticalAlignment="Bottom" BorderThickness="0 0 1 0" BorderBrush="#455A64">
+            <StackPanel Orientation="Vertical" VerticalAlignment="Top">
+                <Border Margin="0,0,0,80"></Border>
+                <Border Margin="0,0,0,5" Background="{StaticResource BgPrimary}" Visibility="Collapsed" Name="managerMenu" TextBlock.Foreground="White">
+                    <TextBlock Text="관리자 메뉴" HorizontalAlignment="Center"/>
+                </Border>
+                <Button Margin="0,0,0,5" Style="{StaticResource SuccessButton}"  Visibility="Collapsed" x:Name="userInfoBtn" Content="유저 조회" Click="userInfoBtn_Click"/>
+                <Button Margin="0,0,0,20" Style="{StaticResource SuccessButton}"  Visibility="Collapsed" x:Name="gameInfoBtn" Content="경기 조회" Click="gameInfoBtn_Click"/>
+                <Border Margin="0,0,0,5"  Background="{StaticResource BgPrimary}" Name="userMenu"  TextBlock.Foreground="White">
+                    <TextBlock Text="유저 메뉴" HorizontalAlignment="Center"/>
+                </Border>
+                <Button Margin="0,0,0,5" Style="{StaticResource SuccessButton}" Visibility="Visible" x:Name="PlayerBtn" Content="선수 조회" Click="PlayerBtn_Click"/>
+                <Button Margin="0,0,0,5" Style="{StaticResource SuccessButton}" Visibility="Visible" x:Name="ClubBtn" Content="구단 조회" Click="ClubBtn_Click"/>
+                <Button Margin="0,0,0,5" Style="{StaticResource SuccessButton}" Visibility="Visible" x:Name="ContractionBtn" Content="계약 조회" Click="ContractionBtn_Click"/>
             </StackPanel>
         </Border>
-        <Border DockPanel.Dock="Bottom" Background="White" BorderThickness="3" BorderBrush="Blue" Height="720" Width="1180">
-            <Frame NavigationUIVisibility="Hidden"  Name="content_frame" Background="White" Margin="10"/>
+        <Border DockPanel.Dock="Bottom" Background="White" Height="720" Width="1180">
+            <Frame NavigationUIVisibility="Hidden"  Name="content_frame" Margin="10"/>
         </Border>
     </DockPanel>
 </Page>

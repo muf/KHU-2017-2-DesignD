@@ -29,7 +29,7 @@ namespace SoccerTradingSystem.Views
         private void OnWindowLoaded(object sender, RoutedEventArgs e)
         {
             SystemAccountHandler sah = new SystemAccountHandler();
-            Contract curContract = sah.retrieveContractData(contractionId);
+            //Contract curContract = sah.retrieveContractData(contractionId);
 
             //string c = curPlayer.firstName + curPlayer.middleName + " " + curPlayer.lastName;
             //string pBirth = curPlayer.birth.ToString();

@@ -31,22 +31,42 @@ namespace SoccerTradingSystem.Views
 
         private void resiterBtn_Click(object sender, RoutedEventArgs e)
         {
-            // value
+            // NULL Validation
+            if (emailBox.Text.Trim() == "" || passwordBox.Password.Trim() == "" || firstnameBox.Text.Trim() == "" || middlenameBox.Text.Trim() == "" || lastnameBox.Text.Trim() == "" || birthPicker.SelectedDate == null
+                 || positionComboBox.SelectionBoxItem.ToString().Trim() == "" || heightBox.Text.Trim() == "" || weightBox.Text.Trim() == "")
+            {
+                MessageBox.Show("필수 사항을 모두 입력해 주십시오.");
+                return;
+            }
+
+            // Validation
+            bool emailCheck = Regex.IsMatch(emailBox.Text, @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$");
+            if (!emailCheck)
+            {
+                MessageBox.Show("이메일 형식이 올바르지 않습니다. 다시 확인해주세요.");
+                return;
+            }
+            if (Convert.ToInt32(heightBox.Text) > 250 || Convert.ToInt32(heightBox.Text) < 0)
+            {
+                MessageBox.Show("키가 올바르지 않습니다. 다시 확인해주세요.");
+                return;
+            }
+            if (Convert.ToInt32(weightBox.Text) > 250 || Convert.ToInt32(weightBox.Text) < 0)
+            {
+                MessageBox.Show("몸무게가 올바르지 않습니다. 다시 확인해주세요.");
+                return;
+            }
+
+            // Value
             string email = emailBox.Text;
             string password = passwordBox.Password;
             string firstName = firstnameBox.Text;
             string middleName = middlenameBox.Text;
             string lastName = lastnameBox.Text;
-            int birth = Convert.ToInt32(birthBox.Text);
+            int birth = Convert.ToInt32(birthPicker.SelectedDate.Value.Date.ToShortDateString().Replace("-", ""));
             string position = positionComboBox.SelectionBoxItem.ToString();
             int height = Convert.ToInt32(heightBox.Text);
             int weight = Convert.ToInt32(weightBox.Text);
-
-            // Validation
-            if(email.Trim() == "")
-            {
-
-            }
 
             SystemAccountHandler sah = new SystemAccountHandler();
             try
@@ -54,11 +74,14 @@ namespace SoccerTradingSystem.Views
                 bool flag = sah.registerPlayerAccount(email, password, firstName, middleName, lastName, birth, weight, height, position);
 
                 if (flag)
-                    MessageBox.Show("성공");
+                {
+                    MessageBox.Show("회원가입에 성공하였습니다. \n관리자의 승인을 기다려주세요.");
+                    regWindow.Close();
+                }
                 else
-                    MessageBox.Show("실패");
+                    MessageBox.Show("회원가입에 실패하였습니다.");
             }
-            catch( Exception eee)
+            catch (Exception eee)
             {
                 MessageBox.Show(eee.Message.ToString());
             }
@@ -66,12 +89,14 @@ namespace SoccerTradingSystem.Views
 
         private void emailBox_Leave(object sender, System.EventArgs e)
         {
-            bool emailCheck = Regex.IsMatch(emailBox.Text, @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$");
-            if (!emailCheck)
+            if (emailBox.Text.Trim() != "")
             {
-                MessageBox.Show("틀린 이메일 주소");
+                bool emailCheck = Regex.IsMatch(emailBox.Text, @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$");
+                if (!emailCheck)
+                {
+                    MessageBox.Show("이메일 형식이 올바르지 않습니다. 다시 확인해주세요.");
+                }
             }
         }
-
     }
 }

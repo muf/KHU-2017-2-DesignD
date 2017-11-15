@@ -31,13 +31,17 @@ namespace SoccerTradingSystem.Views
             {
                 loginBtn.Visibility = System.Windows.Visibility.Visible;
                 logoutBtn.Visibility = System.Windows.Visibility.Collapsed;
-                topLoginedEmail.Text = "Unlogined";
+                user_registBtn.Visibility = System.Windows.Visibility.Visible;
+                myInfoBtn.Visibility = System.Windows.Visibility.Collapsed;
+                topLoginedEmail.Text = "게스트 모드";
             }
             else
             {
-                logoutBtn.Visibility = System.Windows.Visibility.Visible;
                 loginBtn.Visibility = System.Windows.Visibility.Collapsed;
-                topLoginedEmail.Text = "Welcome !!!  " + App.cookie.email + "[ "+App.cookie.type+" ]";
+                logoutBtn.Visibility = System.Windows.Visibility.Visible;
+                user_registBtn.Visibility = System.Windows.Visibility.Collapsed;
+                myInfoBtn.Visibility = System.Windows.Visibility.Visible;
+                topLoginedEmail.Text = "환영합니다.  " + App.cookie.email + "[ "+App.cookie.type+" ]";
             }
         }
 
@@ -45,10 +49,9 @@ namespace SoccerTradingSystem.Views
         {
             App.cookie = null;
 
-            MessageBox.Show("logout");
+            //MessageBox.Show("logout");
             loginBtn.Visibility = System.Windows.Visibility.Visible;
             logoutBtn.Visibility = System.Windows.Visibility.Collapsed;
-            topLoginedEmail.Text ="Unlogined";
 
             main.NavigationService.Refresh();
             main.returnToHome();

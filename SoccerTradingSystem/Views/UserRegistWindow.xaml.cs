@@ -37,6 +37,9 @@ namespace SoccerTradingSystem.Views
             regPPage = new reg_player(this);
             regContent.Navigate(regPPage);
             Application.Current.Properties["regSelected"] = "player";
+            regPlayerBtn.Style = (Style)FindResource("PrimaryButton");
+            regClubBtn.Style = (Style)FindResource("InfoButton");
+            regManagerBtn.Style = (Style)FindResource("InfoButton");
         }
 
         private void regClubBtn_Click(object sender, RoutedEventArgs e)
@@ -45,6 +48,9 @@ namespace SoccerTradingSystem.Views
             regCPage = new reg_club(this);
             regContent.Navigate(regCPage);
             Application.Current.Properties["regSelected"] = "club";
+            regPlayerBtn.Style = (Style)FindResource("InfoButton");
+            regClubBtn.Style = (Style)FindResource("PrimaryButton");
+            regManagerBtn.Style = (Style)FindResource("InfoButton");
         }
 
         private void regManagerBtn_Click(object sender, RoutedEventArgs e)
@@ -53,6 +59,9 @@ namespace SoccerTradingSystem.Views
             regMPage = new reg_manager(this);
             regContent.Navigate(regMPage);
             Application.Current.Properties["regSelected"] = "manager";
+            regPlayerBtn.Style = (Style)FindResource("InfoButton");
+            regClubBtn.Style = (Style)FindResource("InfoButton");
+            regManagerBtn.Style = (Style)FindResource("PrimaryButton");
         }
 
         private void pageReset()
@@ -62,19 +71,11 @@ namespace SoccerTradingSystem.Views
             regMPage = null;
         }
 
-        private void regBtn_Click(object sender, RoutedEventArgs e)
+        // Eecape
+        private void HandleEsc(object sender, KeyEventArgs e)
         {
-            //string email = regPPage.emailBox.Text;
-            //string passsword = regPPage.passwordBox.Password;
-            //string firstName = regPPage.firstnameBox.Text;
-            //string middleName = regPPage.middlenameBox.Text;
-            //string lastName = regPPage.lastnameBox.Text;
-            //string birth = regPPage.birthBox.Text;
-            //string postion = regPPage.positionBox.Text;
-            //string height = regPPage.heightBox.Text;
-            //string weight = regPPage.weightBox.Text;
+            if (e.Key == Key.Escape)
+                Close();
         }
-
-
     }
 }

@@ -19,46 +19,52 @@ namespace SoccerTradingSystem.Views
     /// </summary>
     public partial class MakeContractWindow : Window
     {
+        private int targetID;
         public MakeContractWindow(int uid)
         {
             InitializeComponent();
-
+            targetID = uid;
+            SystemAccountHandler sah = new SystemAccountHandler();
             if (App.cookie.type == "Club")
             {
-                clubIdBox.Text = App.cookie.email;
-                playerIdBox.Text = uid.ToString();
+                clubNameBox.Text = sah.retrieveClubData(App.cookie.uid).name;
+                playerNameBox.Text = sah.retrievePlayerData(uid).lastName + " " + sah.retrievePlayerData(uid).firstName + sah.retrievePlayerData(uid).middleName;
             }
             else if (App.cookie.type == "Player")
             {
-                clubIdBox.Text = uid.ToString();
-                playerIdBox.Text = App.cookie.email;
+                clubNameBox.Text = sah.retrieveClubData(uid).name;
+                playerNameBox.Text = sah.retrievePlayerData(App.cookie.uid).lastName + " " + sah.retrievePlayerData(App.cookie.uid).firstName + sah.retrievePlayerData(App.cookie.uid).middleName;
             }
             else
             {
-                MessageBox.Show("비 정상적인 접근 클럽이나 플레이어로 로그인 되지않음.");
+                MessageBox.Show("비 정상적인 접근 입니다.");
+                Close();
             }
-
         }
 
         private void ContractBtn_Click(object sender, RoutedEventArgs e)
         {
-            int clubuid = Convert.ToInt32(clubIdBox.Text);
-            int playeruid = Convert.ToInt32(playerIdBox.Text);
+            int clubuid = 0, playeruid = 0;
 
             if (App.cookie.type == "Club")
             {
                 clubuid = App.cookie.uid;
-                playeruid = Convert.ToInt32(playerIdBox.Text);
+                playeruid = targetID;
             } else if (App.cookie.type == "Player")
             {
-                clubuid = Convert.ToInt32(clubIdBox.Text);
+                clubuid = targetID;
                 playeruid = App.cookie.uid;
             }
             else
             {
-                MessageBox.Show("비 정상적인 접근 클럽이나 플레이어로 로그인 되지않음.");
+                MessageBox.Show("비 정상적인 접근 입니다.");
+                Close();
             }
 
+            // Validation
+
+
+            // Value
             string startDate = startDateBox.Text;
             string endDate = endDateBox.Text;
             int transferFee = Convert.ToInt32(tranferFeeBox.Text);
@@ -68,11 +74,13 @@ namespace SoccerTradingSystem.Views
             SystemAccountHandler sah = new SystemAccountHandler();
             if (sah.makeContract(clubuid, playeruid, startDate, endDate, transferFee, yearlyPay, penalityFee))
             {
-                MessageBox.Show("Contract Success");
+                MessageBox.Show("계약서를 성공적으로 전달했습니다.");
+                Close();
             }
             else
             {
-                MessageBox.Show("Contract Failed");
+                MessageBox.Show("계약서를 전달하는데 실패했습니다.");
+                Close();
             }
         }
     }

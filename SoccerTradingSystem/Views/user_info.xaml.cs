@@ -43,13 +43,19 @@ namespace SoccerTradingSystem.Views
             SystemAccountHandler sah = new SystemAccountHandler();
             DataRowView row = (DataRowView)playerDataGrid.SelectedItems[0];
             int uid = Convert.ToInt32((row[0]));
-            if (MessageBox.Show("Authenticated?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+            bool auth = sah.retrieveUserData(uid).authenticated;
+            if(auth)
             {
-                sah.updateUserAuth(uid, false);
-            }
-            else
+                if (MessageBox.Show("현재 유저는 관리자 인증이 활성화 된 상태입니다.\n인증을 비활성화 하시겠습니까?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                {
+                    sah.updateUserAuth(uid, false);
+                }
+            }else
             {
-                sah.updateUserAuth(uid, true);
+                if (MessageBox.Show("현재 유저는 관리자 인증이 비활성화 된 상태입니다.\n인증을 활성화 하시겠습니까?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                {
+                    sah.updateUserAuth(uid, true);
+                }
             }
             PlayersDataGridSetting("");
         }
@@ -60,13 +66,20 @@ namespace SoccerTradingSystem.Views
             SystemAccountHandler sah = new SystemAccountHandler();
             DataRowView row = (DataRowView)clubDataGrid.SelectedItems[0];
             int uid = Convert.ToInt32((row[0]));
-            if (MessageBox.Show("Authenticated?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+            bool auth = sah.retrieveUserData(uid).authenticated;
+            if (auth)
             {
-                sah.updateUserAuth(uid, false);
+                if (MessageBox.Show("현재 유저는 관리자 인증이 활성화 된 상태입니다.\n인증을 비활성화 하시겠습니까?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                {
+                    sah.updateUserAuth(uid, false);
+                }
             }
             else
             {
-                sah.updateUserAuth(uid, true);
+                if (MessageBox.Show("현재 유저는 관리자 인증이 비활성화 된 상태입니다.\n인증을 활성화 하시겠습니까?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                {
+                    sah.updateUserAuth(uid, true);
+                }
             }
             ClubsDataGridSetting("");
         }
@@ -77,13 +90,20 @@ namespace SoccerTradingSystem.Views
             SystemAccountHandler sah = new SystemAccountHandler();
             DataRowView row = (DataRowView)managerDataGrid.SelectedItems[0];
             int uid = Convert.ToInt32((row[0]));
-            if (MessageBox.Show("Authenticated?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+            bool auth = sah.retrieveUserData(uid).authenticated;
+            if (auth)
             {
-                sah.updateUserAuth(uid, false);
+                if (MessageBox.Show("현재 유저는 관리자 인증이 활성화 된 상태입니다.\n인증을 비활성화 하시겠습니까?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                {
+                    sah.updateUserAuth(uid, false);
+                }
             }
             else
             {
-                sah.updateUserAuth(uid, true);
+                if (MessageBox.Show("현재 유저는 관리자 인증이 비활성화 된 상태입니다.\n인증을 활성화 하시겠습니까?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                {
+                    sah.updateUserAuth(uid, true);
+                }
             }
             ManagersDataGridSetting("");
         }
@@ -94,13 +114,20 @@ namespace SoccerTradingSystem.Views
             SystemAccountHandler sah = new SystemAccountHandler();
             DataRowView row = (DataRowView)userDataGrid.SelectedItems[0];
             int uid = Convert.ToInt32((row[0]));
-            if (MessageBox.Show("Authenticated?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+            bool auth = sah.retrieveUserData(uid).authenticated;
+            if (auth)
             {
-                sah.updateUserAuth(uid, false);
+                if (MessageBox.Show("현재 유저는 관리자 인증이 활성화 된 상태입니다.\n인증을 비활성화 하시겠습니까?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                {
+                    sah.updateUserAuth(uid, false);
+                }
             }
             else
             {
-                sah.updateUserAuth(uid, true);
+                if (MessageBox.Show("현재 유저는 관리자 인증이 비활성화 된 상태입니다.\n인증을 활성화 하시겠습니까?", "Question", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                {
+                    sah.updateUserAuth(uid, true);
+                }
             }
             UserDataGridSetting("");
         }

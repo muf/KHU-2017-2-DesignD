@@ -5,29 +5,41 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:SoccerTradingSystem.Views"
       mc:Ignorable="d" 
-      d:DesignHeight="800" d:DesignWidth="800"
+      d:DesignHeight="800" d:DesignWidth="1100"
       Title="player_list"
       Loaded="OnPageLoad"
       >
 
     <Grid>
-        <StackPanel>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="239"/>
-                    <ColumnDefinition Width="133*"/>
-                    <ColumnDefinition Width="246*"/>
-                    <ColumnDefinition Width="80*"/>
-                </Grid.ColumnDefinitions>
-                <ComboBox Grid.Column="1">
-                    <ComboBoxItem IsSelected ="True" Content="Entry"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="25"/>
+            <ColumnDefinition Width="350"/>
+            <ColumnDefinition Width="350"/>
+            <ColumnDefinition Width="350"/>
+            <ColumnDefinition Width="25*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Border Margin="50,20,50,10"  Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3">
+            <TextBlock FontSize="20" Foreground="{StaticResource TextPrimary}" Text="선수 정보 조회"/>
+        </Border>
+        <Border Grid.Column="2" HorizontalAlignment="Right"  VerticalAlignment="Center" Grid.ColumnSpan="2" Height="34" Margin="0,56,-12,0" Grid.RowSpan="2" Width="407">
+            <StackPanel Orientation="Horizontal" Height="40">
+                <ComboBox Margin="0,0,20,10" HorizontalContentAlignment="Center" VerticalAlignment="Center">
+                    <ComboBoxItem IsSelected ="True" Content="전체"/>
                     <ComboBoxItem Content="ID"/>
-                    <ComboBoxItem Content="Name"/>
+                    <ComboBoxItem Content="이름"/>
                 </ComboBox>
-                <TextBox Grid.Column="2" Name="playerSearchBox"/>
-                <Button Grid.Column="3" Content="Search" Name="plyaerSearchBtn" Click="plyaerSearchBtn_Click"/>
-            </Grid>
-            <DataGrid GridLinesVisibility="None"  IsReadOnly="True" AutoGenerateColumns="False"  Height="335" HorizontalAlignment="Left" Margin="38,56,0,0" x:Name="playerDataGrid" VerticalAlignment="Top" Width="634">
+                <TextBox Margin="0,0,20,10" Name="playerSearchBox" Width="200"/>
+                <Button Margin="0,0,50,10" Style="{StaticResource SuccessButton}" Content="검색" Name="plyaerSearchBtn" Click="plyaerSearchBtn_Click"/>
+            </StackPanel>
+        </Border>
+        <Border Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.ColumnSpan="3" Height="500" Margin="50,0" Width="950">
+            <DataGrid GridLinesVisibility="None" IsReadOnly="True" AutoGenerateColumns="False" x:Name="playerDataGrid" VerticalAlignment="Top" Height="500" Width="950" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" ColumnWidth="*" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
                 <DataGrid.RowStyle>
                     <Style TargetType="{x:Type DataGridRow}">
                         <EventSetter Event="Control.MouseDoubleClick" Handler="Player_Row_DoubleClick"/>
@@ -36,16 +48,16 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="uid" Visibility="Collapsed" Binding="{Binding uid}"/>
                     <DataGridTextColumn Header="ID" Binding="{Binding pid}"/>
-                    <DataGridTextColumn Header="Name" Binding="{Binding name}"/>
-                    <DataGridTextColumn Header="E-Mail" Binding="{Binding email}"/>
-                    <DataGridTextColumn Header="Birth" Binding="{Binding birth}"/>
-                    <DataGridTextColumn Header="Position" Binding="{Binding position}"/>
-                    <DataGridTextColumn Header="Weight" Binding="{Binding weight}"/>
-                    <DataGridTextColumn Header="Height" Binding="{Binding height}"/>
-                    <DataGridTextColumn Header="Status" Binding="{Binding status}"/>
-                    <DataGridTextColumn Header="Authenticated" Binding="{Binding authenticated}"/>
+                    <DataGridTextColumn Header="이름" Binding="{Binding name}"/>
+                    <DataGridTextColumn Header="이메일" Binding="{Binding email}"/>
+                    <DataGridTextColumn Header="생일" Binding="{Binding birth}"/>
+                    <DataGridTextColumn Header="포지션" Binding="{Binding position}"/>
+                    <DataGridTextColumn Header="몸무게" Binding="{Binding weight}"/>
+                    <DataGridTextColumn Header="키" Binding="{Binding height}"/>
+                    <DataGridTextColumn Header="현재 상태" Binding="{Binding status}"/>
+                    <DataGridTextColumn Header="인증 여부" Binding="{Binding authenticated}"/>
                 </DataGrid.Columns>
             </DataGrid>
-        </StackPanel>
+        </Border>
     </Grid>
 </Page>

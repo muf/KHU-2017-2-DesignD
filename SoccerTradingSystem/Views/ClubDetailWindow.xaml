@@ -5,37 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SoccerTradingSystem.Views"
         mc:Ignorable="d"
-        Title="Club Information" Height="400" Width="300"
+        Title="Club Information" Height="600" Width="400"
         WindowStartupLocation="CenterScreen"
         Loaded="OnWindowLoaded">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="200"/>
-            <RowDefinition Height="200*"/>
-        </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="150*"/>
-                    <ColumnDefinition Width="150*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30"/>
-                    <RowDefinition Height="30*"/>
-                </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" Grid.Column="0" Text="Club Name"/>
-                <TextBlock Grid.Row="1" Grid.Column="0" Text="Club Birth"/>
-                <TextBlock Grid.Row="2" Grid.Column="0" Text="Club ContactNumber"/>
 
-                <TextBlock Grid.Row="0" Grid.Column="1" Name="nameBlock"/>
-                <TextBlock Grid.Row="1" Grid.Column="1" Name="birthBlock"/>
-                <TextBlock Grid.Row="2" Grid.Column="1" Name="contactNumberBlock"/>
-            </Grid>
-        </Grid>
-        <Button Visibility="Hidden" Grid.Row="1" Content="Test Offer Button (Player)" Name="ClubOfferBtn" Margin="48,10,42,125" Click="ClubOfferBtn_Click"></Button>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150*"/>
+            <ColumnDefinition Width="150*"/>
+            <ColumnDefinition Width="150*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="350"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <Image Margin="10" Grid.Row="0" Grid.Column="2" Grid.RowSpan="5" Source="../Image/testclubimage.jpg"/>
+
+        <TextBlock FontSize="15" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Row="1" Grid.Column="0" Text="구단명"/>
+        <TextBlock FontSize="15" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Row="2" Grid.Column="0" Text="창단일"/>
+        <TextBlock FontSize="15" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Row="3" Grid.Column="0" Text="연락처"/>
+
+        <TextBlock FontSize="15" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Row="1" Grid.Column="1" Name="nameBlock"/>
+        <TextBlock FontSize="15" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Row="2" Grid.Column="1" Name="birthBlock"/>
+        <TextBlock FontSize="15" VerticalAlignment="Center" Margin="10,0,0,0" Grid.Row="3" Grid.Column="1" Name="contactNumberBlock"/>
+        <Button Style="{StaticResource SuccessButton}" Visibility="Hidden" Grid.Row="6" Grid.Column="1" Content="계약 요청하기" Name="ClubOfferBtn" Click="ClubOfferBtn_Click"></Button>
     </Grid>
 </Window>

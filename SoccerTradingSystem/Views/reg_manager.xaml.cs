@@ -30,13 +30,31 @@ namespace SoccerTradingSystem.Views
 
         private void resiterBtn_Click(object sender, RoutedEventArgs e)
         {
+            // NULL Validation
+            if (emailBox.Text.Trim() == "" || passwordBox.Password.Trim() == "" || nameBox.Text.Trim() == "" || telBox.Text.Trim() == "")
+            {
+                MessageBox.Show("필수 사항을 모두 입력해 주십시오.");
+                return;
+            }
+
+            // Validation
+            bool emailCheck = Regex.IsMatch(emailBox.Text, @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$");
+            if (!emailCheck)
+            {
+                MessageBox.Show("이메일 형식이 올바르지 않습니다. 다시 확인해주세요.");
+                return;
+            }
+            if (IsPhoneNumber(passwordBox.Password))
+            {
+                MessageBox.Show("전화번호 형식이 올바르지 않습니다. 다시 확인해주세요.");
+                return;
+            }
+
+            // Value
             string email = emailBox.Text;
             string password = passwordBox.Password;
             string name = nameBox.Text;
             string telNumber = telBox.Text;
-
-            // 유효성 검사
-            
 
             // 레지스트
             SystemAccountHandler sah = new SystemAccountHandler();
@@ -44,9 +62,11 @@ namespace SoccerTradingSystem.Views
             bool flag = sah.registerManagerAccount(email, password, name, telNumber);
 
             if (flag)
-                MessageBox.Show("성공");
+            {
+                MessageBox.Show("회원가입에 성공하였습니다. \n관리자의 승인을 기다려주세요."); return;
+            }
             else
-                MessageBox.Show("실패");
+                MessageBox.Show("회원가입에 실패하였습니다.");
 
 
             // 윈도우 닫음
@@ -58,8 +78,14 @@ namespace SoccerTradingSystem.Views
             bool emailCheck = Regex.IsMatch(emailBox.Text, @"^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$");
             if (!emailCheck)
             {
-                MessageBox.Show("틀린 이메일 주소");
+                MessageBox.Show("이메일 형식이 올바르지 않습니다. 다시 확인해주세요.");
+                regWindow.Close();
             }
+        }
+
+        public static bool IsPhoneNumber(string number)
+        {
+            return Regex.Match(number, @"^(\+[0-9]{9})$").Success;
         }
     }
 }
