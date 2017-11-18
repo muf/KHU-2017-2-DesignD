@@ -308,7 +308,7 @@ namespace SoccerTradingSystem
         }
         public User retrieveUserData(int uid)
         {
-            JSON result = saDAC.getUserData();
+            JSON result = saDAC.getUserData(uid);
             if (result.Count > 0) {
                 Dictionary<string, object> data = result[0];
                 bool auth = data["authenticated"].ToString() == "True" ? true : false;
