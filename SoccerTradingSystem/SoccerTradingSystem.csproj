@@ -65,11 +65,13 @@
     <Compile Include="Client.cs" />
     <Compile Include="Club.cs" />
     <Compile Include="Contract.cs" />
+    <Compile Include="DailyPayment.cs" />
     <Compile Include="DBGenerator.cs" />
     <Compile Include="enumClass.cs" />
     <Compile Include="localData.cs" />
     <Compile Include="Manager.cs" />
     <Compile Include="MariaDBConnector.cs" />
+    <Compile Include="Payment.cs" />
     <Compile Include="Views\AddGameWindow.xaml.cs">
       <DependentUpon>AddGameWindow.xaml</DependentUpon>
     </Compile>

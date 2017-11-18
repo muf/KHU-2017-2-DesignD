@@ -11,6 +11,19 @@ namespace SoccerTradingSystem
     public enum Status { Free, Contract, Lease, Expire, Retire };
     public static class enumClass
     {
+        public static class paymentType
+        {
+            public static String Daily = "Daily";
+            public static String Weekly = "Weekly";
+            public static String Monthly = "Monthly";
+        }
+        public static class paymentTimes
+        {
+            public static int Daily = 365;
+            public static int Weekly = 52;
+            public static int Monthly = 12;
+        }
+
         public static class contractType
         {
             public static String Offer = "Offer";
